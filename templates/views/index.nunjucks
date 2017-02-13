@@ -1,0 +1,9 @@
+{%- extends 'layout/layout.nunjucks' -%}
+
+{%- block content -%}
+{%- endblock -%}
+
+{%- block script -%}
+
+  <script src="/js/bundle.js"></script>
+{%- endblock -%}

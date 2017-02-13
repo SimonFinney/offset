@@ -1,46 +1,55 @@
-const fs = require('fs');
-const http = require('http');
+// Server
 
-const index = fs.readFileSync(`${__dirname}/app/index.html`);
+// TODO: Comments
+const compression = require('compression');
+const express = require('express');
+const minifyHtml = require('express-minify-html');
+const nunjucks = require('nunjucks');
 
-// Emits time
-function time() {
-  io.emit(
-    'time',
-    { time: new Date().toJSON() }
-  );
-}
+const socket = require('./src/socket');
+const router = require('./src/router');
+const util = require('./src/util');
 
+const server = express();
 
-// Send index.html to all requests
-var server = http.createServer((request, response) => {
-  response.writeHead(
-    200,
-    {'Content-Type': 'text/html' }
-  );
-  response.end(index);
-});
+const serverDirectory = (util.isDebug() ? '.tmp' : 'dist');
+const staticAssets = express.static(`${__dirname}/${serverDirectory}/`);
 
-// Socket.io server listens to our app
-const io = require('socket.io').listen(server);
+server.use(staticAssets);
 
-// Emit connection message
-io.on('connection', socket => {
+server.use('/', router.router);
 
-  socket.emit(
-    'server',
+server.use(
+  compression()
+);
+
+server.use(
+  minifyHtml(
     {
-      id: socket.id,
-      message: 'Hello Client!',
+      htmlMinifier: {
+        collapseBooleanAttributes: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+      },
     }
-  );
+  )
+);
 
-  socket.on('client', console.log);
+nunjucks.configure('templates', {
+  autoescape: true,
+  express: server,
 });
 
-server.listen(3000);
+server.host = server.set('host', (process.env.HOST || 'http://localhost'));
+server.port = server.set('port', (process.env.PORT || 8080));
 
-// Emits time every 3 seconds
-setInterval(time, 3000);
+const port = server.get('port');
 
-module.exports = { server };
+server.listen(port, () => {
+  server.address = `${server.get('host')}:${port}`;
+  console.log(`Listening at ${server.address}`);
+});
+
+module.exports = server;
