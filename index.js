@@ -6,24 +6,24 @@ const express = require('express');
 const minifyHtml = require('express-minify-html');
 const nunjucks = require('nunjucks');
 
-const socket = require('./src/socket');
 const router = require('./src/router');
+const socket = require('./src/socket');
 const util = require('./src/util');
 
-const server = express();
+const app = express();
 
 const serverDirectory = (util.isDebug() ? '.tmp' : 'dist');
 const staticAssets = express.static(`${__dirname}/${serverDirectory}/`);
 
-server.use(staticAssets);
+app.use(staticAssets);
 
-server.use('/', router.router);
+app.use('/', router.router);
 
-server.use(
+app.use(
   compression()
 );
 
-server.use(
+app.use(
   minifyHtml(
     {
       htmlMinifier: {
@@ -39,17 +39,17 @@ server.use(
 
 nunjucks.configure('templates', {
   autoescape: true,
-  express: server,
+  express: app,
 });
 
-server.host = server.set('host', (process.env.HOST || 'http://localhost'));
-server.port = server.set('port', (process.env.PORT || 8080));
+app.host = app.set('host', (process.env.HOST || 'http://localhost'));
+app.port = app.set('port', (process.env.PORT || 8080));
 
-const port = server.get('port');
+const port = app.get('port');
 
-server.listen(port, () => {
-  server.address = `${server.get('host')}:${port}`;
-  console.log(`Listening at ${server.address}`);
+const server = app.listen(port, () => {
+  app.address = `${app.get('host')}:${port}`;
+  console.log(`Listening at ${app.address}`);
 });
 
-module.exports = server;
+socket.init(server);

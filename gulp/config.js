@@ -19,7 +19,10 @@ const autoprefixer = { browsers };
 
 const browserSync = {
   notify: false,
-  proxy: 'http://localhost:8080',
+  proxy: {
+    target: 'http://localhost:8080',
+    ws: true,
+  },
 };
 
 const nodemon = {

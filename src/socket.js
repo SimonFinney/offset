@@ -1,18 +1,11 @@
-// Sockets
+// Socket
 
-const express = require('express');
-const http = require('http');
 const socket = require('socket.io');
 
-const app = express();
-const port = 8081;
-const server = http.Server(app);
-
-const io = socket(server);
-server.listen(port);
+let io;
 
 
-function time() {
+function time(io) {
   io.emit(
     'time',
     { time: new Date().toJSON() }
@@ -20,17 +13,23 @@ function time() {
 }
 
 
-io.on('connection', socket => {
-  socket.emit(
-    'server',
-    {
-      id: socket.id,
-      message: 'Hello Client!',
-    }
-  );
+function init(server) {
+  io = socket.listen(server);
 
-  socket.on('client', console.log);
-});
+  io.on('connection', socket => {
+    socket.emit(
+      'server',
+      {
+        id: socket.id,
+        message: 'Hello Client!',
+      }
+    );
+
+    socket.on('client', console.log);
+  });
+
+  setInterval(() => time(io), 3000);
+}
 
 
-setInterval(time, 3000);
+module.exports = { init };

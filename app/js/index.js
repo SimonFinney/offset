@@ -15,15 +15,12 @@ import {
 
 import io from 'socket.io-client';
 
-const socket = io.connect('/');
-
-
-console.log(socket);
+let socket;
+let ul;
 
 
 function add(text) {
   const textNode = document.createTextNode(text);
-  const ul = document.querySelector('.ul');
   const li = document.createElement('li');
 
   li.appendChild(textNode);
@@ -31,26 +28,24 @@ function add(text) {
 }
 
 
-socket.on('error', console.error.bind(console));
-socket.on('message', console.log.bind(console));
-socket.on('time', data => add(data.time));
-
-socket.on('server', data => {
-  add(data.message);
-
-  socket.emit('client',
-    {
-      data: 'Hello Server!',
-      id: data.id,
-    }
-  );
-});
-
-
 function init() {
+  ul = document.querySelector('.ul');
+  socket = io();
 
-  console.log('init');
+  socket.on('error', console.error.bind(console));
+  socket.on('message', console.log.bind(console));
+  socket.on('time', data => add(data.time));
 
+  socket.on('server', data => {
+    add(data.message);
+
+    socket.emit('client',
+      {
+        data: 'Hello Server!',
+        id: data.id,
+      }
+    );
+  });
 }
 
 
