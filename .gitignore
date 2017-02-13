@@ -1,0 +1,16 @@
+# Hidden folders
+.*/
+
+# Package folders
+node_modules
+
+# Output folders
+.tmp
+dist
+
+# Always-ignore files
+*.log
+
+# Individual folders and files
+**/.DS_Store
+!.github/
