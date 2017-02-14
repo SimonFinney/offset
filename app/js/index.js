@@ -18,15 +18,15 @@ import io from 'socket.io-client';
 let socket;
 let form;
 let input;
-let ul;
+let tbody;
 
 
 function add(text) {
-  const textNode = document.createTextNode(text);
-  const li = document.createElement('li');
+  const row = tbody.insertRow();
+  const cell = row.insertCell();
 
-  li.appendChild(textNode);
-  ul.appendChild(li);
+  const textNode = document.createTextNode(text);
+  cell.appendChild(textNode);
 }
 
 
@@ -42,18 +42,15 @@ function submitForm(event) {
 function init() {
   form = document.querySelector('.form');
   input = document.querySelector('.sy-input--text');
-  ul = document.querySelector('.ul');
+  tbody = document.querySelector('tbody');
   socket = io();
-
-  socket.on('error', console.error.bind(console));
-  socket.on('message', console.log.bind(console));
 
   if (form) {
     on(form, 'submit', submitForm);
   }
 
-  if (ul) {
-    socket.on('receive', text => add(text));
+  if (tbody) {
+    socket.on('receive', add);
   }
 }
 

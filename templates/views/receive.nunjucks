@@ -2,7 +2,14 @@
 
 {%- block content -%}
 
-  <ul class="ul"></ul>
+  <table class="sy-table">
+    <thead>
+      <tr>
+        <th>Receive</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 {%- endblock -%}
 
 {%- block script -%}

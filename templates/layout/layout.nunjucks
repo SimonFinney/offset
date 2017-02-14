@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body class="body">
+
+    {%- include 'includes/partials/_header.nunjucks' -%}
+
     <main class="main">
 
       {%- block content -%}
