@@ -4,7 +4,12 @@
 const paths = new (function paths() {
   this.app = 'app/';
   this.dist = 'dist/';
-  this.fonts = 'fonts/';
+
+  this.extras = [
+    'fonts/',
+    'manifest.json',
+  ];
+
   this.js = `${this.app}js/`;
   this.scss = `${this.app}scss/**/*.scss`;
   this.tmp = '.tmp/';
