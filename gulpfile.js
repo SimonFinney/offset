@@ -18,6 +18,9 @@ require('./gulp/tasks/default')(gulp, runSequence, config.paths);
 // ESLint
 require('./gulp/tasks/eslint')(gulp, config.paths.js);
 
+// Fonts
+require('./gulp/tasks/fonts')(gulp, config.paths);
+
 // JavaScript
 require('./gulp/tasks/js')(gulp, config);
 

@@ -1,10 +1,8 @@
 {%- extends 'layout/layout.nunjucks' -%}
 
 {%- block content -%}
-  <form class="form">
-    <input class="sy-input--text" type="text">
-    <button class="sy-button">Send</button>
-  </form>
+
+  <ul class="ul"></ul>
 {%- endblock -%}
 
 {%- block script -%}

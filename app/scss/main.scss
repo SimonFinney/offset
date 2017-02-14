@@ -1,9 +1,14 @@
 @charset 'utf-8';
 // Sass manifest
 
+// Imports
+@import
+'../../node_modules/@ibm/security-components/dist/scss/security-components';
+
 // Core
 @import 'core/layout';
 
 // Elements
+@import 'elements/main';
 
 // Components

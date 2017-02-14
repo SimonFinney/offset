@@ -16,6 +16,8 @@ import {
 import io from 'socket.io-client';
 
 let socket;
+let form;
+let input;
 let ul;
 
 
@@ -28,24 +30,31 @@ function add(text) {
 }
 
 
+function submitForm(event) {
+  event.preventDefault();
+
+  socket.emit('send', input.value);
+  event.target
+    .reset();
+}
+
+
 function init() {
+  form = document.querySelector('.form');
+  input = document.querySelector('.sy-input--text');
   ul = document.querySelector('.ul');
   socket = io();
 
   socket.on('error', console.error.bind(console));
   socket.on('message', console.log.bind(console));
-  socket.on('time', data => add(data.time));
 
-  socket.on('server', data => {
-    add(data.message);
+  if (form) {
+    on(form, 'submit', submitForm);
+  }
 
-    socket.emit('client',
-      {
-        data: 'Hello Server!',
-        id: data.id,
-      }
-    );
-  });
+  if (ul) {
+    socket.on('receive', text => add(text));
+  }
 }
 
 

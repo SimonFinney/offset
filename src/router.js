@@ -11,8 +11,10 @@ router.get('/', (request, response) => {
   response.render('views/index.nunjucks', { name });
 });
 
-router.get('/success', (request, response) => { });
+router.get('/receive', (request, response) => {
+  response.render('views/receive.nunjucks', { name });
+});
 
-router.post('/submit', (request, response) => { });
+router.post('/post', (request, response) => { });
 
 module.exports = { router };
