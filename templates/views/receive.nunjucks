@@ -1,5 +1,9 @@
 {%- extends 'layout/layout.nunjucks' -%}
 
+{%- block head -%}
+  <link rel="manifest" href="/manifest.json">
+{%- endblock -%}
+
 {%- block content -%}
 
   <table class="sy-table">
