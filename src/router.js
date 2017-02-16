@@ -48,8 +48,15 @@ router.get('/receive', (request, response) => {
 
 
 router.post('/submit', upload.single('file'), (request, response) => {
+  const modifier = request.body.modifier;
   const src = img.convert(request.file);
-  database.create({ src }, () => response.redirect('/'));
+
+  const data = {
+    modifier,
+    src,
+  };
+
+  database.create(data, () => response.redirect('/'));
 });
 
 

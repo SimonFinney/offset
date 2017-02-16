@@ -11,7 +11,7 @@
     <img class="camera__img" alt="Preview">
     <form class="camera__form" action="/submit" enctype="multipart/form-data" method="post">
       <input class="input" accept="image/*;capture=camera" name="file" type="file">
-      <input name="modifier" type="hidden" value="{{ questions | length }}">
+      <input class="input--hidden" name="modifier" type="hidden" value="{{ content.attributes.questions | length }}">
       <button class="sy-button">Submit</button>
     </form>
   </div>

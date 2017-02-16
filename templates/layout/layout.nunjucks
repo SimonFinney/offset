@@ -11,7 +11,7 @@
   </head>
   <body class="body">
 
-    <main class="main sy--dark-ui" {%- if route %} data-{{ route }} {%- endif -%}>
+    <main class="main sy--dark-ui" {%- if route %} data-{{ route }} {%- endif -%} {%- if content %} data-questions-length="{{ content.attributes.questions | length }}" {%- endif -%}>
 
       {%- block content -%}
       {%- endblock -%}

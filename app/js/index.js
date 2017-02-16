@@ -20,8 +20,10 @@ let answerCount;
 let app;
 let cameraImg;
 let input;
+let inputHidden;
 let main;
 let socket;
+let totalQuestions;
 let views;
 
 
@@ -46,10 +48,16 @@ function check(event) {
   const button = event.target;
 
   answerCount = (button.getAttribute('value') === 'true') ?
-    (answerCount + 1) :
-    answerCount;
+    answerCount :
+    (answerCount + 1);
 
   toggleView(button.parentNode);
+
+  const modifier = (totalQuestions - answerCount);
+  inputHidden.setAttribute('value', modifier);
+
+  cameraImg.style
+    .filter = `blur(${modifier}px)`;
 }
 
 
@@ -92,6 +100,7 @@ function init() {
   app = getElement('[data-receive]');
   cameraImg = getElement('.camera__img');
   input = getElement('.input');
+  inputHidden = getElement('.input--hidden');
   main = getElement('.main');
   views = getElements('[data-view]');
 
@@ -106,6 +115,11 @@ function init() {
   }
 
   if (input) {
+    totalQuestions = parseInt(
+      getElement('[data-questions-length]').getAttribute('data-questions-length'),
+      10
+    );
+
     each(
       getElements('.section__button'),
       sectionButton => on(sectionButton, 'click', check)
