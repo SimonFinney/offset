@@ -25,11 +25,6 @@ function getElements(selector, element = document) {
 }
 
 
-function isToggled(element, dataAttribute = 'active') {
-  return element.hasAttribute(`data-${dataAttribute}`);
-}
-
-
 function toggleEventListener(element, eventListenerToggle, eventType, func) {
   element[`${eventListenerToggle}EventListener`](eventType, func);
 }
@@ -68,7 +63,6 @@ export {
   each,
   getElement,
   getElements,
-  isToggled,
   off,
   on,
   once,

@@ -2,15 +2,18 @@
 // Sass manifest
 
 // Imports
-@import
-'../../node_modules/@ibm/security-components/dist/scss/security-components';
+@import '../../node_modules/@ibm/security-components/dist/scss/security-components';
 
 // Core
 @import 'core/layout';
 
 // Elements
 @import
+'elements/body',
+'elements/html',
 'elements/img',
-'elements/main';
+'elements/main',
+'elements/section';
 
 // Components
+@import 'components/camera';

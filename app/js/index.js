@@ -8,7 +8,6 @@ import {
   each,
   getElement,
   getElements,
-  isToggled,
   off,
   on,
   once,
@@ -17,11 +16,35 @@ import {
 
 import io from 'socket.io-client';
 
+let answerCount;
 let app;
-let img;
+let cameraImg;
 let input;
 let main;
 let socket;
+
+
+function toggleView(view, nextView = view.nextSibling) {
+  toggleElement(view);
+
+  once(view, 'transitionend', () => {
+    toggleElement(view, 'inactive');
+
+    toggleElement(nextView, 'inactive');
+    toggleElement(nextView);
+  });
+}
+
+
+function check(event) {
+  const button = event.target;
+
+  answerCount = (button.getAttribute('value') === 'true') ?
+    (answerCount + 1) :
+    answerCount;
+
+  toggleView(button.parentNode);
+}
 
 
 function load(img) {
@@ -49,15 +72,19 @@ function read(event) {
   if (input.files && input.files[0]) {
     const fileReader = new FileReader();
 
-    on(fileReader, 'load', e => img.setAttribute('src', e.target.result));
+    on(fileReader, 'load', e =>
+      cameraImg.setAttribute('src', e.target.result)
+    );
+
     fileReader.readAsDataURL(input.files[0]);
   }
 }
 
 
 function init() {
+  answerCount = 0;
   app = getElement('[data-receive]');
-  img = getElement('.img');
+  cameraImg = getElement('.camera__img');
   input = getElement('.input');
   main = getElement('.main');
 
@@ -72,6 +99,11 @@ function init() {
   }
 
   if (input) {
+    each(
+      getElements('.section__button'),
+      sectionButton => on(sectionButton, 'click', check)
+    );
+
     on(input, 'change', read);
   }
 }

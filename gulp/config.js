@@ -32,7 +32,7 @@ const browserSync = {
 };
 
 const nodemon = {
-  ext: 'js nunjucks',
+  ext: 'js md nunjucks',
   script: 'index.js',
 };
 

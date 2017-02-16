@@ -7,11 +7,26 @@
 
 {%- block content -%}
 
-  <form action="/submit" enctype="multipart/form-data" method="post">
-    <input class="input" accept="image/*;capture=camera" name="file" type="file">
-    <button class="sy-button">Submit</button>
-  </form>
-  <img class="img" alt="Preview">
+  <div class="camera">
+    <img class="camera__img" alt="Preview">
+    <form class="camera__form" action="/submit" enctype="multipart/form-data" method="post">
+      <input class="input" accept="image/*;capture=camera" name="file" type="file">
+      <input name="modifier" type="hidden" value="{{ questions | length }}">
+      <button class="sy-button">Submit</button>
+    </form>
+  </div>
+
+  {%- for question in content.attributes.questions -%}
+
+    <section class="section" data-id="{{ loop.index0 }}" data-view {%- if loop.first %} data-active {%- else %} data-inactive {%- endif -%}>
+      <p class="section__question">{{ question.description }}</p>
+
+      {%- for answer in question.answers -%}
+
+        <button class="section__button" value="{{ ((answer | lower) == (question.correct_answer | lower)) }}">{{ answer }}</button>
+      {%- endfor -%}
+    </section>
+  {%- endfor -%}
 {%- endblock -%}
 
 {%- block script -%}

@@ -1,0 +1,41 @@
+// Section
+
+.section {
+  @include sy-ease-out;
+  display: flex;
+  height: 100%;
+  padding: 64px;
+  box-sizing: border-box;
+  flex-basis: 50%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-view] {
+  opacity: 0;
+  visibility: hidden;
+
+  &[data-active] {
+    position: initial;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &[data-inactive] {
+    position: absolute;
+  }
+}
+
+.section__question {
+  @include font-size('24');
+}
+
+.section__button {
+  @include sy-button--primary;
+  margin-right: 24px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}

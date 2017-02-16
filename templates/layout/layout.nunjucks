@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="html no-js" lang="en" {%- if route %} data-{{ route }} {%- endif -%}>
+<html class="html no-js" lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
@@ -11,7 +11,7 @@
   </head>
   <body class="body">
 
-    <main class="main">
+    <main class="main sy--dark-ui" {%- if route %} data-{{ route }} {%- endif -%}>
 
       {%- block content -%}
       {%- endblock -%}
