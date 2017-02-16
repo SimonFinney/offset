@@ -2,6 +2,19 @@
 
 
 // TODO: Comments
+function createElement(tag, attributes, text) {
+  const element = document.createElement(tag);
+  Object.keys(attributes)
+    .forEach(attribute => element.setAttribute(attribute, attributes[attribute]));
+
+  if (text) {
+    element.appendChild(
+      document.createTextNode(text)
+    );
+  }
+
+  return element;
+}
 
 
 // Moves function to the end of the call stack
@@ -59,6 +72,7 @@ function toggleElement(element, dataAttribute = 'active', attributeValue = '') {
 
 
 export {
+  createElement,
   debounce,
   each,
   getElement,

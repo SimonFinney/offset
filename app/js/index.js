@@ -4,6 +4,7 @@
 // TODO: Comments
 
 import {
+  createElement,
   debounce,
   each,
   getElement,
@@ -28,12 +29,7 @@ let totalQuestions;
 let views;
 
 
-function getNextView(view) {
-  return views[(views.indexOf(view) + 1)];
-}
-
-
-function toggleView(view, nextView = getNextView(view)) {
+function toggleView(view, nextView = views[(views.indexOf(view) + 1)]) {
   toggleElement(view);
 
   once(view, 'transitionend', () => {
@@ -72,9 +68,13 @@ function load(img) {
 
 
 function add(image) {
-  const img = document.createElement('img');
-  img.setAttribute('class', 'img');
-  img.setAttribute('data-src', image.src);
+  const img = createElement(
+    'img',
+    {
+      class: 'img',
+      'data-src': image.src,
+    }
+  );
 
   main.appendChild(img);
   load(img);
@@ -85,6 +85,13 @@ function read(event) {
   const input = event.target;
 
   if (input.files && input.files[0]) {
+    cameraImg = createElement('img', { class: 'camera__img' });
+
+    getElement('.camera').insertBefore(
+      cameraImg,
+      getElement('.camera__form')
+    );
+
     const fileReader = new FileReader();
 
     on(fileReader, 'load', e =>
@@ -100,7 +107,6 @@ function init() {
   answerCount = 0;
   app = getElement('[data-receive]');
   cameraButton = getElement('.camera__button');
-  cameraImg = getElement('.camera__img');
   cameraInput = getElement('.camera__input');
   cameraInputHidden = getElement('.camera__input--hidden');
   main = getElement('.main');
