@@ -51,13 +51,13 @@ function check(event) {
     answerCount :
     (answerCount + 1);
 
-  toggleView(button.parentNode);
-
   const modifier = (totalQuestions - answerCount);
   inputHidden.setAttribute('value', modifier);
 
   cameraImg.style
     .filter = `blur(${modifier}px)`;
+
+  toggleView(button.parentNode);
 }
 
 
