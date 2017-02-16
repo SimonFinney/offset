@@ -2,17 +2,17 @@
 
 const socket = require('socket.io');
 
+const database = require('./database');
+
 let io;
 
 
 function init(server) {
   io = socket.listen(server);
+  io.on('connection', connection => console.log(connection));
 
-  io.on('connection', connection =>
-    setInterval(() =>
-      io.emit('receive', 'http://lorempixel.com/800/800/'),
-      3000
-    )
+  database.init(
+    value => io.emit('receive', value.val())
   );
 }
 

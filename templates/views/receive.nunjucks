@@ -1,6 +1,11 @@
 {%- extends 'layout/layout.nunjucks' -%}
 
 {%- block content -%}
+
+  {%- for img in images -%}
+
+    <img class="img" data-src="{{ img.src }}">
+  {%- endfor -%}
 {%- endblock -%}
 
 {%- block script -%}

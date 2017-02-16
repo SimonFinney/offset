@@ -10,18 +10,8 @@ function getConfiguration(configurationVariable) {
 }
 
 
-function getDatetime() {
-  return (+ new Date);
-}
-
-
 function isDebug() {
   return (server.get('env') === 'development');
-}
-
-
-function getMaxAge() {
-  return (isDebug() ? 180000 : 1200000);
 }
 
 
@@ -49,8 +39,6 @@ function shuffle(arrayToShuffle) {
 
 module.exports = {
   getConfiguration,
-  getDatetime,
-  getMaxAge,
   isDebug,
   shuffle,
 };

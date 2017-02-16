@@ -1,1 +1,6 @@
-{}
+{
+  "firebaseApiKey": "",
+  "firebaseDatabaseURL": "",
+  "firebaseEmail": "",
+  "firebasePassword": ""
+}

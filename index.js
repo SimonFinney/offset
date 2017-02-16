@@ -17,7 +17,7 @@ const staticAssets = express.static(`${__dirname}/${serverDirectory}/`);
 
 app.use(staticAssets);
 
-app.use('/', router.router);
+app.use('/', router);
 
 app.use(
   compression()

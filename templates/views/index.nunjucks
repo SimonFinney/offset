@@ -1,10 +1,16 @@
 {%- extends 'layout/layout.nunjucks' -%}
 
 {%- block head -%}
+
   <link rel="manifest" href="/manifest.json">
 {%- endblock -%}
 
 {%- block content -%}
+
+  <form action="/submit" enctype="multipart/form-data" method="post">
+    <input accept="image/*;capture=camera" name="file" type="file">
+    <button>Submit</button>
+  </form>
 {%- endblock -%}
 
 {%- block script -%}

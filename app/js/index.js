@@ -19,21 +19,35 @@ let app;
 let main;
 let socket;
 
-function add(src) {
+
+function load(img) {
+  img.setAttribute('src', img.getAttribute('data-src'));
+
+  img.addEventListener('load', () =>
+    debounce(() => img.removeAttribute('data-src'))
+  );
+}
+
+
+function add(image) {
   const img = document.createElement('img');
   img.setAttribute('class', 'img');
-  img.setAttribute('src', src);
+  img.setAttribute('data-src', image.src);
 
   main.appendChild(img);
+  load(img);
 }
 
 
 function init() {
   app = document.querySelector('[data-receive]');
-  main = document.querySelector('.main');
+  main = app.querySelector('.main');
   socket = io();
 
   if (app) {
+    [...app.querySelectorAll('[data-src]')]
+      .forEach(load);
+
     socket.on('receive', add);
   }
 }

@@ -1,11 +1,15 @@
 // TODO: Comments
 
 const express = require('express');
+const multer = require('multer');
 
-const name = require('../package.json').name;
+const database = require('./database');
+const img = require('./img');
 const util = require('./util');
 
+const name = require('../package.json').name;
 const router = express.Router();
+const upload = multer();
 
 
 router.get('/', (request, response) =>
@@ -17,13 +21,23 @@ router.get('/receive', (request, response) => {
   const route = request.url
     .replace('/', '');
 
-  response.render('views/receive.nunjucks', {
-    name,
-    route,
+  database.get(data => {
+    const images = Object.keys(data)
+      .map(id => data[id]);
+
+    response.render('views/receive.nunjucks', {
+      images,
+      name,
+      route,
+    });
   });
 });
 
 
-router.post('/post', (request, response) => { });
+router.post('/submit', upload.single('file'), (request, response) => {
+  const src = img.convert(request.file);
+  database.create({ src }, () => response.redirect('/'));
+});
 
-module.exports = { router };
+
+module.exports = router;
