@@ -4,7 +4,7 @@
 
   {%- for img in images -%}
 
-    <img class="img" data-src="{{ img.src }}">
+    <img class="img" data-src="{{ img.src }}" style="filter: blur({{ img.modifier }}px);">
   {%- endfor -%}
 {%- endblock -%}
 
