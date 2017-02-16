@@ -21,7 +21,7 @@ function getElement(selector, element = document) {
 
 
 function getElements(selector, element = document) {
-  return element.querySelectorAll(selector);
+  return [...element.querySelectorAll(selector)];
 }
 
 

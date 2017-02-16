@@ -22,9 +22,15 @@ let cameraImg;
 let input;
 let main;
 let socket;
+let views;
 
 
-function toggleView(view, nextView = view.nextSibling) {
+function getNextView(view) {
+  return views[(views.indexOf(view) + 1)];
+}
+
+
+function toggleView(view, nextView = getNextView(view)) {
   toggleElement(view);
 
   once(view, 'transitionend', () => {
@@ -87,6 +93,7 @@ function init() {
   cameraImg = getElement('.camera__img');
   input = getElement('.input');
   main = getElement('.main');
+  views = getElements('[data-view]');
 
   socket = io();
 

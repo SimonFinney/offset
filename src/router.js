@@ -20,12 +20,14 @@ const router = express.Router();
 const upload = multer();
 
 
-router.get('/', (request, response) =>
+router.get('/', (request, response) => {
+  content.attributes.questions = util.shuffle(content.attributes.questions);
+
   response.render('views/index.nunjucks', {
     content,
     name,
-  })
-);
+  });
+});
 
 
 router.get('/receive', (request, response) => {
@@ -33,10 +35,8 @@ router.get('/receive', (request, response) => {
     .replace('/', '');
 
   database.get(data => {
-    const images = util.shuffle(
-      Object.keys(data)
-        .map(id => data[id])
-    );
+    const images = Object.keys(data)
+      .map(id => data[id]);
 
     response.render('views/receive.nunjucks', {
       images,
