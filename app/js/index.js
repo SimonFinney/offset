@@ -18,9 +18,10 @@ import io from 'socket.io-client';
 
 let answerCount;
 let app;
+let cameraButton;
 let cameraImg;
-let input;
-let inputHidden;
+let cameraInput;
+let cameraInputHidden;
 let main;
 let socket;
 let totalQuestions;
@@ -52,7 +53,7 @@ function check(event) {
     (answerCount + 1);
 
   const modifier = (totalQuestions - answerCount);
-  inputHidden.setAttribute('value', modifier);
+  cameraInputHidden.setAttribute('value', modifier);
 
   cameraImg.style
     .filter = `blur(${modifier}px)`;
@@ -98,9 +99,10 @@ function read(event) {
 function init() {
   answerCount = 0;
   app = getElement('[data-receive]');
+  cameraButton = getElement('.camera__button');
   cameraImg = getElement('.camera__img');
-  input = getElement('.input');
-  inputHidden = getElement('.input--hidden');
+  cameraInput = getElement('.camera__input');
+  cameraInputHidden = getElement('.camera__input--hidden');
   main = getElement('.main');
   views = getElements('[data-view]');
 
@@ -114,18 +116,19 @@ function init() {
     socket.on('receive', add);
   }
 
-  if (input) {
+  if (cameraButton) {
     totalQuestions = parseInt(
       getElement('[data-questions-length]').getAttribute('data-questions-length'),
       10
     );
 
+    on(cameraButton, 'click', () => cameraInput.click());
+    on(cameraInput, 'change', read);
+
     each(
       getElements('.section__button'),
       sectionButton => on(sectionButton, 'click', check)
     );
-
-    on(input, 'change', read);
   }
 }
 

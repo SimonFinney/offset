@@ -10,9 +10,10 @@
   <div class="camera">
     <img class="camera__img" alt="Preview">
     <form class="camera__form" action="/submit" enctype="multipart/form-data" method="post">
-      <input class="input" accept="image/*;capture=camera" name="file" type="file">
-      <input class="input--hidden" name="modifier" type="hidden" value="{{ content.attributes.questions | length }}">
-      <button class="sy-button">Submit</button>
+      <input class="camera__input" accept="image/*;capture=camera" name="file" type="file" hidden>
+      <input class="camera__input--hidden" name="modifier" type="hidden" value="{{ content.attributes.questions | length }}">
+      <button class="camera__button" type="button">Choose</button>
+      <button class="camera__button--submit" type="submit">Submit</button>
     </form>
   </div>
 

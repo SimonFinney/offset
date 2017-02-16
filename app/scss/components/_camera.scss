@@ -1,12 +1,26 @@
 // Camera
 
 .camera {
+  display: flex;
   height: 100%;
   flex-basis: 50%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .camera__img {
   width: 100%;
-  height: 100%;
+  height: 66%;
   filter: blur(12px);
+}
+
+.camera__button,
+.camera__button--submit {
+  @include sy-button--primary;
+  margin-right: 24px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 }

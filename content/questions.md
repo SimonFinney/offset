@@ -72,8 +72,4 @@ questions:
       - 'Yes'
       - 'No'
     correct_answer: 'Yes'
-
-vulnerabilities:
-
-  -
 ---

@@ -12,21 +12,6 @@
   justify-content: center;
 }
 
-[data-view] {
-  opacity: 0;
-  visibility: hidden;
-
-  &[data-active] {
-    position: initial;
-    opacity: 1;
-    visibility: visible;
-  }
-
-  &[data-inactive] {
-    position: absolute;
-  }
-}
-
 .section__question {
   @include font-size('24');
 }
