@@ -6,6 +6,8 @@
 import {
   debounce,
   each,
+  getElement,
+  getElements,
   isToggled,
   off,
   on,
@@ -23,7 +25,7 @@ let socket;
 function load(img) {
   img.setAttribute('src', img.getAttribute('data-src'));
 
-  img.addEventListener('load', () =>
+  on(img, 'load', () =>
     debounce(() => img.removeAttribute('data-src'))
   );
 }
@@ -40,14 +42,15 @@ function add(image) {
 
 
 function init() {
-  app = document.querySelector('[data-receive]');
-  main = app.querySelector('.main');
+  app = get('[data-receive]');
+  main = get('.main', app);
   socket = io();
 
   if (app) {
-    [...app.querySelectorAll('[data-src]')]
-      .forEach(load);
-
+    each(
+      getAll('[data-src]', app),
+      load
+    );
     socket.on('receive', add);
   }
 }

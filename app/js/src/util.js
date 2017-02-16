@@ -9,8 +9,19 @@ function debounce(func, timeout = 0) {
   setTimeout(func, timeout);
 }
 
+
 function each(elements, callback) {
   [...elements].forEach(callback);
+}
+
+
+function getElement(selector, element = document) {
+  return element.querySelector(selector);
+}
+
+
+function getElements(selector, element = document) {
+  return element.querySelectorAll(selector);
 }
 
 
@@ -55,6 +66,8 @@ function toggleElement(element, dataAttribute = 'active', attributeValue = '') {
 export {
   debounce,
   each,
+  get,
+  getAll,
   isToggled,
   off,
   on,
