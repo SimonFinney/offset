@@ -1,5 +1,0 @@
-<header class="sy-header">
-  <a class="sy-header__link" href="/">IBM
-    <span class="sy-header__link-title">{{ name }}</span>
-  </a>
-</header>

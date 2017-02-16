@@ -15,41 +15,25 @@ import {
 
 import io from 'socket.io-client';
 
+let app;
+let main;
 let socket;
-let form;
-let input;
-let tbody;
 
+function add(src) {
+  const img = document.createElement('img');
+  img.setAttribute('class', 'img');
+  img.setAttribute('src', src);
 
-function add(text) {
-  const row = tbody.insertRow();
-  const cell = row.insertCell();
-
-  const textNode = document.createTextNode(text);
-  cell.appendChild(textNode);
-}
-
-
-function submitForm(event) {
-  event.preventDefault();
-
-  socket.emit('send', input.value);
-  event.target
-    .reset();
+  main.appendChild(img);
 }
 
 
 function init() {
-  form = document.querySelector('.form');
-  input = document.querySelector('.sy-input--text');
-  tbody = document.querySelector('tbody');
+  app = document.querySelector('[data-receive]');
+  main = document.querySelector('.main');
   socket = io();
 
-  if (form) {
-    on(form, 'submit', submitForm);
-  }
-
-  if (tbody) {
+  if (app) {
     socket.on('receive', add);
   }
 }

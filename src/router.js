@@ -7,13 +7,22 @@ const util = require('./util');
 
 const router = express.Router();
 
-router.get('/', (request, response) => {
-  response.render('views/index.nunjucks', { name });
-});
+
+router.get('/', (request, response) =>
+  response.render('views/index.nunjucks', { name })
+);
+
 
 router.get('/receive', (request, response) => {
-  response.render('views/receive.nunjucks', { name });
+  const route = request.url
+    .replace('/', '');
+
+  response.render('views/receive.nunjucks', {
+    name,
+    route,
+  });
 });
+
 
 router.post('/post', (request, response) => { });
 

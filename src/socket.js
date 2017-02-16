@@ -9,11 +9,9 @@ function init(server) {
   io = socket.listen(server);
 
   io.on('connection', connection =>
-    connection.on('send', text =>
-      io.emit(
-        'receive',
-        text
-      )
+    setInterval(() =>
+      io.emit('receive', 'http://lorempixel.com/800/800/'),
+      3000
     )
   );
 }

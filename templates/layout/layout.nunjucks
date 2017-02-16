@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="html no-js" lang="en">
+<html class="html no-js" lang="en" {%- if route %} data-{{ route }} {%- endif -%}>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
@@ -10,8 +10,6 @@
     {%- endblock -%}
   </head>
   <body class="body">
-
-    {%- include 'includes/partials/_header.nunjucks' -%}
 
     <main class="main">
 

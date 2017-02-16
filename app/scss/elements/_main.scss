@@ -2,5 +2,6 @@
 
 .main {
   max-width: 1024px;
-  margin: calc(#{$sy-header-height} + 32px) auto 32px;
+  margin-right: auto;
+  margin-left: auto;
 }
