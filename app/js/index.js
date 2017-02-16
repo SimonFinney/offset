@@ -18,6 +18,8 @@ import {
 import io from 'socket.io-client';
 
 let app;
+let img;
+let input;
 let main;
 let socket;
 
@@ -41,17 +43,36 @@ function add(image) {
 }
 
 
+function read(event) {
+  const input = event.target;
+
+  if (input.files && input.files[0]) {
+    const fileReader = new FileReader();
+
+    on(fileReader, 'load', e => img.setAttribute('src', e.target.result));
+    fileReader.readAsDataURL(input.files[0]);
+  }
+}
+
+
 function init() {
-  app = get('[data-receive]');
-  main = get('.main', app);
+  app = getElement('[data-receive]');
+  img = getElement('.img');
+  input = getElement('.input');
+  main = getElement('.main');
+
   socket = io();
 
   if (app) {
     each(
-      getAll('[data-src]', app),
+      getElements('[data-src]', app),
       load
     );
     socket.on('receive', add);
+  }
+
+  if (input) {
+    on(input, 'change', read);
   }
 }
 

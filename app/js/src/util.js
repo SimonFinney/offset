@@ -66,8 +66,8 @@ function toggleElement(element, dataAttribute = 'active', attributeValue = '') {
 export {
   debounce,
   each,
-  get,
-  getAll,
+  getElement,
+  getElements,
   isToggled,
   off,
   on,
