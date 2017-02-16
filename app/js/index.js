@@ -73,6 +73,7 @@ function add(image) {
     {
       class: 'img',
       'data-src': image.src,
+      style: `filter: blur(${image.modifier}px);`
     }
   );
 
