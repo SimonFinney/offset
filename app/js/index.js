@@ -108,7 +108,6 @@ function read() {
     !selectedCameraToggleButton.hasAttribute('data-camera-retake') ?
       toggleView() :
       null;
-    }
   }
 }
 
