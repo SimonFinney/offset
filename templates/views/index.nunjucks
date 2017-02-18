@@ -44,8 +44,6 @@
         {%- endfor -%}
       </section>
     {%- endfor -%}
-
-
   </section>
 
   <section class="view" data-view data-view-next>
