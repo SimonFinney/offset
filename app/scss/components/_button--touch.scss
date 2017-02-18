@@ -1,5 +1,14 @@
 // Touch button
 
+.button--touch,
+.button--touch__heading,
+.button--touch__instructions {
+  opacity: 0;
+  animation-duration: .3s;
+  animation-name: fade-in;
+  animation-fill-mode: forwards;
+}
+
 .button--touch {
   display: flex;
   width: 100%;
@@ -7,8 +16,13 @@
   padding: 0;
   color: inherit;
   text-align: initial;
+  cursor: pointer;
   background-color: transparent;
+  background-image: url('../images/background.svg');
+  background-position: right 90px;
+  background-repeat: no-repeat;
   border: 0;
+  animation-delay: .3s;
   flex-wrap: wrap;
 }
 
@@ -20,9 +34,11 @@
 .button--touch__heading {
   font-size: rem(100px);
   line-height: rem(140px);
+  animation-delay: .6s;
 }
 
 .button--touch__instructions {
   @include font-size('16');
   letter-spacing: .1px;
+  animation-delay: .9s;
 }

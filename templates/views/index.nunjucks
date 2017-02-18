@@ -14,7 +14,7 @@
     </button>
   </section>
 
-  <section class="view" data-view data-view-inactive>
+  <section class="view" data-view data-view-next>
     <h2 class="h2">Snap a selfie to track your progress</h2>
     <form class="camera__form" action="/submit" enctype="multipart/form-data" method="post">
       <input class="camera__input" accept="image/*;capture=camera" name="file" type="file" hidden>
@@ -24,7 +24,7 @@
     </form>
   </section>
 
-  <section class="view" data-view data-view-inactive>
+  <section class="view" data-view data-view-next>
     <img class="camera__img">
     <section class="camera__confirmation" data-view data-view-active>
       <h2 class="h2">Lookin' good!</h2>
@@ -34,7 +34,7 @@
 
     {%- for question in content.attributes.questions -%}
 
-      <section class="section" data-view data-view-inactive>
+      <section class="section" data-view data-view-next>
         <span class="section__question-count">Question {{ loop.index }} of {{ content.attributes.questions | length }}</span>
         <p class="section__question">{{ question.description }}</p>
 
@@ -48,7 +48,7 @@
 
   </section>
 
-  <section class="view" data-view data-view-inactive>
+  <section class="view" data-view data-view-next>
     <h2 class="h2">Goodbye World!</h2>
   </section>
 

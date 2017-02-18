@@ -7,6 +7,7 @@ const paths = new (function paths() {
 
   this.extras = [
     'fonts/',
+    'images/',
     'manifest.json',
   ];
 

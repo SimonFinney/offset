@@ -7,7 +7,8 @@
 // Core
 @import
 'core/color',
-'core/layout';
+'core/layout',
+'core/motion';
 
 // Elements
 @import
@@ -22,4 +23,5 @@
 // Components
 @import
 'components/button--touch',
-'components/camera';
+'components/camera',
+'components/view';

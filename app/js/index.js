@@ -39,13 +39,13 @@ function toggleView(view = currentView, nextView = views[(views.indexOf(view) + 
     nextView = views[(views.indexOf(view) + 1)];
   }
 
-  toggleElement(view, 'view-active');
+  toggleElement(view, 'view-previous');
 
   once(view, 'transitionend', () => {
-    toggleElement(view, 'view-inactive');
+    toggleElement(view, 'view-active');
 
-    toggleElement(nextView, 'view-inactive');
     toggleElement(nextView, 'view-active');
+    toggleElement(nextView, 'view-next');
 
     currentView = nextView;
   });
