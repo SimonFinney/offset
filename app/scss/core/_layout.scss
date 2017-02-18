@@ -33,20 +33,28 @@ $z-index: (
   z-index: index($z-index, $element);
 }
 
-.section {
+[data-view] {
+  @include sy-ease-out;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
 
-  &[data-view] {
-    opacity: 0;
-    visibility: hidden;
-
-    &[data-active] {
-      position: initial;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    &[data-inactive] {
-      position: absolute;
-    }
+  &[data-view-active] {
+    position: initial;
+    opacity: 1;
+    visibility: visible;
   }
+
+  &[data-view-inactive] {
+    position: absolute;
+  }
+}
+
+.view {
+  display: flex;
+  padding-right: 24px;
+  padding-left: 24px;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }

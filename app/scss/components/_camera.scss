@@ -10,17 +10,27 @@
 }
 
 .camera__img {
-  width: 100%;
-  height: 66%;
-  filter: blur(12px);
+  width: 40%;
+  height: 100%;
+  filter: blur(8px);
 }
 
 .camera__button,
-.camera__button--submit {
-  @include sy-button--primary;
-  margin-right: 24px;
+.camera__button--confirm {
+  @extend %button--primary;
+}
 
-  &:last-of-type {
-    margin-right: 0;
-  }
+.camera__confirmation {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.camera__button--confirm {
+  margin-top: 160px;
+}
+
+.camera__button--retake {
+  @extend %button--secondary;
 }

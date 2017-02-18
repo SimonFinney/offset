@@ -19,24 +19,35 @@ import io from 'socket.io-client';
 
 let answerCount;
 let app;
-let cameraButton;
 let cameraImg;
 let cameraInput;
 let cameraInputHidden;
+let currentView;
 let main;
+let selectedCameraToggleButton;
 let socket;
 let totalQuestions;
 let views;
 
 
-function toggleView(view, nextView = views[(views.indexOf(view) + 1)]) {
-  toggleElement(view);
+function toggleView(view = currentView, nextView = views[(views.indexOf(view) + 1)]) {
+  const vs = getElements('[data-view]', view);
+
+  if (vs.length) {
+    views = vs;
+    view = views.filter(v => v.hasAttribute('data-view-active'))[0];
+    nextView = views[(views.indexOf(view) + 1)];
+  }
+
+  toggleElement(view, 'view-active');
 
   once(view, 'transitionend', () => {
-    toggleElement(view, 'inactive');
+    toggleElement(view, 'view-inactive');
 
-    toggleElement(nextView, 'inactive');
-    toggleElement(nextView);
+    toggleElement(nextView, 'view-inactive');
+    toggleElement(nextView, 'view-active');
+
+    currentView = nextView;
   });
 }
 
@@ -53,8 +64,6 @@ function check(event) {
 
   cameraImg.style
     .filter = `blur(${modifier}px)`;
-
-  toggleView(button.parentNode);
 }
 
 
@@ -73,7 +82,7 @@ function add(image) {
     {
       class: 'img',
       'data-src': image.src,
-      style: `filter: blur(${image.modifier}px);`
+      style: `filter: blur(${image.modifier}px);`,
     }
   );
 
@@ -82,55 +91,69 @@ function add(image) {
 }
 
 
-function read(event) {
-  const input = event.target;
-
-  if (input.files && input.files[0]) {
-    cameraImg = createElement('img', { class: 'camera__img' });
-
-    getElement('.camera').insertBefore(
-      cameraImg,
-      getElement('.camera__form')
-    );
-
+function read() {
+  if (cameraInput.files && cameraInput.files[0]) {
     const fileReader = new FileReader();
 
-    on(fileReader, 'load', e =>
-      cameraImg.setAttribute('src', e.target.result)
+    on(fileReader, 'load', event =>
+      cameraImg.setAttribute(
+        'src',
+        event.target
+          .result
+      )
     );
 
-    fileReader.readAsDataURL(input.files[0]);
+    fileReader.readAsDataURL(cameraInput.files[0]);
+
+    !selectedCameraToggleButton.hasAttribute('data-camera-retake') ?
+      toggleView() :
+      null;
+    }
   }
 }
 
 
 function init() {
   answerCount = 0;
-  app = getElement('[data-receive]');
-  cameraButton = getElement('.camera__button');
-  cameraInput = getElement('.camera__input');
-  cameraInputHidden = getElement('.camera__input--hidden');
-  main = getElement('.main');
-  views = getElements('[data-view]');
+
+  app = getElement('[data-app]');
+  main = getElement('.main', app);
+
+  cameraImg = getElement('.camera__img', main);
+  cameraInput = getElement('.camera__input', main);
+  cameraInputHidden = getElement('.camera__input--hidden', main);
+  currentView = getElement('[data-view-active]', main);
+  views = getElements('[data-view]', main);
 
   socket = io();
 
-  if (app) {
+  if ((app.getAttribute('data-app') === 'receive')) {
     each(
       getElements('[data-src]', app),
       load
     );
     socket.on('receive', add);
-  }
-
-  if (cameraButton) {
+  } else {
     totalQuestions = parseInt(
       getElement('[data-questions-length]').getAttribute('data-questions-length'),
       10
     );
 
-    on(cameraButton, 'click', () => cameraInput.click());
+    each(
+      getElements('[data-camera-toggle]', main),
+      cameraToggleButton =>
+      on(cameraToggleButton, 'click', () => {
+        selectedCameraToggleButton = cameraToggleButton;
+        cameraInput.click();
+      })
+    );
+
     on(cameraInput, 'change', read);
+
+    each(
+      getElements('[data-view-toggle]', main),
+      element => on(element, 'click', () => toggleView())
+    );
 
     each(
       getElements('.section__button'),

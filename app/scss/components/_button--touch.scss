@@ -1,0 +1,28 @@
+// Touch button
+
+.button--touch {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  color: inherit;
+  text-align: initial;
+  background-color: transparent;
+  border: 0;
+  flex-wrap: wrap;
+}
+
+.button--touch__heading,
+.button--touch__instructions {
+  z-index: -1;
+}
+
+.button--touch__heading {
+  font-size: rem(100px);
+  line-height: rem(140px);
+}
+
+.button--touch__instructions {
+  @include font-size('16');
+  letter-spacing: .1px;
+}

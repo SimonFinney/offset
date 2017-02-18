@@ -1,7 +1,6 @@
 // Section
 
 .section {
-  @include sy-ease-out;
   display: flex;
   height: 100%;
   padding: 64px;
@@ -12,12 +11,18 @@
   justify-content: center;
 }
 
+.section__question-count {
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: $question-count-background;
+}
+
 .section__question {
   @include font-size('24');
 }
 
 .section__button {
-  @include sy-button--primary;
+  @extend %button--primary;
   margin-right: 24px;
 
   &:last-of-type {

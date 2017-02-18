@@ -20,19 +20,27 @@ const router = express.Router();
 const upload = multer();
 
 
+function getRoute(request) {
+    return request.url
+      .replace('/', '');
+}
+
+
 router.get('/', (request, response) => {
+  const route = getRoute(request);
+
   content.attributes.questions = util.shuffle(content.attributes.questions);
 
   response.render('views/index.nunjucks', {
     content,
     name,
+    route,
   });
 });
 
 
 router.get('/receive', (request, response) => {
-  const route = request.url
-    .replace('/', '');
+  const route = getRoute(request);
 
   database.get(data => {
     const images = Object.keys(data)

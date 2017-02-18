@@ -3,5 +3,8 @@
 .body {
   height: 100%;
   color: $white;
-  background-color: $blue-90;
+
+  &:not([data-app='receive']) {
+    background-color: $gray-90;
+  }
 }

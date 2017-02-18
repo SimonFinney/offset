@@ -7,26 +7,51 @@
 
 {%- block content -%}
 
-  <div class="camera">
+  <section class="view" data-view data-view-active>
+    <button class="button--touch" data-view-toggle>
+      <h1 class="button--touch__heading">See How Much You're Exposing</h1>
+      <span class="button--touch__instructions">Touch anywhere to begin</span>
+    </button>
+  </section>
+
+  <section class="view" data-view data-view-inactive>
+    <h2 class="h2">Snap a selfie to track your progress</h2>
     <form class="camera__form" action="/submit" enctype="multipart/form-data" method="post">
       <input class="camera__input" accept="image/*;capture=camera" name="file" type="file" hidden>
       <input class="camera__input--hidden" name="modifier" type="hidden" value="{{ content.attributes.questions | length }}">
-      <button class="camera__button" type="button">Choose</button>
-      <button class="camera__button--submit" type="submit">Submit</button>
+      <button class="camera__button" type="button" data-camera-toggle>Take Photo</button>
+      <button class="camera__button--submit" type="submit" hidden>Submit</button>
     </form>
-  </div>
+  </section>
 
-  {%- for question in content.attributes.questions -%}
-
-    <section class="section" data-id="{{ loop.index0 }}" data-view {%- if loop.first %} data-active {%- else %} data-inactive {%- endif -%}>
-      <p class="section__question">{{ question.description }}</p>
-
-      {%- for answer in question.answers -%}
-
-        <button class="section__button" value="{{ ((answer | lower) == (question.correct_answer | lower)) }}">{{ answer }}</button>
-      {%- endfor -%}
+  <section class="view" data-view data-view-inactive>
+    <img class="camera__img">
+    <section class="camera__confirmation" data-view data-view-active>
+      <h2 class="h2">Lookin' good!</h2>
+      <button class="camera__button--confirm" data-view-toggle>Use photo</button>
+      <button class="camera__button--retake" data-camera-retake data-camera-toggle>Retake</button>
     </section>
-  {%- endfor -%}
+
+    {%- for question in content.attributes.questions -%}
+
+      <section class="section" data-view data-view-inactive>
+        <span class="section__question-count">Question {{ loop.index }} of {{ content.attributes.questions | length }}</span>
+        <p class="section__question">{{ question.description }}</p>
+
+        {%- for answer in question.answers -%}
+
+          <button class="section__button" value="{{ ((answer | lower) == (question.correct_answer | lower)) }}" data-view-toggle>{{ answer }}</button>
+        {%- endfor -%}
+      </section>
+    {%- endfor -%}
+
+
+  </section>
+
+  <section class="view" data-view data-view-inactive>
+    <h2 class="h2">Goodbye World!</h2>
+  </section>
+
 {%- endblock -%}
 
 {%- block script -%}
