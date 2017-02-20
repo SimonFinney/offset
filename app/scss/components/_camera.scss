@@ -1,5 +1,17 @@
 // Camera
 
+.camera__h2 {
+  @extend %h2;
+  margin-top: 152px;
+  margin-bottom: 88px;
+}
+
+.camera__form {
+  width: 100%;
+  margin-bottom: auto;
+  text-align: center;
+}
+
 .camera__img {
   @include z-index('camera__img');
   position: absolute;
@@ -21,7 +33,7 @@
 }
 
 .camera__button--confirm {
-  margin-top: 160px;
+  margin-bottom: 24px;
 }
 
 .camera__button--retake {
