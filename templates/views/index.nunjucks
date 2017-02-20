@@ -55,10 +55,6 @@
       </section>
     {%- endfor -%}
 
-    <section class="section" data-view data-view-next data-view-timeout="3000">
-      <h2 class="section__title" data-title>You're a n00b</h2>
-    </section>
-
     <section class="section" data-view data-view-next>
       <h2 class="section__title--small" data-title>You're a n00b</h2>
 

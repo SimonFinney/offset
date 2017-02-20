@@ -77,7 +77,6 @@ export {
   each,
   getElement,
   getElements,
-  off,
   on,
   once,
   toggleElement,

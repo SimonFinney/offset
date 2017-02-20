@@ -24,36 +24,12 @@
 
 .section__question-count,
 .section__question,
-.section__button--small,
-.li__title,
-.li__answer,
-.li__icon,
-.section__button--post-photo,
-.section__button--reset {
+.section__button--small {
   @include sy-ease-out;
   opacity: 0;
 
   [data-view-active] > & {
     opacity: 1;
-  }
-}
-
-.section__li::before,
-.li__title,
-.li__answer,
-.li__icon {
-  opacity: 0;
-}
-
-.section__ol {
-
-  [data-view-active] > & {
-
-    .li__title,
-    .li__answer,
-    .li__icon {
-      opacity: 1;
-    }
   }
 }
 
@@ -68,8 +44,7 @@
 }
 
 .section__question-count {
-  padding-right: 8px;
-  padding-left: 8px;
+  padding: 2px 16px;
   margin-right: auto;
   font-weight: bold;
   text-transform: uppercase;
@@ -109,7 +84,15 @@
 
 .section__title--small {
   @include font-size('36');
+  @include sy-ease-out;
   margin-right: auto;
+  transform: scale3d(1.33, 1.33, 1.33) translate3d(0, 100%, 0);
+  transition-delay: 3s;
+  transform-origin: top left;
+
+  [data-view-active] > & {
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+  }
 }
 
 .section__ol {
@@ -117,6 +100,22 @@
   max-width: 344px;
   padding-left: 0;
   counter-reset: ol;
+
+  [data-view-active] > & {
+
+    .li__title,
+    .li__answer,
+    .li__icon {
+      opacity: 1;
+    }
+
+    .section__li {
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .section__li {
@@ -128,18 +127,33 @@
   &::before {
     margin-right: 24px;
     content: counter(ol) '.';
+    opacity: 0;
+    transition-delay: 3.66s;
     counter-increment: ol;
   }
+}
+
+.li__title,
+.li__answer,
+.li__icon {
+  @include sy-ease-out;
+  opacity: 0;
+}
+
+.li__title {
+  transition-delay: 4s;
 }
 
 .li__answer {
   margin-right: 16px;
   margin-left: auto;
+  transition-delay: 4.33s;
 }
 
 .li__icon {
   width: 16px;
   height: 16px;
+  transition-delay: 4.66s;
 
   &[data-icon='true'] {
     fill: $icon-happy;
@@ -147,6 +161,17 @@
 
   &[data-icon='false'] {
     fill: $icon-sad;
+  }
+}
+
+.section__button--post-photo,
+.section__button--reset {
+  @include sy-ease-out;
+  transform: translate3d(0, 168px, 0);
+  transition-delay: 5s;
+
+  [data-view-active] > & {
+    transform: translate3d(0, 0, 0);
   }
 }
 

@@ -3,8 +3,8 @@
 .img {
   @include sy-ease-out;
   float: left;
-  width: 200px;
-  height: 200px;
+  width: 25vw;
+  height: 25vh;
   opacity: 1;
 
   &[data-src] {
