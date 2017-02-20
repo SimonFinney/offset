@@ -35,7 +35,7 @@ $z-index: (
 
 [data-view] {
   @include sy-ease-out;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   width: 100%;
@@ -48,6 +48,13 @@ $z-index: (
     opacity: 1;
     visibility: visible;
     transform: translate3d(-50%, -50%, 0);
+  }
+
+  &[data-view-centered] {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   &[data-view-next] {

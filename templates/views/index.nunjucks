@@ -3,6 +3,7 @@
 {%- block head -%}
 
   <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 {%- endblock -%}
 
 {%- block content -%}
@@ -20,15 +21,14 @@
       <input class="camera__input" accept="image/*;capture=camera" name="file" type="file" hidden>
       <input class="camera__input--hidden" name="modifier" type="hidden" value="{{ content.attributes.questions | length }}">
       <button class="camera__button" type="button" data-camera-toggle>Take Photo</button>
-      <button class="camera__button--submit" type="submit" hidden>Submit</button>
     </form>
   </section>
 
   <section class="view" data-view data-view-next>
     <img class="camera__img">
 
-    <section class="section" data-view data-view-active>
-      <h2 class="h2">Lookin&apos; good!</h2>
+    <section class="section" data-motion data-view data-view-active data-view-centered>
+      <h2 class="section__h2">Lookin&apos; good!</h2>
       <button class="camera__button--confirm" data-view-toggle>Use photo</button>
       <button class="camera__button--retake" data-camera-retake data-camera-toggle>Retake</button>
     </section>
@@ -37,7 +37,7 @@
       <h2 class="h2">Anonymizing</h2>
     </section>
 
-    <section class="section" data-view data-view-next>
+    <section class="section" data-view data-view-centered data-view-next>
       <h2 class="h2">Start Quiz</h2>
       <button class="section__button" data-view-toggle>Start</button>
     </section>
@@ -55,7 +55,7 @@
       </section>
     {%- endfor -%}
 
-    <section class="section" data-view data-view-next>
+    <section class="section" data-view data-view-centered data-view-next>
       <h2 class="section__title--small" data-title>You're a n00b</h2>
 
       <ol class="section__ol">
@@ -72,7 +72,7 @@
         {%- endfor -%}
       </ol>
 
-      <button class="section__button--post-photo" data-view-toggle>Post photo</button>
+      <button class="section__button--post-photo" data-submit data-view-toggle>Post photo</button>
       <button class="section__button--reset" data-view-toggle>No thanks</button>
     </section>
 

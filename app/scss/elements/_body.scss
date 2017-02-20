@@ -5,10 +5,10 @@
   color: $white;
 
   &:not([data-app='receive']) {
+    max-width: 1024px;
     background-color: $gray-90;
+  }
 
-    .main {
-      max-width: 1024px;
-    }
+  &[data-app='receive'] {
   }
 }

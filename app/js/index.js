@@ -19,6 +19,7 @@ import io from 'socket.io-client';
 let answers;
 let answerCount;
 let app;
+let cameraForm;
 let cameraImg;
 let cameraInput;
 let cameraInputHidden;
@@ -166,6 +167,7 @@ function init() {
   app = getElement('[data-app]');
   main = getElement('.main', app);
 
+  cameraForm = getElement('.camera__form', main);
   cameraImg = getElement('.camera__img', main);
   cameraInput = getElement('.camera__input', main);
   cameraInputHidden = getElement('.camera__input--hidden', main);
@@ -208,6 +210,18 @@ function init() {
     each(
       getElements('.section__button--small'),
       sectionButton => on(sectionButton, 'click', check)
+    );
+
+    on(
+      cameraForm,
+      'submit',
+      event => event.preventDefault()
+    );
+
+    on(
+      getElement('[data-submit]', main),
+      'click',
+      () => cameraForm.submit()
     );
   }
 }

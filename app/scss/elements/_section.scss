@@ -1,14 +1,14 @@
 // Section
 
 .section {
-  display: flex;
   width: 60%;
   height: 100%;
-  padding: 64px;
+  padding: 96px 64px;
   box-sizing: border-box;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+}
+
+.section__h2 {
+  @extend %h2;
 }
 
 .section__button,
@@ -45,7 +45,6 @@
 
 .section__question-count {
   padding: 2px 16px;
-  margin-right: auto;
   font-weight: bold;
   text-transform: uppercase;
   background-color: $question-count-background;
@@ -53,6 +52,8 @@
 }
 
 .section__question {
+  margin-top: 56px;
+  margin-bottom: 112px;
   font-size: rem(28px);
   font-weight: bold;
   transition-delay: .2s;
@@ -78,6 +79,7 @@
 }
 
 .section__title {
+  margin-top: 192px;
   font-size: rem(72px);
   line-height: rem(88px);
 }
@@ -85,13 +87,15 @@
 .section__title--small {
   @include font-size('36');
   @include sy-ease-out;
+  margin-top: 0;
   margin-right: auto;
-  transform: scale3d(1.33, 1.33, 1.33) translate3d(0, 100%, 0);
+  margin-bottom: 32px;
+  transform: scale3d(1.33, 1.33, 1.33);
   transition-delay: 3s;
   transform-origin: top left;
 
   [data-view-active] > & {
-    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+    transform: scale3d(1, 1, 1);
   }
 }
 
@@ -99,6 +103,8 @@
   width: 100%;
   max-width: 344px;
   padding-left: 0;
+  margin-right: auto;
+  margin-bottom: 56px;
   counter-reset: ol;
 
   [data-view-active] > & {
