@@ -93,8 +93,8 @@
   margin-top: 0;
   margin-right: auto;
   margin-bottom: 32px;
-  transform: scale3d(1.33, 1.33, 1.33);
-  transition-delay: 3s;
+  transform: scale3d(2, 2, 2);
+  transition-delay: .5s;
   transform-origin: top left;
 
   [data-view-active] > & {
