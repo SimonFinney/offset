@@ -16,6 +16,15 @@
 }
 
 .camera__button,
+.camera__button--confirm,
+.camera__button--retake {
+  @include font-size('24');
+  max-width: 244px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.camera__button,
 .camera__button--confirm {
   @extend %button--primary;
 }

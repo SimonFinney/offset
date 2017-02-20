@@ -12,18 +12,25 @@
 }
 
 .section__question-count {
+  padding-right: 8px;
+  padding-left: 8px;
   font-weight: bold;
   text-transform: uppercase;
   background-color: $question-count-background;
 }
 
 .section__question {
-  @include font-size('24');
+  font-size: rem(28px);
+  font-weight: bold;
 }
 
 .section__button {
   @extend %button--primary;
+  max-width: 152px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   margin-right: 24px;
+  font-size: rem(20px);
 
   &:last-of-type {
     margin-right: 0;

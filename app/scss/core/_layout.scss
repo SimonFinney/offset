@@ -35,7 +35,7 @@ $z-index: (
 
 [data-view] {
   @include sy-ease-out;
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   width: 100%;
@@ -55,10 +55,5 @@ $z-index: (
 
   &[data-view-previous] {
     transform: translate3d(-150%, -50%, 0);
-  }
-
-  [data-view] {
-    position: initial;
-    transform: initial;
   }
 }

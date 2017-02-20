@@ -1,18 +1,26 @@
 // Module configuration
 
 // Paths
+const spritesheet = 'sprite.svg';
+
 const paths = new (function paths() {
   this.app = 'app/';
   this.dist = 'dist/';
 
   this.extras = [
     'fonts/',
-    'images/',
     'manifest.json',
   ];
 
+  this.images = 'images/';
+  this.icons = `${this.app}${this.images}/icons/**/*`;
+
+  const imageSuffix = `${this.images}**`;
+  this.imagePath = `${imageSuffix}/*.*`;
+
   this.js = `${this.app}js/`;
   this.scss = `${this.app}scss/**/*.scss`;
+  this.spritesheet = `${imageSuffix}/${spritesheet}`;
   this.tmp = '.tmp/';
 });
 
@@ -35,6 +43,31 @@ const browserSync = {
 const nodemon = {
   ext: 'js md nunjucks',
   script: 'index.js',
+};
+
+const svgo = {
+  plugins: [
+    {
+
+      // Strips these attributes when generating the sprite sheet
+      removeAttrs: {
+        attrs: [
+          'fill',
+          'stroke',
+        ],
+      },
+    },
+  ],
+};
+
+const svgSprite = {
+  mode: {
+    symbol: {
+      bust: false, // Prevents cache-busting suffix
+      dest: './',
+      sprite: `${paths.images}${spritesheet}`,
+    },
+  },
 };
 
 const webpack = {
@@ -61,5 +94,7 @@ module.exports = {
   autoprefixer,
   browserSync,
   nodemon,
+  svgo,
+  svgSprite,
   webpack,
 };

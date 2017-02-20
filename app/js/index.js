@@ -17,6 +17,7 @@ import {
 
 import io from 'socket.io-client';
 
+let answers;
 let answerCount;
 let app;
 let cameraImg;
@@ -55,7 +56,9 @@ function toggleView(view = currentView, nextView = views[(views.indexOf(view) + 
 function check(event) {
   const button = event.target;
 
-  answerCount = (button.getAttribute('value') === 'true') ?
+  const isAnswerCorrect = (button.getAttribute('value') === 'true');
+
+  answerCount = isAnswerCorrect ?
     answerCount :
     (answerCount + 1);
 
@@ -64,6 +67,8 @@ function check(event) {
 
   cameraImg.style
     .filter = `blur(${modifier}px)`;
+
+  answers.push(isAnswerCorrect);
 }
 
 
@@ -113,6 +118,7 @@ function read() {
 
 
 function init() {
+  answers = [];
   answerCount = 0;
 
   app = getElement('[data-app]');

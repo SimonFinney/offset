@@ -1,11 +1,10 @@
 // Button
 
 %button {
-  @include font-size('24');
   width: 100%;
   height: initial;
-  max-width: 244px;
-  padding: 20px 32px;
+  padding-right: 32px;
+  padding-left: 32px;
   font-family: $base-font-family;
   font-weight: bold;
   text-transform: capitalize;

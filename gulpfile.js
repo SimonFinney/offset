@@ -21,6 +21,9 @@ require('./gulp/tasks/eslint')(gulp, config.paths.js);
 // Extras
 require('./gulp/tasks/extras')(gulp, config.paths);
 
+// Images
+require('./gulp/tasks/images')(gulp, config.paths);
+
 // JavaScript
 require('./gulp/tasks/js')(gulp, config);
 
@@ -38,6 +41,9 @@ require('./gulp/tasks/sass')(gulp, browserSync, config);
 
 // Sass-Lint
 require('./gulp/tasks/sass-lint')(gulp, config.paths);
+
+// SVG sprites
+require('./gulp/tasks/svg-sprite')(gulp, config);
 
 // Watch
 require('./gulp/tasks/watch')(gulp, runSequence, config.paths);

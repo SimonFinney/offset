@@ -44,10 +44,32 @@
         {%- endfor -%}
       </section>
     {%- endfor -%}
-  </section>
 
-  <section class="view" data-view data-view-next>
-    <h2 class="h2">Goodbye World!</h2>
+    <section class="section" data-view data-view-next>
+      <h2 class="section__title">You're a n00b</h2>
+    </section>
+
+    <section class="section" data-view data-view-next>
+      <h2 class="section__title">You're a n00b</h2>
+
+      <ol class="section__ol">
+
+        {%- for question in content.attributes.questions -%}
+
+          <li class="section__li">
+            <span class="li__title">{{ question.title }}</span>
+            <span class="li__answer"></span>
+          </li>
+        {%- endfor -%}
+      </ol>
+
+      <button class="section__button--post-photo" data-view-toggle>Post photo</button>
+      <button class=section__button data-view-toggle>No thanks</button>
+    </section>
+
+    <section class="section" data-view data-view-next>
+      <h2 class="section__title">Thanks for Playing</h2>
+    </section>
   </section>
 
 {%- endblock -%}
