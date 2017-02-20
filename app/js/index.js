@@ -23,7 +23,9 @@ let cameraForm;
 let cameraImg;
 let cameraInput;
 let cameraInputHidden;
+let context;
 let currentView;
+let img;
 let li;
 let main;
 let personas;
@@ -53,12 +55,44 @@ function toggleView(view = currentView, nextView = views[(views.indexOf(view) + 
 
     currentView = nextView;
 
+    const func = currentView.getAttribute('data-view-function');
+
+    if (func) {
+      window[func]();
+    }
+
     const timeout = currentView.getAttribute('data-view-timeout');
 
     if (timeout) {
       debounce(() => toggleView(), timeout);
     }
   });
+}
+
+
+function grayscale(canvas, ctx) {
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const pixels = imageData.data;
+
+  for (let i = 0; i < pixels.length; i += 4) {
+    const gs = ((pixels[i] * 0.3) + (pixels[i + 1] * 0.59) + (pixels[i + 2] * 0.11));
+    pixels[i] = gs;
+    pixels[i + 1] = gs;
+    pixels[i + 2] = gs;
+  }
+
+  ctx.putImageData(imageData, 0, 0);
+}
+
+
+function pixelate(canvas, ctx, image, size = totalQuestions) {
+  const width = (canvas.width / size);
+  const height = (canvas.height / size);
+
+  ctx.drawImage(image, 0, 0, width, height);
+  ctx.drawImage(canvas, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
+
+  grayscale(canvas, ctx);
 }
 
 
@@ -73,8 +107,7 @@ function check(event) {
   const modifier = (totalQuestions - answerCount);
   cameraInputHidden.setAttribute('value', modifier);
 
-  cameraImg.style
-    .filter = `blur(${modifier}px)`;
+  pixelate(cameraImg, context, img, modifier);
 
   answers.push({
     isCorrect,
@@ -115,27 +148,36 @@ function check(event) {
 }
 
 
-function load(img) {
-  img.setAttribute('src', img.getAttribute('data-src'));
-
-  on(img, 'load', () =>
-    debounce(() => img.removeAttribute('data-src'))
-  );
+function load(canvas) {
+  const ctx = canvas.getContext('2d');
+  const image = new Image();
+  run(canvas, ctx, image, canvas.getAttribute('data-src'));
+  debounce(() => pixelate(canvas, ctx, image, canvas.getAttribute('data-modifier')));
 }
 
 
 function add(image) {
-  const img = createElement(
-    'img',
+  const canvas = createElement(
+    'canvas',
     {
       class: 'img',
       'data-src': image.src,
-      style: `filter: blur(${image.modifier}px);`,
+      'data-modifier': image.modifier,
     }
   );
 
-  main.appendChild(img);
-  load(img);
+  load(canvas);
+  main.insertBefore(canvas, main.firstChild);
+}
+
+
+function run(canvas, ctx, image, src) {
+  ctx.imageSmoothingEnabled = false;
+  on(image, 'load', () => {
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    canvas.removeAttribute('data-src');
+  });
+  image.setAttribute('src', src);
 }
 
 
@@ -143,14 +185,7 @@ function read() {
   if (cameraInput.files && cameraInput.files[0]) {
     const fileReader = new FileReader();
 
-    on(fileReader, 'load', event =>
-      cameraImg.setAttribute(
-        'src',
-        event.target
-          .result
-      )
-    );
-
+    on(fileReader, 'load', event => run(cameraImg, context, img, event.target.result));
     fileReader.readAsDataURL(cameraInput.files[0]);
 
     !selectedCameraToggleButton.hasAttribute('data-camera-retake') ?
@@ -165,6 +200,7 @@ function init() {
   answerCount = 0;
 
   app = getElement('[data-app]');
+  img = new Image();
   main = getElement('.main', app);
 
   cameraForm = getElement('.camera__form', main);
@@ -186,6 +222,7 @@ function init() {
     );
     socket.on('receive', add);
   } else {
+    context = cameraImg.getContext('2d');
     totalQuestions = parseInt(
       getElement('[data-questions-length]').getAttribute('data-questions-length'),
       10
@@ -225,6 +262,9 @@ function init() {
     );
   }
 }
+
+
+window.anonymize = () => pixelate(cameraImg, context, img);
 
 
 on(document, 'DOMContentLoaded', init);
