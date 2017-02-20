@@ -5,7 +5,7 @@ $breakpoints: (
 );
 
 $z-index: (
-  // Element
+  camera__img,
 );
 
 
@@ -42,6 +42,7 @@ $z-index: (
   height: 100%;
   opacity: 0;
   visibility: hidden;
+  box-sizing: border-box;
 
   &[data-view-active] {
     opacity: 1;
@@ -55,5 +56,17 @@ $z-index: (
 
   &[data-view-previous] {
     transform: translate3d(-150%, -50%, 0);
+  }
+
+  [data-view] {
+    left: 70%;
+
+    &[data-view-next] {
+      transform: translate3d(-50%, 50%, 0);
+    }
+
+    &[data-view-previous] {
+      transform: translate3d(-50%, -150%, 0);
+    }
   }
 }

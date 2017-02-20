@@ -1,15 +1,9 @@
 // Camera
 
-.camera {
-  display: flex;
-  height: 100%;
-  flex-basis: 50%;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
 .camera__img {
+  @include z-index('camera__img');
+  position: absolute;
+  left: 0;
   width: 40%;
   height: 100%;
   filter: blur(8px);
@@ -18,22 +12,12 @@
 .camera__button,
 .camera__button--confirm,
 .camera__button--retake {
-  @include font-size('24');
-  max-width: 244px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  @extend %button--large;
 }
 
 .camera__button,
 .camera__button--confirm {
   @extend %button--primary;
-}
-
-.camera__confirmation {
-  display: flex;
-  width: 60%;
-  flex-direction: column;
-  align-items: center;
 }
 
 .camera__button--confirm {

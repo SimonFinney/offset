@@ -45,21 +45,6 @@ const nodemon = {
   script: 'index.js',
 };
 
-const svgo = {
-  plugins: [
-    {
-
-      // Strips these attributes when generating the sprite sheet
-      removeAttrs: {
-        attrs: [
-          'fill',
-          'stroke',
-        ],
-      },
-    },
-  ],
-};
-
 const svgSprite = {
   mode: {
     symbol: {
@@ -94,7 +79,6 @@ module.exports = {
   autoprefixer,
   browserSync,
   nodemon,
-  svgo,
   svgSprite,
   webpack,
 };
