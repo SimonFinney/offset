@@ -26,26 +26,36 @@
 
   <section class="view" data-view data-view-next>
     <img class="camera__img">
-    <section class="section" data-motion data-view data-view-active>
+
+    <section class="section" data-view data-view-active>
       <h2 class="h2">Lookin&apos; good!</h2>
       <button class="camera__button--confirm" data-view-toggle>Use photo</button>
       <button class="camera__button--retake" data-camera-retake data-camera-toggle>Retake</button>
     </section>
 
+    <section class="section" data-view data-view-next data-view-timeout="3000">
+      <h2 class="h2">Anonymizing</h2>
+    </section>
+
+    <section class="section" data-view data-view-next>
+      <h2 class="h2">Start Quiz</h2>
+      <button class="section__button" data-view-toggle>Start</button>
+    </section>
+
     {%- for question in content.attributes.questions -%}
 
-      <section class="section" data-motion data-view data-view-next>
+      <section class="section" data-view data-view-next>
         <span class="section__question-count">Question {{ loop.index }} of {{ content.attributes.questions | length }}</span>
         <p class="section__question">{{ question.description }}</p>
 
         {%- for answer in question.answers -%}
 
-          <button class="section__button" value="{{ ((answer | lower) == (question.correct_answer | lower)) }}" data-view-toggle>{{ answer }}</button>
+          <button class="section__button--small" value="{{ ((answer | lower) == (question.correct_answer | lower)) }}" data-view-toggle>{{ answer }}</button>
         {%- endfor -%}
       </section>
     {%- endfor -%}
 
-    <section class="section" data-view data-view-next>
+    <section class="section" data-view data-view-next data-view-timeout="3000">
       <h2 class="section__title" data-title>You're a n00b</h2>
     </section>
 
@@ -59,8 +69,8 @@
           <li class="section__li">
             <span class="li__title">{{ question.title }}</span>
             <span class="li__answer">{{ question.correct_answer }}</span>
-            <svg class="li__icon" data-icon-happy>
-              <use xlink:href="/images/sprite.svg#happy"></use>
+            <svg class="li__icon" data-icon data-href="/images/sprite.svg#">
+              <use></use>
             </svg>
           </li>
         {%- endfor -%}
@@ -78,6 +88,9 @@
 {%- endblock -%}
 
 {%- block script -%}
+  <script>
 
+    window.personas = {{ content.attributes.personas | dump | safe }};
+  </script>
   <script src="/js/bundle.js"></script>
 {%- endblock -%}

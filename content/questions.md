@@ -1,4 +1,26 @@
 ---
+personas:
+  - title: "You're a n00b"
+    criteria:
+      - 0
+      - 1
+      - 2
+
+  - title: "You're a bas1c gl1tch"
+    criteria:
+      - 3
+      - 4
+
+  - title: "You're a r0xx0r"
+    criteria:
+      - 5
+      - 6
+
+  - title: "You're a l33t h4ck3r"
+    criteria:
+      - 7
+      - 8
+
 questions:
 
   - title: Public WiFi

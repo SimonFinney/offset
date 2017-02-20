@@ -24,9 +24,12 @@ let cameraImg;
 let cameraInput;
 let cameraInputHidden;
 let currentView;
+let li;
 let main;
+let personas;
 let selectedCameraToggleButton;
 let socket;
+let titles;
 let totalQuestions;
 let views;
 
@@ -49,16 +52,21 @@ function toggleView(view = currentView, nextView = views[(views.indexOf(view) + 
     toggleElement(nextView, 'view-next');
 
     currentView = nextView;
+
+    const timeout = currentView.getAttribute('data-view-timeout');
+
+    if (timeout) {
+      debounce(() => toggleView(), timeout);
+    }
   });
 }
 
 
 function check(event) {
   const button = event.target;
+  const isCorrect = (button.getAttribute('value') === 'true');
 
-  const isAnswerCorrect = (button.getAttribute('value') === 'true');
-
-  answerCount = isAnswerCorrect ?
+  answerCount = isCorrect ?
     answerCount :
     (answerCount + 1);
 
@@ -68,7 +76,42 @@ function check(event) {
   cameraImg.style
     .filter = `blur(${modifier}px)`;
 
-  answers.push(isAnswerCorrect);
+  answers.push({
+    isCorrect,
+    textContent: button.textContent,
+  });
+
+
+  const correctAnswersLength = answers.filter(answer => answer.isCorrect)
+    .length;
+
+  personas.forEach(persona =>
+    persona.criteria
+      .forEach(criterion => {
+        if (criterion === correctAnswersLength) {
+          each(titles, titleToModify => {
+            const title = titleToModify;
+            title.textContent = persona.title;
+          });
+        }
+      })
+  );
+
+
+  const answer = li[(answers.length - 1)];
+
+  getElement('.li__answer', answer)
+    .textContent = button.textContent;
+
+  const icon = getElement('.li__icon', answer);
+  icon.setAttribute('data-icon', isCorrect);
+
+  getElement('use', icon)
+    .setAttributeNS(
+      'http://www.w3.org/1999/xlink',
+      'href',
+      `${icon.getAttribute('data-href')}${isCorrect}`
+  );
 }
 
 
@@ -128,6 +171,9 @@ function init() {
   cameraInput = getElement('.camera__input', main);
   cameraInputHidden = getElement('.camera__input--hidden', main);
   currentView = getElement('[data-view-active]', main);
+  li = getElements('.section__li', main);
+  personas = window.personas;
+  titles = getElements('[data-title]', main);
   views = getElements('[data-view]', main);
 
   socket = io();
@@ -161,7 +207,7 @@ function init() {
     );
 
     each(
-      getElements('.section__button'),
+      getElements('.section__button--small'),
       sectionButton => on(sectionButton, 'click', check)
     );
   }
