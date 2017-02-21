@@ -29,18 +29,10 @@
 .section__button--small {
   @include sy-ease-out;
   opacity: 0;
-
-  [data-view-active] > & {
-    opacity: 1;
-  }
-}
-
-.section__question-count,
-.section__question,
-.section__button--small {
   transform: translate3d(0, 64px, 0);
 
   [data-view-active] > & {
+    opacity: 1;
     transform: translate3d(0, 0, 0);
   }
 }
@@ -93,8 +85,8 @@
   margin-top: 0;
   margin-right: auto;
   margin-bottom: 32px;
-  transform: scale3d(2, 2, 2);
-  transition-delay: .5s;
+  transform: scale3d(1.33, 1.33, 1.33);
+  transition-delay: 3s;
   transform-origin: top left;
 
   [data-view-active] > & {
@@ -112,57 +104,43 @@
 
   [data-view-active] > & {
 
-    .li__title,
-    .li__answer,
-    .li__icon {
-      opacity: 1;
-    }
-
     .section__li {
-
-      &::before {
-        opacity: 1;
-      }
+      opacity: 1;
     }
   }
 }
 
 .section__li {
+  @include sy-ease-out;
   display: flex;
   font-weight: bold;
   letter-spacing: .2px;
   text-transform: uppercase;
+  opacity: 0;
+
+  @for $index from 1 through 8 {
+
+    &:nth-child(#{$index}) {
+      transition-delay: (3s + ($index / 4));
+    }
+  }
 
   &::before {
+    @include sy-ease-out;
     margin-right: 24px;
     content: counter(ol) '.';
-    opacity: 0;
-    transition-delay: 3.66s;
     counter-increment: ol;
   }
-}
-
-.li__title,
-.li__answer,
-.li__icon {
-  @include sy-ease-out;
-  opacity: 0;
-}
-
-.li__title {
-  transition-delay: 4s;
 }
 
 .li__answer {
   margin-right: 16px;
   margin-left: auto;
-  transition-delay: 4.33s;
 }
 
 .li__icon {
   width: 16px;
   height: 16px;
-  transition-delay: 4.66s;
 
   &[data-icon='true'] {
     fill: $icon-happy;
@@ -176,8 +154,8 @@
 .section__button--post-photo,
 .section__button--reset {
   @include sy-ease-out;
-  transform: translate3d(0, 168px, 0);
-  transition-delay: 5s;
+  transform: translate3d(0, 248px, 0);
+  transition-delay: 5.33s;
 
   [data-view-active] > & {
     transform: translate3d(0, 0, 0);

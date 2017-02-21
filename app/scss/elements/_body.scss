@@ -6,6 +6,7 @@
 
   &:not([data-app='receive']) {
     max-width: 1024px;
+    overflow: hidden;
     background-color: $gray-90;
   }
 
