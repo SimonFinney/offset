@@ -12,7 +12,7 @@
 
   <section data-view data-view-active>
     <button class="button--touch" data-view-toggle>
-      <h1 class="button--touch__heading">See How Much You&apos;re Exposing</h1>
+      <h1 class="button--touch__heading">See How Much You&apos;re <span class="button--touch__heading__explode">Exposing</span></h1>
       <span class="button--touch__instructions">Touch anywhere to begin</span>
     </button>
   </section>

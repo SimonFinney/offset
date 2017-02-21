@@ -29,6 +29,8 @@ import io from 'socket.io-client';
 let answers;
 let answerCount;
 let app;
+let caption;
+let captionLength;
 let cameraForm;
 let cameraImg;
 let cameraInput;
@@ -41,6 +43,7 @@ let main;
 let personas;
 let selectedCameraToggleButton;
 let socket;
+let title;
 let titles;
 let totalQuestions;
 let views;
@@ -212,9 +215,23 @@ function read() {
 }
 
 
+function type(element) {
+  element.textContent = caption.substr(0, captionLength++);
+
+  if (captionLength < (caption.length + 1)) {
+    setTimeout(() => type(element), 150);
+  } else {
+    caption = '';
+    captionLength = 0;
+  }
+}
+
+
 function init() {
   answers = [];
   answerCount = 0;
+  caption = '';
+  captionLength = 0;
 
   app = getElement('[data-app]');
   img = new Image();
@@ -227,6 +244,7 @@ function init() {
   currentView = getElement('[data-view-active]', main);
   li = getElements('.section__li', main);
   personas = window.personas;
+  title = getElement('.button--touch__heading__explode', main);
   titles = getElements('[data-title]', main);
   views = getElements('[data-view]', main);
 
@@ -290,6 +308,9 @@ function init() {
       'click',
       () => cameraForm.submit()
     );
+
+    caption = title.textContent;
+    debounce(() => type(title));
   }
 }
 
