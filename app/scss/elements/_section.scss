@@ -40,7 +40,7 @@
 .section__button--small {
   @include sy-ease-out;
   opacity: 0;
-  transform: translate3d(0, 64px, 0);
+  transform: translate3d(0, 350%, 0);
 
   [data-view-active] > & {
     opacity: 1;
@@ -96,12 +96,12 @@
   margin-top: 0;
   margin-right: auto;
   margin-bottom: 32px;
-  transform: scale3d(1.33, 1.33, 1.33);
+  transform: scale3d(1.4, 1.4, 1.4) translate3d(0, 75%, 0);
   transition-delay: 3s;
   transform-origin: top left;
 
   [data-view-active] > & {
-    transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
   }
 }
 
@@ -165,7 +165,7 @@
 .section__button--post-photo,
 .section__button--reset {
   @include sy-ease-out;
-  transform: translate3d(0, 248px, 0);
+  transform: translate3d(0, 350%, 0);
   transition-delay: 5.33s;
 
   [data-view-active] > & {
