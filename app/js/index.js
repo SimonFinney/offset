@@ -30,6 +30,7 @@ import theaterJS from 'theaterjs';
 // Variables
 let answers;
 let answerCount;
+let cameraForm;
 let cameraImg;
 let cameraInput;
 let cameraInputHidden;
@@ -47,41 +48,49 @@ let titles;
 let totalQuestions;
 let views;
 
-function toggleView(view = currentView, nextView = views[(views.indexOf(view) + 1)]) {
-  const vs = getElements('[data-view]', view);
 
-  if (vs.length) {
-    views = vs;
-    view = views.filter(v => v.hasAttribute('data-view-active'))[0];
-    nextView = views[(views.indexOf(view) + 1)];
-  }
+function activate(view) {
+  toggleElement(view, 'view-next');
+  toggleElement(view, 'view-active');
+}
 
-  toggleElement(view, 'view-previous');
 
-  once(view, 'transitionend', () => {
-    toggleElement(view, 'view-active');
+function toggleView() {
+  let nextView = views[
+    (views.indexOf(currentView) + 1)
+  ];
 
-    toggleElement(nextView, 'view-active');
-    toggleElement(nextView, 'view-next');
+  toggleElement(currentView, 'view-previous');
+
+  once(currentView, 'transitionend', () => {
+    toggleElement(currentView, 'view-active');
+    activate(nextView);
 
     currentView = nextView;
 
     const animation = currentView.getAttribute('data-view-animation');
+    const func = currentView.getAttribute('data-view-function');
+    const timeout = currentView.getAttribute('data-view-timeout');
+
+    const subviews = getElements('[data-view]', currentView);
 
     if (animation) {
       window[animation]();
     }
 
-    const func = currentView.getAttribute('data-view-function');
-
     if (func) {
       window[func]();
     }
 
-    const timeout = currentView.getAttribute('data-view-timeout');
-
     if (timeout) {
       debounce(() => toggleView(), timeout);
+    }
+
+    if (subviews.length) {
+      views = subviews;
+
+      currentView = views[0];
+      activate(currentView);
     }
   });
 }
@@ -229,18 +238,15 @@ function init() {
   } else {
 
     // Initialise variables
-    const cameraForm = getElement('.camera__form', main);
-
+    cameraForm = getElement('.camera__form', main);
     cameraImg = getElement('.camera__img', main);
     cameraInput = getElement('.camera__input', main);
     cameraInputHidden = getElement('.camera__input--hidden', main);
-    currentView = getElement('[data-view-active]', main);
     heading = getElement('.button--touch__heading__explode', main);
     headingAnonymizing = getElement('.section__heading--anonymizing', main);
     li = getElements('.section__li', main);
     personas = window.personas;
     titles = getElements('[data-title]', main);
-    views = getElements('[data-view]', main);
 
     window.reset();
 
@@ -311,16 +317,23 @@ window.anonymize = () => {
 
 
 window.reset = () => {
-
-
-  console.log('reset');
-
-  
   answers = [];
   answerCount = 0;
 
+  cameraForm.reset();
   img = new Image();
   theater = theaterJS();
+
+  views = getElements('[data-view]', main);
+  currentView = getElement('[data-view]', main);
+
+  each(views, view => {
+    view.removeAttribute('data-view-active');
+    view.removeAttribute('data-view-previous');
+    view.setAttribute('data-view-next', '');
+  });
+
+  activate(currentView);
 
   const animationDelay = (
     parseInt(
