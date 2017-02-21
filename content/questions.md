@@ -49,7 +49,7 @@ questions:
     answers:
       - 'Yes'
       - 'No'
-    correct_answer: 'Yes'
+    correct_answer: 'No'
 
   - title: Locked Devices
     description: 'Do any of your devices (laptop, smartphone, or tablet) open without a password?'

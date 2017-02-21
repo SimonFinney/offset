@@ -35,6 +35,7 @@ let cameraInput;
 let cameraInputHidden;
 let context;
 let currentView;
+let heading;
 let headingAnonymizing;
 let img;
 let li;
@@ -115,8 +116,9 @@ function grayscale(canvas, ctx) {
 
 
 function pixelate(canvas, ctx, image, size = totalQuestions) {
-  const width = (canvas.width / size);
-  const height = (canvas.height / size);
+  const computedSize = (size * 2);
+  const width = (canvas.width / computedSize);
+  const height = (canvas.height / computedSize);
 
   ctx.drawImage(image, 0, 0, width, height);
   ctx.drawImage(canvas, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
@@ -228,23 +230,19 @@ function init() {
 
     // Initialise variables
     const cameraForm = getElement('.camera__form', main);
-    const heading = getElement('.button--touch__heading__explode', main);
-
-    answers = [];
-    answerCount = 0;
-
-    img = new Image();
-    theater = theaterJS();
 
     cameraImg = getElement('.camera__img', main);
     cameraInput = getElement('.camera__input', main);
     cameraInputHidden = getElement('.camera__input--hidden', main);
     currentView = getElement('[data-view-active]', main);
+    heading = getElement('.button--touch__heading__explode', main);
     headingAnonymizing = getElement('.section__heading--anonymizing', main);
     li = getElements('.section__li', main);
     personas = window.personas;
     titles = getElements('[data-title]', main);
     views = getElements('[data-view]', main);
+
+    window.reset();
 
     on(
       getElement('[data-character]', main),
@@ -296,24 +294,6 @@ function init() {
       'click',
       () => cameraForm.submit()
     );
-
-    const animationDelay = (
-      parseInt(
-        window.getComputedStyle(heading)
-          .animationDelay,
-        10
-      )
-    * 1000);
-
-    debounce(() =>
-      theater.addActor('heading',
-        {
-          accuracy: .33,
-          speed: .75,
-        }
-      )
-        .addScene(`heading:${heading.textContent}`),
-    animationDelay);
   }
 }
 
@@ -325,9 +305,40 @@ window.anonymize = () => {
       speed: 1,
     }
   )
-  .addScene(`anonymizing:${headingAnonymizing.textContent}`, 300, '.', 300, '.', 300, '.');
+  .addScene(`anonymizing:${headingAnonymizing.textContent}`, 300, '.', 300, '.', 300, '.')
+  .addScene(() => pixelate(cameraImg, context, img));
+};
 
-  pixelate(cameraImg, context, img);
+
+window.reset = () => {
+
+
+  console.log('reset');
+
+  
+  answers = [];
+  answerCount = 0;
+
+  img = new Image();
+  theater = theaterJS();
+
+  const animationDelay = (
+    parseInt(
+      window.getComputedStyle(heading)
+        .animationDelay,
+      10
+    )
+  * 1000);
+
+  debounce(() =>
+    theater.addActor('heading',
+      {
+        accuracy: .33,
+        speed: .75,
+      }
+    )
+      .addScene(`heading:${heading.textContent}`),
+  animationDelay);
 };
 
 window.anonymizing = anonymizing;

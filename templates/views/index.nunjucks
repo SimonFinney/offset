@@ -20,7 +20,7 @@
   <section data-view data-view-animation="selfie" data-view-centered data-view-next>
     <h2 class="camera__h2">Snap a selfie to track your progress</h2>
     <form class="camera__form" action="/submit" enctype="multipart/form-data" method="post">
-      <input class="camera__input" accept="image/*;capture=camera" name="file" type="file" hidden>
+      <input class="camera__input" accept="image/*" name="file" type="file" capture hidden>
       <input class="camera__input--hidden" name="modifier" type="hidden" value="{{ content.attributes.questions | length }}">
       <button class="camera__button" type="button" data-camera-toggle>Take Photo</button>
     </form>
@@ -79,7 +79,7 @@
       <button class="section__button--reset" data-view-toggle>No thanks</button>
     </section>
 
-    <section class="section" data-view data-view-animation="complete" data-view-next>
+    <section class="section" data-view data-view-animation="complete" data-view-function="reset" data-view-next>
       <h2 class="section__title">Thanks for Playing</h2>
     </section>
   </section>
