@@ -125,18 +125,15 @@ function check(event) {
   const correctAnswersLength = answers.filter(answer => answer.isCorrect)
     .length;
 
-  personas.forEach(persona =>
-    persona.criteria
-      .forEach(criterion => {
-        if (criterion === correctAnswersLength) {
-          each(titles, titleToModify => {
-            const title = titleToModify;
-            title.textContent = persona.title;
-          });
-        }
-      })
+  each(personas, persona =>
+    each(persona.criteria, criterion =>
+      (criterion === correctAnswersLength) ?
+        each(titles, title =>
+          title.textContent = persona.title
+        ) :
+        null
+    )
   );
-
 
   const answer = li[(answers.length - 1)];
 
@@ -152,6 +149,16 @@ function check(event) {
       'href',
       `${icon.getAttribute('data-href')}${isCorrect}`
   );
+}
+
+
+function run(canvas, ctx, image, src) {
+  ctx.imageSmoothingEnabled = false;
+  on(image, 'load', () => {
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    canvas.removeAttribute('data-src');
+  });
+  image.setAttribute('src', src);
 }
 
 
