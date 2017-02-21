@@ -2,6 +2,7 @@
 
 .button--touch,
 .button--touch__heading,
+.button--touch__heading__explode,
 .button--touch__instructions {
   opacity: 0;
   animation-duration: .3s;
@@ -21,7 +22,7 @@
   background-position: center;
   background-repeat: no-repeat;
   border: 0;
-  animation-delay: .3s;
+  animation-delay: .1s;
 }
 
 .button--touch__heading,
@@ -34,7 +35,7 @@
   margin-bottom: 48px;
   font-size: rem(100px);
   line-height: rem(140px);
-  animation-delay: .6s;
+  animation-delay: .3s;
 }
 
 .button--touch__heading__explode {
@@ -45,11 +46,12 @@
   padding-left: 8px;
   color: $gray-90;
   background-color: $white;
+  animation-delay: .6s;
 }
 
 .button--touch__instructions {
   @include font-size('16');
   display: block;
   letter-spacing: .1px;
-  animation-delay: .9s;
+  animation-delay: 1s;
 }

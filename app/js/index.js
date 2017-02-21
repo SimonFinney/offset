@@ -1,8 +1,8 @@
 // Main
 
-
 // TODO: Comments
 
+// Imports
 import {
   create,
   anonymizing,
@@ -25,13 +25,11 @@ import {
 } from './src/util';
 
 import io from 'socket.io-client';
+import theaterJS from 'theaterjs';
 
+// Variables
 let answers;
 let answerCount;
-let app;
-let caption;
-let captionLength;
-let cameraForm;
 let cameraImg;
 let cameraInput;
 let cameraInputHidden;
@@ -42,12 +40,10 @@ let li;
 let main;
 let personas;
 let selectedCameraToggleButton;
-let socket;
-let title;
+let theater;
 let titles;
 let totalQuestions;
 let views;
-
 
 function toggleView(view = currentView, nextView = views[(views.indexOf(view) + 1)]) {
   const vs = getElements('[data-view]', view);
@@ -215,48 +211,38 @@ function read() {
 }
 
 
-function type(element) {
-  element.textContent = caption.substr(0, captionLength++);
-
-  if (captionLength < (caption.length + 1)) {
-    debounce(() => type(element), 150);
-  } else {
-    caption = '';
-    captionLength = 0;
-  }
-}
-
-
 function init() {
-  answers = [];
-  answerCount = 0;
-  caption = '';
-  captionLength = 0;
-
-  app = getElement('[data-app]');
-  img = new Image();
+  const app = getElement('[data-app]');
   main = getElement('.main', app);
 
-  cameraForm = getElement('.camera__form', main);
-  cameraImg = getElement('.camera__img', main);
-  cameraInput = getElement('.camera__input', main);
-  cameraInputHidden = getElement('.camera__input--hidden', main);
-  currentView = getElement('[data-view-active]', main);
-  li = getElements('.section__li', main);
-  personas = window.personas;
-  title = getElement('.button--touch__heading__explode', main);
-  titles = getElements('[data-title]', main);
-  views = getElements('[data-view]', main);
-
-  socket = io();
-
   if ((app.getAttribute('data-app') === 'receive')) {
+    const socket = io();
+
     each(
       getElements('[data-src]', app),
       load
     );
     socket.on('receive', add);
   } else {
+
+    // Initialise variables
+    const cameraForm = getElement('.camera__form', main);
+    const heading = getElement('.button--touch__heading__explode', main);
+
+    answers = [];
+    answerCount = 0;
+
+    img = new Image();
+    theater = theaterJS();
+
+    cameraImg = getElement('.camera__img', main);
+    cameraInput = getElement('.camera__input', main);
+    cameraInputHidden = getElement('.camera__input--hidden', main);
+    currentView = getElement('[data-view-active]', main);
+    li = getElements('.section__li', main);
+    personas = window.personas;
+    titles = getElements('[data-title]', main);
+    views = getElements('[data-view]', main);
 
     on(
       getElement('[data-character]', main),
@@ -309,8 +295,23 @@ function init() {
       () => cameraForm.submit()
     );
 
-    caption = title.textContent;
-    debounce(() => type(title));
+    const animationDelay = (
+      parseInt(
+        window.getComputedStyle(heading)
+          .animationDelay,
+        10
+      )
+    * 1000);
+
+    debounce(() =>
+      theater.addActor('heading',
+        {
+          accuracy: .33,
+          speed: .75,
+        }
+      )
+        .addScene(`heading:${heading.textContent}`),
+    animationDelay);
   }
 }
 

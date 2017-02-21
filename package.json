@@ -59,6 +59,7 @@
     "gulp-svgo": "^1.0.3",
     "gulp-uglify": "^1.5.3",
     "run-sequence": "^1.1.5",
+    "theaterjs": "^3.1.0",
     "webpack-stream": "^3.2.0"
   },
   "engines": {
