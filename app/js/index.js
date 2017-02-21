@@ -35,6 +35,7 @@ let cameraInput;
 let cameraInputHidden;
 let context;
 let currentView;
+let headingAnonymizing;
 let img;
 let li;
 let main;
@@ -239,6 +240,7 @@ function init() {
     cameraInput = getElement('.camera__input', main);
     cameraInputHidden = getElement('.camera__input--hidden', main);
     currentView = getElement('[data-view-active]', main);
+    headingAnonymizing = getElement('.section__heading--anonymizing', main);
     li = getElements('.section__li', main);
     personas = window.personas;
     titles = getElements('[data-title]', main);
@@ -316,7 +318,17 @@ function init() {
 }
 
 
-window.anonymize = () => pixelate(cameraImg, context, img);
+window.anonymize = () => {
+  theater.addActor('anonymizing',
+    {
+      accuracy: .5,
+      speed: 1,
+    }
+  )
+  .addScene(`anonymizing:${headingAnonymizing.textContent}`, 300, '.', 300, '.', 300, '.');
+
+  pixelate(cameraImg, context, img);
+};
 
 window.anonymizing = anonymizing;
 window.confirmation = confirmation;
