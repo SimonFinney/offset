@@ -26,7 +26,7 @@
     </form>
   </section>
 
-  <section data-view data-view-animation="" data-view-next>
+  <section data-view data-view-animation="confirmation" data-view-next>
     <canvas class="camera__img"></canvas>
     <section class="section" data-view data-view-active data-view-centered>
       <h2 class="section__h2">Lookin&apos; good!</h2>
