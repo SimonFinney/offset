@@ -219,7 +219,7 @@ function type(element) {
   element.textContent = caption.substr(0, captionLength++);
 
   if (captionLength < (caption.length + 1)) {
-    setTimeout(() => type(element), 150);
+    debounce(() => type(element), 150);
   } else {
     caption = '';
     captionLength = 0;
