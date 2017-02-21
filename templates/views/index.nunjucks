@@ -10,14 +10,14 @@
 
   <object data="/images/character.svg" type="image/svg+xml" data-character></object>
 
-  <section class="view" data-view data-view-active>
+  <section data-view data-view-active>
     <button class="button--touch" data-view-toggle>
       <h1 class="button--touch__heading">See How Much You&apos;re Exposing</h1>
       <span class="button--touch__instructions">Touch anywhere to begin</span>
     </button>
   </section>
 
-  <section class="view" data-view data-view-centered data-view-next>
+  <section data-view data-view-centered data-view-next>
     <h2 class="camera__h2">Snap a selfie to track your progress</h2>
     <form class="camera__form" action="/submit" enctype="multipart/form-data" method="post">
       <input class="camera__input" accept="image/*;capture=camera" name="file" type="file" hidden>
@@ -26,7 +26,7 @@
     </form>
   </section>
 
-  <section class="view" data-view data-view-next>
+  <section data-view data-view-next>
     <canvas class="camera__img"></canvas>
     <section class="section" data-motion data-view data-view-active data-view-centered>
       <h2 class="section__h2">Lookin&apos; good!</h2>

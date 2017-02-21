@@ -155,16 +155,6 @@ function check(event) {
 }
 
 
-function run(canvas, ctx, image, src) {
-  ctx.imageSmoothingEnabled = false;
-  on(image, 'load', () => {
-    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-    canvas.removeAttribute('data-src');
-  });
-  image.setAttribute('src', src);
-}
-
-
 function load(canvas) {
   const ctx = canvas.getContext('2d');
   const image = new Image();
