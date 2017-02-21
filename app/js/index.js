@@ -4,6 +4,16 @@
 // TODO: Comments
 
 import {
+  create,
+  anonymizing,
+  complete,
+  confirmation,
+  quiz,
+  results,
+  selfie,
+} from './src/animation';
+
+import {
   createElement,
   debounce,
   each,
@@ -14,12 +24,6 @@ import {
   toggleElement,
 } from './src/util';
 
-import {
-  Power2,
-  TimelineMax,
-  TweenMax,
-} from 'gsap';
-
 import io from 'socket.io-client';
 
 let answers;
@@ -29,7 +33,6 @@ let cameraForm;
 let cameraImg;
 let cameraInput;
 let cameraInputHidden;
-let character;
 let context;
 let currentView;
 let img;
@@ -61,6 +64,12 @@ function toggleView(view = currentView, nextView = views[(views.indexOf(view) + 
     toggleElement(nextView, 'view-next');
 
     currentView = nextView;
+
+    const animation = currentView.getAttribute('data-view-animation');
+
+    if (animation) {
+      window[animation]();
+    }
 
     const func = currentView.getAttribute('data-view-function');
 
@@ -203,15 +212,6 @@ function read() {
 }
 
 
-function animate(event) {
-  character = getElement(
-    'svg',
-    event.target
-      .getSVGDocument()
-  );
-}
-
-
 function init() {
   answers = [];
   answerCount = 0;
@@ -243,7 +243,13 @@ function init() {
     on(
       getElement('[data-character]', main),
       'load',
-      animate
+      event => create(
+        getElement(
+          'svg',
+          event.target
+            .getSVGDocument()
+        )
+      )
     );
 
     context = cameraImg.getContext('2d');
@@ -289,6 +295,13 @@ function init() {
 
 
 window.anonymize = () => pixelate(cameraImg, context, img);
+
+window.anonymizing = anonymizing;
+window.confirmation = confirmation;
+window.complete = complete;
+window.quiz = quiz;
+window.results = results;
+window.selfie = selfie;
 
 
 on(document, 'DOMContentLoaded', init);
