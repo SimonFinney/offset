@@ -155,6 +155,16 @@ function check(event) {
 }
 
 
+function run(canvas, ctx, image, src) {
+  ctx.imageSmoothingEnabled = false;
+  on(image, 'load', () => {
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    canvas.removeAttribute('data-src');
+  });
+  image.setAttribute('src', src);
+}
+
+
 function load(canvas) {
   const ctx = canvas.getContext('2d');
   const image = new Image();
@@ -178,16 +188,6 @@ function add(image) {
 }
 
 
-function run(canvas, ctx, image, src) {
-  ctx.imageSmoothingEnabled = false;
-  on(image, 'load', () => {
-    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-    canvas.removeAttribute('data-src');
-  });
-  image.setAttribute('src', src);
-}
-
-
 function read() {
   if (cameraInput.files && cameraInput.files[0]) {
     const fileReader = new FileReader();
@@ -201,25 +201,6 @@ function read() {
   }
 }
 
-let leftXOff;
-let topYOff;
-let rightXOff;
-let bottomYOff;
-
-let rightPupil;
-let rightWhite;
-let leftPupil;
-let leftWhite;
-let fedora;
-let sunglasses;
-
-
-function hat() {
-  TweenMax.set([fedora, sunglasses], {
-    display: 'block',
-  });
-}
-
 
 function animate(event) {
   character = getElement(
@@ -227,119 +208,6 @@ function animate(event) {
     event.target
       .getSVGDocument()
   );
-
-  rightPupil = getElement('#eyes-concern_pupil-r', character);
-  rightWhite = getElement('#eyes-concern_white-r', character);
-  leftPupil = getElement('#eyes-concern_pupil-l', character);
-  leftWhite = getElement('#eyes-concern_white-l', character);
-  fedora = getElement('#fedora', character);
-  sunglasses = getElement('#glasses-sun', character);
-
-  topYOff = '-300px';
-  leftXOff = '-700px';
-  rightXOff = '700px';
-  bottomYOff = '700px';
-
-  TweenMax.set(character, {
-    //y: '0',
-    //x: -200,
-    rotation: '90',
-  });
-
-  // hat();
-
-  /* TweenMax.set('#eyes-closed-r, #eyes-closed-l', {
-    scaleY: 0.1,
-    opacity: '0',
-  }); */
-
-  const introTl = new TimelineMax({ paused: true });
-
-  introTl.to(character, 1, {
-    x: '-485px',
-    ease: Power2.easeInOut,
-  })
-
-  introTl.play(0);
-
-  /* introTl.to(character, 1, {
-    x: '-485px',
-    ease:Power2.easeInOut,
-  })
-  .to(character, 0.4, {
-    x: leftXOff,
-    ease:Power2.easeInOut,
-    delay: 0.5,
-  })
-  .to(character, 0.01, {
-    rotation: 0,
-    y: bottomYOff,
-  })
-  .to([fedora, sunglasses], 0.01, {
-    display: 'none',
-  })
-  .to(character, 0.01, {
-    x: '280px',
-  })
-  .to(character, 0.5, {
-    y: '480px',
-    ease: Power2.easeInOut,
-  })
-  .add('rtEye', '+=.2')
-  .to([rightWhite, rightPupil], 0.2, {
-    opacity: '0',
-    scaleY: 0.2,
-    transformOrigin: '50% 50%',
-    yoyo: true,
-    repeat: +1,
-    ease: SteppedEase.config(1),
-  }, 'rtEye')
-  .to('#eyes-closed-r, #eyes-closed-l', 0.2, {
-    visibility: 'visible',
-    opacity: '1',
-    scaleY: 1,
-    yoyo: true,
-    repeat: +1,
-    ease: SteppedEase.config(1),
-  }, 'rtEye')
-  .to([leftWhite, leftPupil], 0.2, {
-    opacity: '0',
-    scaleY: 0.2,
-    transformOrigin: '50% 50%',
-    ease: SteppedEase.config(1),
-    yoyo: true,
-    repeat: +1,
-  }, 'rtEye')
-  .to(character, 0.5, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 0.5,
-  })
-  .to(character, 0.01, {
-    x: '2000px',
-    rotation: 180,
-  })
-  .to(character, 0.01, {
-    y: topYOff,
-  })
-  .to(character, 0.01, {
-    x: '280px',
-  })
-  .to('#mouth-gasp', 0.01, {
-    visibility: 'hidden',
-  })
-  .to('#mouth-slight_smile, #hair, #glasses-square', 0.01, {
-    visibility: 'visible',
-  })
-  .to('#glasses', 0.01, {
-    display: 'none',
-  })
-  .to(character, 0.8, {
-    y: '-60px',
-    ease: Power2.easeInOut,
-  }); */
-
-  // introTl.play(0);
 }
 
 
