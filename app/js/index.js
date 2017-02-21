@@ -77,6 +77,19 @@ function toggleView(view = currentView, nextView = views[(views.indexOf(view) + 
 }
 
 
+function determinePersona(answersLength) {
+  each(personas, persona =>
+    each(persona.criteria, criterion =>
+      (criterion === answersLength) ?
+        each(titles, title =>
+          title.textContent = persona.title
+        ) :
+        null
+    )
+  );
+}
+
+
 function grayscale(canvas, ctx) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const pixels = imageData.data;
@@ -121,18 +134,9 @@ function check(event) {
     textContent: button.textContent,
   });
 
-
-  const correctAnswersLength = answers.filter(answer => answer.isCorrect)
-    .length;
-
-  each(personas, persona =>
-    each(persona.criteria, criterion =>
-      (criterion === correctAnswersLength) ?
-        each(titles, title =>
-          title.textContent = persona.title
-        ) :
-        null
-    )
+  determinePersona(
+    answers.filter(answer => answer.isCorrect)
+    .length
   );
 
   const answer = li[(answers.length - 1)];
