@@ -10,5 +10,7 @@
   }
 
   &[data-app='receive'] {
+    background-image: url('../images/placeholder.png');
+    background-size: 100vw 100vh;
   }
 }

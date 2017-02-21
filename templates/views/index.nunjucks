@@ -8,6 +8,8 @@
 
 {%- block content -%}
 
+  <object data="/images/character.svg" type="image/svg+xml" data-character></object>
+
   <section class="view" data-view data-view-active>
     <button class="button--touch" data-view-toggle>
       <h1 class="button--touch__heading">See How Much You&apos;re Exposing</h1>

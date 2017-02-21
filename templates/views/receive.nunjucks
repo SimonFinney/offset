@@ -6,6 +6,13 @@
 
     <canvas class="img" data-modifier="{{ img.modifier }}" data-src="{{ img.src }}"></canvas>
   {%- endfor -%}
+  
+
+  {# {% for i in range(0, 15) -%}
+    <div class="placeholder"></div>
+  {%- endfor %} #}
+
+
 {%- endblock -%}
 
 {%- block script -%}
