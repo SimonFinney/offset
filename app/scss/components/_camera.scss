@@ -31,6 +31,17 @@
   @extend %button--primary;
 }
 
+.camera__button--confirm,
+.camera__button--retake {
+  @include sy-ease-out;
+  transform: translate3d(0, 350%, 0);
+  transition-delay: .6s;
+
+  [data-view-active] [data-view-active] > & {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .camera__button--confirm {
   margin-bottom: 24px;
 }

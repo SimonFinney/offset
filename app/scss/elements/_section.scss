@@ -7,10 +7,21 @@
   box-sizing: border-box;
 }
 
+.section__h2--confirmation,
 .section__h2 {
   @extend %h2;
   margin-top: 168px;
   margin-bottom: 176px;
+}
+
+.section__h2--confirmation {
+  @include sy-ease-out;
+  transform: translate3d(133%, 0, 0);
+  transition-delay: .3s;
+
+  [data-view-active] [data-view-active] > & {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .section__button,
