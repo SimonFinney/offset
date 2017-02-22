@@ -38,6 +38,8 @@ let mouthNoSmile;
 
 let mustache;
 
+let timeline;
+
 let hair;
 
 const topYOff = '50px';
@@ -45,17 +47,11 @@ const leftXOff = '-288px';
 const rightXOff = '1280px';
 const bottomYOff = '950px';
 
-// function hat() {
-//   TweenLite.set(fedora, sunglasses, {
-//     display: 'block',
-//   });
-// }
-
 
 function anonymizing() {
-  const anonTl = new TimelineMax({ paused: true });
+  timeline = new TimelineMax({ paused: true });
 
-  anonTl.to(svg, 0.5, {
+  timeline.to(svg, 0.5, {
     y: topYOff,
     ease: Power2.easeInOut,
   })
@@ -83,7 +79,7 @@ function anonymizing() {
     delay: 1,
   });
 
-  anonTl.play(0);
+  timeline.play(0);
 }
 
 
@@ -111,9 +107,9 @@ function confirmation() {
     scaleY: 0.1,
   });
 
-  const lookGoodTl = new TimelineMax({ paused: true });
+  timeline = new TimelineMax({ paused: true });
 
-  lookGoodTl.to(svg, 1, {
+  timeline.to(svg, 1, {
     y: '240px',
     ease: Power2.easeInOut,
   })
@@ -134,7 +130,7 @@ function confirmation() {
     repeat: +3,
   }, 'rtEye');
 
-  lookGoodTl.play(0);
+  timeline.play(0);
 }
 
 function toggle(question, isCorrectAnswer) {
@@ -160,13 +156,10 @@ function quiz(question, value) {
   TweenMax.set([mouthSlightSmile, wideEyes, bowtie], {
     visibility: 'visible',
   });
-  // TweenMax.set(eyesHappyClosed, {
-  //   scaleY: 0.2,
-  // });
 
-  const quizQOneTl = new TimelineMax({ paused: true });
+  timeline = new TimelineMax({ paused: true });
 
-  quizQOneTl.to(svg, 0.5, {
+  timeline.to(svg, 0.5, {
     y: '480px',
     ease: Power2.easeInOut,
   })
@@ -190,7 +183,7 @@ function quiz(question, value) {
     ease: SteppedEase.config(1),
   }, 'rtEye');
 
-  quizQOneTl.play(0);
+  timeline.play(0);
 }
 
 const questionAnimations = {
@@ -230,22 +223,22 @@ const questionAnimations = {
 
 
 function quizAOneRight() {
-  const quizAOneHappyTl = new TimelineMax({ paused: true });
+  timeline = new TimelineMax({ paused: true });
 
-  quizAOneHappyTl.to(bowtie, 0.1, {
+  timeline.to(bowtie, 0.1, {
     rotation: 360,
     transformOrigin: 'center',
     repeat: +1,
     ease: Power0.easeInOut,
   });
 
-  quizAOneHappyTl.play(0);
+  timeline.play(0);
 }
 
 function quizAOneWrong() {
-  const quizAOneSadTl = new TimelineMax({ paused: true });
+  timeline = new TimelineMax({ paused: true });
 
-  quizAOneSadTl.to(bowtie, 0.1, {
+  timeline.to(bowtie, 0.1, {
     rotation: 360,
     transformOrigin: 'center',
     repeat: +1,
@@ -270,8 +263,20 @@ function quizAOneWrong() {
     ease: SteppedEase.config(1),
   });
 
-  quizAOneSadTl.play(0);
+  timeline.play(0);
 }
+
+
+function kill() {
+  timeline.kill();
+
+  TweenLite.set(svg, {
+    rotation: 0,
+    x: -window.innerWidth,
+    y: -window.innerHeight,
+  });
+}
+
 
 function quizATwoRight() {
   // TODO: Animation for quiz section
@@ -358,9 +363,9 @@ function selfie() {
     opacity: '0',
   });
 
-  const snapSelfieTl = new TimelineMax({ paused: true });
+  timeline = new TimelineMax({ paused: true });
 
-  snapSelfieTl.to(svg, 0.1, {
+  timeline.to(svg, 0.1, {
     y: topYOff,
     ease: Power2.easeInOut,
   })
@@ -411,7 +416,7 @@ function selfie() {
     repeat: +2,
   }, 'rtEye');
 
-  snapSelfieTl.play(0);
+  timeline.play(0);
 }
 
 
@@ -426,9 +431,9 @@ function init() {
     opacity: '0',
   });
 
-  const introTl = new TimelineMax({ paused: true });
+  timeline = new TimelineMax({ paused: true });
 
-  introTl.to(svg, 1.5, {
+  timeline.to(svg, 1.5, {
     x: '460px',
     ease: Power2.easeInOut,
     delay: 1,
@@ -492,7 +497,7 @@ function init() {
     ease: Power2.easeInOut,
   });
 
-  introTl.play(0);
+  timeline.play(0);
 }
 
 
@@ -536,6 +541,7 @@ export {
   anonymizing,
   complete,
   confirmation,
+  kill,
   quiz,
   results,
   toggle,

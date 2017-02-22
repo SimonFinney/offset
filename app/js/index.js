@@ -8,6 +8,7 @@ import {
   anonymizing,
   complete,
   confirmation,
+  kill,
   quiz,
   results,
   selfie,
@@ -76,6 +77,7 @@ function toggleView() {
     const subviews = getElements('[data-view]', currentView);
 
     if (animation) {
+      kill();
       window[animation]();
     }
 
