@@ -8,6 +8,7 @@ import {
   anonymizing,
   complete,
   confirmation,
+  introduction,
   kill,
   quiz,
   results,
@@ -30,8 +31,6 @@ import io from 'socket.io-client';
 import theaterJS from 'theaterjs';
 
 // Variables
-let answers;
-let answerCount;
 let cameraForm;
 let cameraImg;
 let cameraInput;
@@ -43,11 +42,10 @@ let headingAnonymizing;
 let img;
 let li;
 let main;
-let personas;
 let selectedCameraToggleButton;
+let svg;
 let theater;
 let titles;
-let totalQuestions;
 let views;
 
 
@@ -78,11 +76,11 @@ function toggleView() {
 
     if (animation) {
       kill();
-      window[animation]();
+      app.animations[animation]();
     }
 
     if (func) {
-      window[func]();
+      app.functions[func]();
     }
 
     if (timeout) {
@@ -100,14 +98,15 @@ function toggleView() {
 
 
 function determinePersona(answersLength) {
-  each(personas, persona =>
-    each(persona.criteria, criterion =>
-      (criterion === answersLength) ?
-        each(titles, title =>
-          title.textContent = persona.title
-        ) :
-        null
-    )
+  each(app.data
+    .personas, persona =>
+      each(persona.criteria, criterion =>
+        (criterion === answersLength) ?
+          each(titles, title =>
+            title.textContent = persona.title
+          ) :
+          null
+      )
   );
 }
 
@@ -127,7 +126,7 @@ function grayscale(canvas, ctx) {
 }
 
 
-function pixelate(canvas, ctx, image, size = totalQuestions) {
+function pixelate(canvas, ctx, image, size = app.data.total) {
   const computedSize = (size * 2);
   const width = (canvas.width / computedSize);
   const height = (canvas.height / computedSize);
@@ -143,26 +142,34 @@ function check(event) {
   const button = event.target;
   const isCorrect = (button.getAttribute('value') === 'true');
 
-  answerCount = isCorrect ?
-    answerCount :
-    (answerCount + 1);
+  app.data.count = isCorrect ?
+    app.data.count :
+    (app.data.count + 1);
 
-  const modifier = (totalQuestions - answerCount);
+  const modifier = (app.data.total - app.data.count);
   cameraInputHidden.setAttribute('value', modifier);
 
   pixelate(cameraImg, context, img, modifier);
 
-  answers.push({
+  app.data.answers.push({
     isCorrect,
     textContent: button.textContent,
   });
 
   determinePersona(
-    answers.filter(answer => answer.isCorrect)
-    .length
+    app.data
+      .answers
+      .filter(answer => answer.isCorrect)
+      .length
   );
 
-  const answer = li[(answers.length - 1)];
+  const answer = li[
+    (
+      app.data
+      .answers
+      .length - 1
+    )
+  ];
 
   getElement('.li__answer', answer)
     .textContent = button.textContent;
@@ -226,21 +233,30 @@ function read() {
 }
 
 
-function init() {
-  const app = getElement('[data-app]');
-  main = getElement('.main', app);
+function reset(element, className) {
+  element.classList
+    .remove(className);
 
-  if ((app.getAttribute('data-app') === 'receive')) {
+  void element.offsetWidth;
+
+  element.classList
+    .add(className);
+}
+
+
+function init() {
+  app.element = getElement('[data-app]');
+  main = getElement('.main', app.element);
+
+  if ((app.element.getAttribute('data-app') === 'receive')) {
     const socket = io();
 
     each(
-      getElements('[data-src]', app),
+      getElements('[data-src]', app.element),
       load
     );
     socket.on('receive', add);
   } else {
-
-    // Initialise variables
     cameraForm = getElement('.camera__form', main);
     cameraImg = getElement('.camera__img', main);
     cameraInput = getElement('.camera__input', main);
@@ -248,25 +264,27 @@ function init() {
     heading = getElement('.button--touch__heading__explode', main);
     headingAnonymizing = getElement('.section__heading--anonymizing', main);
     li = getElements('.section__li', main);
-    personas = window.personas;
     titles = getElements('[data-title]', main);
-
-    window.reset();
 
     on(
       getElement('[data-character]', main),
       'load',
-      event => create(
-        getElement(
+      event => {
+        svg = getElement(
           'svg',
           event.target
             .getSVGDocument()
-        )
-      )
+        );
+
+        create(svg);
+      }
     );
 
+    app.functions.reset();
+
     context = cameraImg.getContext('2d');
-    totalQuestions = parseInt(
+
+    app.data.total = parseInt(
       getElement('[data-questions-length]').getAttribute('data-questions-length'),
       10
     );
@@ -317,22 +335,43 @@ function init() {
   }
 }
 
+const app = {
+  animations: {
+    anonymizing,
+    confirmation,
+    introduction,
+    quiz,
+    results,
+    selfie,
+  },
+  data: {
+    answers: [],
+    count: 0,
+    personas: window.personas,
+  },
+  functions: {},
+};
 
-window.anonymize = () => {
+app.animations.complete = () => {
+  complete();
+  debounce(app.functions.reset, 3000);
+};
+
+app.functions.anonymize = () => {
   theater.addActor('anonymizing',
     {
       accuracy: .5,
       speed: 1,
     }
   )
-  .addScene(`anonymizing:${headingAnonymizing.textContent}`, 300, '.', 300, '.', 300, '.')
+  .addScene(`anonymizing:${headingAnonymizing.getAttribute('data-title')}`, 300, '.', 300, '.', 300, '.')
   .addScene(() => pixelate(cameraImg, context, img));
 };
 
 
-window.reset = () => {
-  answers = [];
-  answerCount = 0;
+app.functions.reset = () => {
+  app.data.answers = [];
+  app.data.count = 0;
 
   cameraForm.reset();
   img = new Image();
@@ -346,6 +385,11 @@ window.reset = () => {
     view.removeAttribute('data-view-previous');
     view.setAttribute('data-view-next', '');
   });
+
+  each(
+    getElements('.confetti__item', app.element),
+    confetti => reset(confetti, 'confetti__item')
+  );
 
   activate(currentView);
 
@@ -366,14 +410,11 @@ window.reset = () => {
     )
       .addScene(`heading:${heading.textContent}`),
   animationDelay);
-};
 
-window.anonymizing = anonymizing;
-window.confirmation = confirmation;
-window.complete = complete;
-window.quiz = quiz;
-window.results = results;
-window.selfie = selfie;
+  if (svg) {
+    app.animations.introduction();
+  }
+};
 
 
 on(document, 'DOMContentLoaded', init);

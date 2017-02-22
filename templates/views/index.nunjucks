@@ -36,7 +36,7 @@
 
     <section class="section" data-view data-view-animation="anonymizing" data-view-function="anonymize" data-view-timeout="3000">
       <h2 class="section__h2">
-        <span id="anonymizing" class="section__heading--anonymizing">Anonymizing</span>
+        <span id="anonymizing" class="section__heading--anonymizing" data-title="Anonymizing"></span>
       </h2>
     </section>
 
@@ -87,7 +87,7 @@
       {%- endfor -%}
     </div>
 
-    <section class="section" data-view data-view-animation="complete" data-view-function="reset">
+    <section class="section" data-view data-view-animation="complete">
       <h2 class="section__title">Thanks for Playing</h2>
     </section>
   </section>

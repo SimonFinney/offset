@@ -285,67 +285,67 @@ function quizATwoRight() {
 
 function quizATwoWrong() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizATwoWrong');
 }
 
 function quizAThreeRight() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizAThreeRight');
 }
 
 function quizAThreeWrong() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizAThreeWrong');
 }
 
 function quizAFourRight() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizAFourRight');
 }
 
 function quizAFourWrong() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizAFourWrong');
 }
 
 function quizAFiveRight() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizAFiveRight');
 }
 
 function quizAFiveWrong() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizAFiveWrong');
 }
 
 function quizASixRight() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizASizeRight');
 }
 
 function quizASixWrong() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizASizWrong');
 }
 
 function quizASevenRight() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizASevenRight');
 }
 
 function quizASevenWrong() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizASevenWrong');
 }
 
 function quizAEightRight() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizAEightRight');
 }
 
 function quizAEightWrong() {
   // TODO: Animation for quiz section
-  console.log('quizATwoRight');
+  console.log('quizAEightWrong');
 }
 
 
@@ -420,7 +420,7 @@ function selfie() {
 }
 
 
-function init() {
+function introduction() {
   TweenLite.set(svg, {
     y: '30px',
     rotation: 90,
@@ -531,8 +531,7 @@ function create(element) {
   mouthNoSmile = getElement('[data-mouth-no-smile]', svg);
 
   mustache = getElement('[data-mustache]', svg);
-
-  init();
+  introduction();
 }
 
 
@@ -541,6 +540,7 @@ export {
   anonymizing,
   complete,
   confirmation,
+  introduction,
   kill,
   quiz,
   results,
