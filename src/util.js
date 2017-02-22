@@ -5,7 +5,9 @@ const server = express();
 
 function getConfiguration(configurationVariable) {
   return (
-    process.env[configurationVariable] || require('../USER-DEFINED.json')[configurationVariable]
+    process.env[configurationVariable] ?
+      process.env[configurationVariable] :
+      require('../USER-DEFINED.json')[configurationVariable]
   );
 }
 
