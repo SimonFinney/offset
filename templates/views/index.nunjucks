@@ -63,10 +63,10 @@
 
       <div class="confetti">
 
-        {% for i in range(0, 50) -%}
+        {%- for i in range(0, 50) -%}
 
           <div class="confetti__item"></div>
-        {%-endfor -%}
+        {%- endfor -%}
       </div>
 
       <ol class="section__ol">
