@@ -22,6 +22,7 @@
   "author": "Simon Finney <SIMONFIN@ie.ibm.com>",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.16.1",
     "compression": "^1.6.1",
     "express": "^4.13.4",
     "express-minify-html": "^0.4.0",

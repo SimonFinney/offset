@@ -2,6 +2,14 @@
 
 
 // TODO: Comments
+function ajax(form) {
+  const request = new XMLHttpRequest();
+  request.open(form.getAttribute('data-method'), form.getAttribute('data-action'), true);
+  const formData = new FormData(form);
+  request.send(formData);
+}
+
+
 function createElement(tag, attributes, text) {
   const element = document.createElement(tag);
   Object.keys(attributes)
@@ -72,6 +80,7 @@ function toggleElement(element, dataAttribute = 'active', attributeValue = '') {
 
 
 export {
+  ajax,
   createElement,
   debounce,
   each,

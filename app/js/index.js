@@ -17,6 +17,7 @@ import {
 } from './src/animation';
 
 import {
+  ajax,
   createElement,
   debounce,
   each,
@@ -322,15 +323,9 @@ function init() {
     );
 
     on(
-      cameraForm,
-      'submit',
-      event => event.preventDefault()
-    );
-
-    on(
       getElement('[data-submit]', main),
       'click',
-      () => cameraForm.submit()
+      () => ajax(cameraForm)
     );
   }
 }
