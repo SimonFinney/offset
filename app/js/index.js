@@ -49,6 +49,23 @@ let theater;
 let titles;
 let views;
 
+const app = {
+  animations: {
+    anonymizing,
+    confirmation,
+    introduction,
+    quiz,
+    results,
+    selfie,
+  },
+  data: {
+    answers: [],
+    count: 0,
+    personas: window.personas,
+  },
+  functions: {},
+};
+
 
 function activate(view) {
   toggleElement(view, 'view-next');
@@ -57,7 +74,7 @@ function activate(view) {
 
 
 function toggleView() {
-  let nextView = views[
+  const nextView = views[
     (views.indexOf(currentView) + 1)
   ];
 
@@ -101,13 +118,14 @@ function toggleView() {
 function determinePersona(answersLength) {
   each(app.data
     .personas, persona =>
-      each(persona.criteria, criterion =>
+      each(persona.criteria, criterion => {
         (criterion === answersLength) ?
-          each(titles, title =>
-            title.textContent = persona.title
-          ) :
-          null
-      )
+          each(titles, titleToModify => {
+            const title = titleToModify;
+            title.textContent = persona.title;
+          }) :
+          null;
+      })
   );
 }
 
@@ -187,7 +205,8 @@ function check(event) {
 }
 
 
-function run(canvas, ctx, image, src) {
+function run(canvas, contextToModify, image, src) {
+  const ctx = contextToModify;
   ctx.imageSmoothingEnabled = false;
   on(image, 'load', () => {
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
@@ -330,43 +349,38 @@ function init() {
   }
 }
 
-const app = {
-  animations: {
-    anonymizing,
-    confirmation,
-    introduction,
-    quiz,
-    results,
-    selfie,
-  },
-  data: {
-    answers: [],
-    count: 0,
-    personas: window.personas,
-  },
-  functions: {},
-};
 
 app.animations.complete = () => {
   complete();
   debounce(app.functions.reset, 3000);
 };
 
+
 app.functions.anonymize = () => {
   theater.addActor('anonymizing',
     {
-      accuracy: .5,
+      accuracy: 0.5,
       speed: 1,
     }
   )
-  .addScene(`anonymizing:${headingAnonymizing.getAttribute('data-title')}`, 300, '.', 300, '.', 300, '.')
-  .addScene(() => pixelate(cameraImg, context, img));
+  .addScene(
+    `anonymizing:${headingAnonymizing.getAttribute('data-title')}`,
+    300,
+    '.',
+    300,
+    '.',
+    300,
+    '.'
+  ).addScene(() => pixelate(cameraImg, context, img));
 };
 
 
 app.functions.reset = () => {
-  app.data.answers = [];
-  app.data.count = 0;
+  app.data
+    .answers = [];
+
+  app.data
+    .count = 0;
 
   cameraForm.reset();
   img = new Image();
@@ -399,15 +413,16 @@ app.functions.reset = () => {
   debounce(() =>
     theater.addActor('heading',
       {
-        accuracy: .33,
-        speed: .75,
+        accuracy: 0.33,
+        speed: 0.75,
       }
     )
       .addScene(`heading:${heading.textContent}`),
   animationDelay);
 
   if (svg) {
-    app.animations.introduction();
+    app.animations
+      .introduction();
   }
 };
 

@@ -21,8 +21,8 @@ const upload = multer();
 
 
 function getRoute(request) {
-    return request.url
-      .replace('/', '');
+  return request.url
+    .replace('/', '');
 }
 
 
