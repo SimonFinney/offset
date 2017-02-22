@@ -1,0 +1,71 @@
+// Confetti
+
+$total-confetti: 50;
+
+.confetti {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  [data-view-active] > & {
+
+    .confetti__item {
+      animation-play-state: running;
+    }
+  }
+}
+
+.confetti__item {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  animation-duration: 2s;
+  animation-play-state: paused;
+
+  @for $index from 1 through $total-confetti {
+
+    &:nth-child(#{$index}) {
+      $background-color: rgb(random(255), random(255), random(255));
+
+      background-color: $background-color;
+      animation-delay: ((4 / 100) * $index) + s;
+      animation-name: confetti--#{$index};
+    }
+  }
+}
+
+@for $index from 1 through $total-confetti {
+
+  @keyframes confetti--#{$index} {
+
+    from,
+    50%,
+    to {
+      transform: skew(-33deg);
+    }
+
+    from,
+    to {
+      left: (100% - random(100));
+    }
+
+    from {
+      top: 0;
+      opacity: 1;
+    }
+
+    25%,
+    75% {
+      transform: skew(33deg);
+    }
+
+    to {
+      top: 66%;
+      left: (0% + random(100));
+      opacity: 0;
+    }
+  }
+}

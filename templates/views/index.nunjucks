@@ -61,6 +61,14 @@
     <section class="section" data-view data-view-animation="results" data-view-centered>
       <h2 class="section__title--small" data-title>You're a n00b</h2>
 
+      <div class="confetti">
+
+        {% for i in range(0, 50) -%}
+
+          <div class="confetti__item"></div>
+        {%-endfor -%}
+      </div>
+
       <ol class="section__ol">
 
         {%- for question in content.attributes.questions -%}
