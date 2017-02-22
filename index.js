@@ -18,18 +18,6 @@ const staticAssets = express.static(`${__dirname}/${serverDirectory}/`);
 
 app.use(staticAssets);
 
-
-/* app.use(
-  bodyParser.json()
-);
-
-app.use(
-  bodyParser.urlencoded(
-    { extended: true }
-  )
-); */
-
-
 app.use('/', router);
 
 app.use(

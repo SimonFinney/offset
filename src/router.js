@@ -56,7 +56,6 @@ router.get('/receive', (request, response) => {
 
 
 router.post('/submit', upload.single('file'), (request, response) => {
-  console.log(request.body);
   const modifier = request.body.modifier;
   const src = img.convert(request.file);
 
