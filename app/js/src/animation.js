@@ -134,7 +134,7 @@ function confirmation() {
 }
 
 function toggle(question, isCorrectAnswer) {
-  questionAnimations[question][isCorrectAnswer]();
+  questionsAnimations[question][isCorrectAnswer]();
 }
 
 
@@ -186,7 +186,7 @@ function quiz(question, value) {
   timeline.play(0);
 }
 
-const questionAnimations = {
+const questionsAnimations = {
   1: {
     true: quizAOneRight,
     false: quizAOneWrong,
