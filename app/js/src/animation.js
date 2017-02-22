@@ -137,10 +137,14 @@ function confirmation() {
   lookGoodTl.play(0);
 }
 
+function toggle(question, isCorrectAnswer) {
+  questionAnimations[question][isCorrectAnswer]();
+}
 
-function quiz() {
+
+function quiz(question, value) {
   // TODO: Animation for quiz section
-  console.log('quiz');
+
   TweenMax.set(svg, {
     y: bottomYOff,
     x: '820px',
@@ -188,6 +192,42 @@ function quiz() {
 
   quizQOneTl.play(0);
 }
+
+const questionAnimations = {
+  1: {
+    true: quizAOneRight,
+    false: quizAOneWrong,
+  },
+  2: {
+    true: quizATwoRight,
+    false: quizATwoWrong,
+  },
+  3: {
+    true: quizAThreeRight,
+    false: quizAThreeWrong,
+  },
+  4: {
+    true: quizAFourRight,
+    false: quizAFourWrong,
+  },
+  5: {
+    true: quizAFiveRight,
+    false: quizAFiveWrong,
+  },
+  6: {
+    true: quizASixRight,
+    false: quizASixWrong,
+  },
+  7: {
+    true: quizASevenRight,
+    false: quizASevenWrong,
+  },
+  8: {
+    true: quizAEightRight,
+    false: quizAEightWrong,
+  },
+};
+
 
 function quizAOneRight() {
   const quizAOneHappyTl = new TimelineMax({ paused: true });
@@ -497,22 +537,7 @@ export {
   complete,
   confirmation,
   quiz,
-  quizAOneRight,
-  quizAOneWrong,
-  quizATwoRight,
-  quizATwoWrong,
-  quizAThreeRight,
-  quizAThreeWrong,
-  quizAFourRight,
-  quizAFourWrong,
-  quizAFiveRight,
-  quizAFiveWrong,
-  quizASixRight,
-  quizASixWrong,
-  quizASevenRight,
-  quizASevenWrong,
-  quizAEightRight,
-  quizAEightWrong,
   results,
+  toggle,
   selfie,
 };

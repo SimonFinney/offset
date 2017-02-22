@@ -2,9 +2,8 @@
 
 .camera__h2 {
   @extend %h2;
-  width: 65%;
-  margin-top: 146px;
-  margin-bottom: -236px;
+  width: 66%;
+  margin-top: 160px;
 }
 
 .camera__form {
@@ -32,10 +31,14 @@
   @extend %button--primary;
 }
 
+.camera__button {
+  margin-bottom: 248px;
+}
+
 .camera__button--confirm,
 .camera__button--retake {
   @include sy-ease-out;
-  transform: translate3d(0, 350%, 0);
+  transform: translate3d(0, 425%, 0);
   transition-delay: .6s;
 
   [data-view-active] [data-view-active] > & {
