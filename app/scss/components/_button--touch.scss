@@ -19,8 +19,9 @@
   cursor: pointer;
   background-color: transparent;
   background-image: url('../images/background.svg');
-  background-position: center;
+  background-position: left;
   background-repeat: no-repeat;
+  background-size: 134%;
   border: 0;
   animation-delay: .1s;
 }
@@ -28,13 +29,16 @@
 .button--touch__heading,
 .button--touch__instructions {
   z-index: -1;
-  margin-left: 32px;
+  margin-left: 120px;
 }
 
 .button--touch__heading {
+  margin-top: -80px;
   margin-bottom: 48px;
   font-size: rem(100px);
+  font-weight: 700;
   line-height: rem(140px);
+  letter-spacing: 0;
   animation-delay: .3s;
 }
 
@@ -44,6 +48,7 @@
   padding-right: 8px;
   padding-bottom: 8px;
   padding-left: 8px;
+  line-height: normal;
   color: $gray-90;
   background-color: $white;
   animation-delay: .6s;
@@ -51,6 +56,8 @@
 
 .button--touch__instructions {
   @include font-size('16');
+  position: absolute;
+  bottom: 96px;
   display: block;
   letter-spacing: .1px;
   animation-delay: 1s;

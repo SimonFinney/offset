@@ -1,12 +1,13 @@
 // Character
 
 .character {
+  position: absolute;
+  left: -288px;
   z-index: -1;
-  width: 100%;
+  width: calc(100% + 288px);
 }
 
 [data-bowtie],
-
 [data-eyes-big],
 [data-eyes-closed],
 [data-eyes-cry],
@@ -14,12 +15,9 @@
 [data-eyes-happy-closed],
 [data-eyes-wide],
 [data-eyes-worry],
-[data-eyes-small],
-
+[data-eyes-smize],
 [data-glasses-square],
-
 [data-hair],
-
 [data-mouth-big-smile],
 [data-mouth-frown],
 [data-mouth-no-smile],
@@ -27,9 +25,7 @@
 [data-mouth-slight-smile],
 [data-mouth-smile],
 [data-mouth-wide],
-
 [data-mustache],
-
 [data-party-hat] {
   visibility: hidden;
 }

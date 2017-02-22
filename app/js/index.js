@@ -9,6 +9,22 @@ import {
   complete,
   confirmation,
   quiz,
+  quizAOneRight,
+  quizAOneWrong,
+  quizATwoRight,
+  quizATwoWrong,
+  quizAThreeRight,
+  quizAThreeWrong,
+  quizAFourRight,
+  quizAFourWrong,
+  quizAFiveRight,
+  quizAFiveWrong,
+  quizASixRight,
+  quizASixWrong,
+  quizASevenRight,
+  quizASevenWrong,
+  quizAEightRight,
+  quizAEightWrong,
   results,
   selfie,
 } from './src/animation';
@@ -358,6 +374,22 @@ window.anonymizing = anonymizing;
 window.confirmation = confirmation;
 window.complete = complete;
 window.quiz = quiz;
+window.quizAOneRight = quizAOneRight;
+window.quizAOneWrong = quizAOneWrong;
+window.quizATwoRight = quizATwoRight;
+window.quizATwoWrong = quizATwoWrong;
+window.quizAThreeRight = quizAThreeRight;
+window.quizAThreeWrong = quizAThreeWrong;
+window.quizAFourRight = quizAFourRight;
+window.quizAFourWrong = quizAFourWrong;
+window.quizAFiveRight = quizAFiveRight;
+window.quizAFiveWrong = quizAFiveWrong;
+window.quizASixRight = quizASixRight;
+window.quizASixWrong = quizASixWrong;
+window.quizASevenRight = quizASevenRight;
+window.quizASevenWrong = quizASevenWrong;
+window.quizAEightRight = quizAEightRight;
+window.quizAEightWrong = quizAEightWrong;
 window.results = results;
 window.selfie = selfie;
 

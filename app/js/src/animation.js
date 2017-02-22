@@ -12,6 +12,7 @@ import { getElement } from './util';
 let svg;
 
 let fedora;
+let bowtie;
 
 let leftPupil;
 let leftWhite;
@@ -19,272 +20,70 @@ let leftWhite;
 let rightPupil;
 let rightWhite;
 
+let eyesClosed;
+let eyesHappyClosed;
+let eyesSmize;
+let wideEyes;
+let halfEyes;
+let bigEyes;
+
+let glasses;
 let sunglasses;
+let glassesSquare;
 
-const topYOff = '-300px';
-const leftXOff = '-700px';
-const rightXOff = '700px';
-const bottomYOff = '700px';
+let mouthGasp;
+let mouthSlightSmile;
+let mouthBigSmile;
+let mouthNoSmile;
 
-function hat() {
-  TweenLite.set(fedora, sunglasses, {
-    display: 'block',
-  });
-}
+let mustache;
 
-//Intro
-/* document.querySelector('#intro').addEventListener('click', function () {
-  TweenMax.set('svg', {
-    y: '0',
-    x: leftXOff,
-    rotation: 90,
-  });
+let hair;
 
-  hat();
+const topYOff = '50px';
+const leftXOff = '-288px';
+const rightXOff = '1280px';
+const bottomYOff = '950px';
 
-  TweenMax.set('#eyes-closed-r, #eyes-closed-l', {
-    scaleY: 0.1,
-    opacity: '0',
-  });
-
-  const introTl = new TimelineMax({ paused: true });
-
-  introTl.to('svg', 1, {
-    x: '-485px',
-    ease:Power2.easeInOut,
-  })
-  .to('svg', 0.4, {
-    x: leftXOff,
-    ease:Power2.easeInOut,
-    delay: 0.5,
-  })
-  .to('svg', 0.01, {
-    rotation: 0,
-    y: bottomYOff,
-  })
-  .to('#fedora, #glasses-sun', 0.01, {
-    display: 'none',
-  })
-  .to('svg', 0.01, {
-    x: '280px',
-  })
-  .to('svg', 0.5, {
-    y: '480px',
-    ease: Power2.easeInOut,
-  })
-  .add('rtEye', '+=.2')
-  .to([rightWhite, rightPupil], 0.2, {
-    opacity: '0',
-    scaleY: 0.2,
-    transformOrigin: '50% 50%',
-    yoyo: true,
-    repeat: +1,
-    ease: SteppedEase.config(1),
-  }, 'rtEye')
-  .to('#eyes-closed-r, #eyes-closed-l', 0.2, {
-    visibility: 'visible',
-    opacity: '1',
-    scaleY: 1,
-    yoyo: true,
-    repeat: +1,
-    ease: SteppedEase.config(1),
-  }, 'rtEye')
-  .to([leftWhite, leftPupil], 0.2, {
-    opacity: '0',
-    scaleY: 0.2,
-    transformOrigin: '50% 50%',
-    ease: SteppedEase.config(1),
-    yoyo: true,
-    repeat: +1,
-  }, 'rtEye')
-  .to('svg', 0.5, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 0.5,
-  })
-  .to('svg', 0.01, {
-    x: '2000px',
-    rotation: 180,
-  })
-  .to('svg', 0.01, {
-    y: topYOff,
-  })
-  .to('svg', 0.01, {
-    x: '280px',
-  })
-  .to('#mouth-gasp', 0.01, {
-    visibility: 'hidden',
-  })
-  .to('#mouth-slight_smile, #hair, #glasses-square', 0.01, {
-    visibility: 'visible',
-  })
-  .to('#glasses', 0.01, {
-    display: 'none',
-  })
-  .to('svg', 0.8, {
-    y: '-60px',
-    ease: Power2.easeInOut,
-  });
-
-  introTl.play(0);
-}); */
-
-
-//Snap Selfie
-/* document.querySelector('#snap-selfie').addEventListener('click', function() {
-
-  TweenMax.set('#eyes-happy_closed-r, #eyes-happy_closed-l, #mouth-big_smile', {
-    scaleY: 0.1,
-    opacity: '0',
-  });
-
-  const snapSelfieTl = new TimelineMax({ paused: true });
-
-  snapSelfieTl.to('svg', 0.2, {
-    y: topYOff,
-    ease:Power2.easeInOut,
-  })
-  .to('svg', 0.01, {
-    x: '700px',
-  })
-  .to('svg', 0.01, {
-    y: bottomYOff,
-    rotation: 0,
-  })
-  .to('svg', 0.01, {
-    x: '0',
-  })
-  .to('#hair, #glasses-square', 0.01, {
-    visibility: 'hidden',
-  })
-  .to('#glasses', 0.01, {
-    display: 'block',
-  })
-  .to([rightWhite, leftWhite, rightPupil, leftPupil], 0.01, {
-    display: 'none',
-  })
-  .to('#eyes-smize_white-r, #eyes-smize_pupil-r, #eyes-smize_white-l, #eyes-smize_pupil-l', 0.01, {
-    visibility: 'visible',
-  })
-  .to('svg', 1, {
-    y: '480px',
-    ease:Power2.easeInOut,
-  })
-  .to('#eyes-smize_white-r, #eyes-smize_pupil-r, #eyes-smize_white-l, #eyes-smize_pupil-l', 0.4, {
-    opacity: '0',
-    scaleY: 0.2,
-    transformOrigin: '50% 50%',
-    yoyo: true,
-    repeat: +2,
-    ease:SteppedEase.config(1),
-  }, 'rtEye')
-  .to('#eyes-happy_closed-r, #eyes-happy_closed-l', 0.4, {
-    visibility: 'visible',
-    opacity: '1',
-    scaleY: 1,
-    yoyo: true,
-    repeat: +2,
-    ease: SteppedEase.config(1),
-  }, 'rtEye')
-  .to('#mouth-big_smile', 0.4, {
-    visibility: 'visible',
-    opacity: '1',
-    scaleY: 1,
-    ease: SteppedEase.config(1),
-    yoyo: true,
-    repeat: +2,
-  }, 'rtEye');
-
-   snapSelfieTl.play(0);
-}); */
-
-/* document.querySelector('#look-good').addEventListener('click', function () {
-  TweenMax.set('svg', {
-    y: topYOff,
-    x: '200px',
-    rotation: 180,
-  });
-
-  TweenMax.set('#eyes-smize_white-r, #eyes-smize_pupil-r, #eyes-smize_white-l, #eyes-smize_pupil-l', {
-    opacity: '1',
-    scaleY: 1,
-  });
-
-  TweenMax.set('#eyes-happy_closed-r, #eyes-happy_closed-l', {
-    opacity: "0",
-    scaleY: .1,
-  });
-
-
-  const lookGoodTl = new TimelineMax({ paused: true });
-
-  lookGoodTl.to('svg', 1, {
-    y: '-40px',
-    ease:Power2.easeInOut,
-  })
-  .to('#eyes-smize_white-r, #eyes-smize_pupil-r, #eyes-smize_white-l, #eyes-smize_pupil-l', 0.2, {
-    opacity: '0',
-    scaleY: 0.2,
-    transformOrigin: 'top',
-    ease:SteppedEase.config(1),
-    yoyo: true,
-    repeat: +3,
-  }, 'rtEye')
-  .to('#eyes-happy_closed-r, #eyes-happy_closed-l', 0.2, {
-    opacity: '1',
-    scaleY: 1,
-    transformOrigin: 'top',
-    ease:SteppedEase.config(1),
-    yoyo: true,
-    repeat: +3,
-  }, 'rtEye');
-
-   lookGoodTl.play(0);
-}); */
-
-/* document.querySelector('#anon').addEventListener('click', function () {
-  hat();
-
-  TweenMax.set('svg', {
-    x: rightXOff,
-    y: '390px',
-    rotation: -90,
-  });
-  TweenMax.set('#mouth-big_smile, #mouth-slight_smile', {
-    visibility: 'hidden',
-  });
-  TweenMax.set('#mouth-no_smile, #mustache', {
-    visibility: 'visible',
-  });
-
-
-  const anonTl = new TimelineMax({ paused: true });
-
-  anonTl.to('svg', 1, {
-    x: '400px',
-    ease: Power2.easeInOut,
-  });
-
-  anonTl.play(0);
-}); */
-
-/* document.querySelector('#start-quiz').addEventListener('click', function () {
-  const startQuizTl = new TimelineMax({ paused: true });
-
-  startQuizTl.to('svg', 1, {
-    x: rightXOff,
-    ease: Power2.easeInOut,
-  });
-
-  startQuizTl.play(0);
-}); */
+// function hat() {
+//   TweenLite.set(fedora, sunglasses, {
+//     display: 'block',
+//   });
+// }
 
 
 function anonymizing() {
+  const anonTl = new TimelineMax({ paused: true });
 
-  // TODO: Animation for 'Anonymizing' section
-  console.log('anonymizing');
+  anonTl.to(svg, 0.5, {
+    y: topYOff,
+    ease: Power2.easeInOut,
+  })
+  .set(svg, {
+    x: rightXOff,
+    y: '740px',
+    rotation: -90,
+  })
+  .set([mouthBigSmile, mouthSlightSmile], {
+    visibility: 'hidden',
+  })
+  .set([mouthNoSmile, mustache], {
+    visibility: 'visible',
+  })
+  .set([fedora, sunglasses], {
+    display: 'block',
+  })
+  .to(svg, 0.8, {
+    x: '1040px',
+    ease: Power2.easeInOut,
+  })
+  .to(svg, 2, {
+    x: rightXOff,
+    ease: Power2.easeInOut,
+    delay: 1,
+  });
 
+  anonTl.play(0);
 }
 
 
@@ -292,23 +91,216 @@ function complete() {
 
   // TODO: Animation for completion section
   console.log('complete');
-
 }
 
 
 function confirmation() {
+  TweenMax.set(svg, {
+    y: topYOff,
+    x: '1120px',
+    rotation: 180,
+  });
 
-  // TODO: Animation for image confirmation section
-  console.log('confirmation');
+  TweenMax.set(eyesSmize, {
+    opacity: '1',
+    scaleY: 1,
+  });
 
+  TweenMax.set(eyesHappyClosed, {
+    opacity: '0',
+    scaleY: 0.1,
+  });
+
+  const lookGoodTl = new TimelineMax({ paused: true });
+
+  lookGoodTl.to(svg, 1, {
+    y: '240px',
+    ease: Power2.easeInOut,
+  })
+  .to(eyesSmize, 0.2, {
+    opacity: '0',
+    scaleY: 0.2,
+    transformOrigin: 'top',
+    ease: SteppedEase.config(1),
+    yoyo: true,
+    repeat: +3,
+  }, 'rtEye')
+  .to(eyesHappyClosed, 0.2, {
+    opacity: '1',
+    scaleY: 1,
+    transformOrigin: 'top',
+    ease: SteppedEase.config(1),
+    yoyo: true,
+    repeat: +3,
+  }, 'rtEye');
+
+  lookGoodTl.play(0);
 }
 
 
 function quiz() {
-
   // TODO: Animation for quiz section
   console.log('quiz');
+  TweenMax.set(svg, {
+    y: bottomYOff,
+    x: '820px',
+    rotation: 0,
+  });
+  TweenMax.set([mouthNoSmile, fedora, sunglasses], {
+    display: 'none',
+    opacity: '0',
+  });
+  TweenMax.set([mustache, eyesSmize], {
+    visibility: 'hidden',
+  });
+  TweenMax.set([mouthSlightSmile, wideEyes, bowtie], {
+    visibility: 'visible',
+  });
+  // TweenMax.set(eyesHappyClosed, {
+  //   scaleY: 0.2,
+  // });
 
+  const quizQOneTl = new TimelineMax({ paused: true });
+
+  quizQOneTl.to(svg, 0.5, {
+    y: '480px',
+    ease: Power2.easeInOut,
+  })
+  .add('rtEye', '+=.2')
+  .to(wideEyes, 0.1, {
+    scaleY: 0.1,
+    transformOrigin: 'center',
+    opacity: 0,
+    yoyo: true,
+    repeat: +1,
+    delay: 2,
+    ease: SteppedEase.config(1),
+  }, 'rtEye')
+  .to(eyesHappyClosed, 0.1, {
+    visibility: 'visible',
+    opacity: '1',
+    scaleY: 1,
+    yoyo: true,
+    repeat: +1,
+    delay: 2,
+    ease: SteppedEase.config(1),
+  }, 'rtEye');
+
+  quizQOneTl.play(0);
+}
+
+function quizAOneRight() {
+  const quizAOneHappyTl = new TimelineMax({ paused: true });
+
+  quizAOneHappyTl.to(bowtie, 0.1, {
+    rotation: 360,
+    transformOrigin: 'center',
+    repeat: +1,
+    ease: Power0.easeInOut,
+  });
+
+  quizAOneHappyTl.play(0);
+}
+
+function quizAOneWrong() {
+  const quizAOneSadTl = new TimelineMax({ paused: true });
+
+  quizAOneSadTl.to(bowtie, 0.1, {
+    rotation: 360,
+    transformOrigin: 'center',
+    repeat: +1,
+    ease: Power0.easeInOut,
+  })
+  .set(halfEyes, {
+    visibility: 'visible',
+  })
+  .to(wideEyes, 0.1, {
+    transformOrigin: 'top',
+    scaleY: 0.1,
+    opacity: 0,
+    ease: SteppedEase.config(1),
+  })
+  .to(mouthSlightSmile, 0.1, {
+    opacity: 0,
+    ease: SteppedEase.config(1),
+  })
+  .to(mouthNoSmile, 0.1, {
+    display: 'block',
+    opacity: 1,
+    ease: SteppedEase.config(1),
+  });
+
+  quizAOneSadTl.play(0);
+}
+
+function quizATwoRight() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizATwoWrong() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizAThreeRight() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizAThreeWrong() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizAFourRight() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizAFourWrong() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizAFiveRight() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizAFiveWrong() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizASixRight() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizASixWrong() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizASevenRight() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizASevenWrong() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizAEightRight() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
+}
+
+function quizAEightWrong() {
+  // TODO: Animation for quiz section
+  console.log('quizATwoRight');
 }
 
 
@@ -321,37 +313,92 @@ function results() {
 
 
 function selfie() {
+  TweenMax.set([eyesHappyClosed, mouthBigSmile], {
+    scaleY: 0.1,
+    opacity: '0',
+  });
 
-  // TODO: Animation for selfie section
-  console.log('selfie');
+  const snapSelfieTl = new TimelineMax({ paused: true });
 
+  snapSelfieTl.to(svg, 0.1, {
+    y: topYOff,
+    ease: Power2.easeInOut,
+  })
+  .set(svg, {
+    x: '690px',
+    y: bottomYOff,
+    rotation: 0,
+  })
+  .set([hair, glassesSquare], {
+    visibility: 'hidden',
+  })
+  .set(glasses, {
+    display: 'block',
+  })
+  .set([rightWhite, leftWhite, rightPupil, leftPupil], {
+    display: 'none',
+  })
+  .set(eyesSmize, {
+    visibility: 'visible',
+  })
+  .to(svg, 1, {
+    y: '500px',
+    ease: Power2.easeInOut,
+  })
+  .add('rtEye', '+=.2')
+  .to(eyesSmize, 0.4, {
+    opacity: '0',
+    scaleY: 0.2,
+    transformOrigin: '50% 50%',
+    yoyo: true,
+    repeat: +2,
+    ease:SteppedEase.config(1),
+  }, 'rtEye')
+  .to(eyesHappyClosed, 0.4, {
+    visibility: 'visible',
+    opacity: '1',
+    scaleY: 1,
+    yoyo: true,
+    repeat: +2,
+    ease: SteppedEase.config(1),
+  }, 'rtEye')
+  .to(mouthBigSmile, 0.4, {
+    visibility: 'visible',
+    opacity: '1',
+    scaleY: 1,
+    ease: SteppedEase.config(1),
+    yoyo: true,
+    repeat: +2,
+  }, 'rtEye');
+
+  snapSelfieTl.play(0);
 }
 
 
 function init() {
-
-  // TODO: Animation for initial section
-  console.log('init');
-
-
   TweenLite.set(svg, {
+    y: '30px',
     rotation: 90,
-    transformOrigin: 'center',
-    x: '-320px',
+  });
+
+  TweenMax.set(eyesClosed, {
+    scaleY: 0.1,
+    opacity: '0',
   });
 
   const introTl = new TimelineMax({ paused: true });
 
-  introTl.to(svg, 1, {
-    x: '-485px',
+  introTl.to(svg, 1.5, {
+    x: '460px',
     ease: Power2.easeInOut,
+    delay: 1,
   })
   .to(svg, 0.4, {
     x: leftXOff,
     ease: Power2.easeInOut,
     delay: 0.5,
   })
-  /* .to(svg, 0.01, {
+  .to(svg, 0.01, {
     rotation: 0,
     y: bottomYOff,
   })
@@ -359,16 +406,53 @@ function init() {
     display: 'none',
   })
   .to(svg, 0.01, {
-    x: '280px',
+    x: '920px',
   })
   .to(svg, 0.5, {
-    y: '480px',
+    y: '520px',
     ease: Power2.easeInOut,
-  }); */
+  })
+  .add('rtEye', '+=.2')
+  .to([rightWhite, rightPupil, leftWhite, leftPupil], 0.2, {
+    opacity: '0',
+    scaleY: 0.2,
+    yoyo: true,
+    repeat: +1,
+    ease: SteppedEase.config(1),
+  }, 'rtEye')
+  .to(eyesClosed, 0.2, {
+    visibility: 'visible',
+    opacity: '1',
+    scaleY: 1,
+    yoyo: true,
+    repeat: +1,
+    ease: SteppedEase.config(1),
+  }, 'rtEye')
+  .to(svg, 0.5, {
+    y: bottomYOff,
+    ease: Power2.easeInOut,
+    delay: 0.5,
+  })
+  .set(svg, {
+    x: '1120px',
+    y: topYOff,
+    rotation: 180,
+  })
+  .set(mouthGasp, {
+    visibility: 'hidden',
+  })
+  .set([mouthSlightSmile, hair, glassesSquare], {
+    visibility: 'visible',
+  })
+  .set(glasses, {
+    display: 'none',
+  })
+  .to(svg, 0.5, {
+    y: '220px',
+    ease: Power2.easeInOut,
+  });
 
   introTl.play(0);
-
-  // hat();
 }
 
 
@@ -376,6 +460,8 @@ function create(element) {
   svg = element;
 
   fedora = getElement('#fedora', svg);
+  hair = getElement('[data-hair]', svg);
+  bowtie = getElement('[data-bowtie]', svg);
 
   leftPupil = getElement('#eyes-concern_pupil-l', svg);
   leftWhite = getElement('#eyes-concern_white-l', svg);
@@ -383,7 +469,23 @@ function create(element) {
   rightPupil = getElement('#eyes-concern_pupil-r', svg);
   rightWhite = getElement('#eyes-concern_white-r', svg);
 
+  glasses = getElement('#glasses', svg);
   sunglasses = getElement('#glasses-sun', svg);
+  glassesSquare = getElement('[data-glasses-square]', svg);
+
+  eyesClosed = getElement('[data-eyes-closed]', svg);
+  eyesHappyClosed = getElement('[data-eyes-happy-closed]', svg);
+  eyesSmize = getElement('[data-eyes-smize]', svg);
+  wideEyes = getElement('[data-eyes-wide]', svg);
+  halfEyes = getElement('[data-eyes-half]', svg);
+  bigEyes = getElement('[data-eyes-big]', svg);
+
+  mouthGasp = getElement('#mouth-gasp', svg);
+  mouthSlightSmile = getElement('[data-mouth-slight-smile]', svg);
+  mouthBigSmile = getElement('[data-mouth-big-smile]', svg);
+  mouthNoSmile = getElement('[data-mouth-no-smile]', svg);
+
+  mustache = getElement('[data-mustache]', svg);
 
   init();
 }
@@ -395,6 +497,22 @@ export {
   complete,
   confirmation,
   quiz,
+  quizAOneRight,
+  quizAOneWrong,
+  quizATwoRight,
+  quizATwoWrong,
+  quizAThreeRight,
+  quizAThreeWrong,
+  quizAFourRight,
+  quizAFourWrong,
+  quizAFiveRight,
+  quizAFiveWrong,
+  quizASixRight,
+  quizASixWrong,
+  quizASevenRight,
+  quizASevenWrong,
+  quizAEightRight,
+  quizAEightWrong,
   results,
   selfie,
 };
