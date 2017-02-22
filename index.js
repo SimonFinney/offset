@@ -1,7 +1,6 @@
 // Server
 
 // TODO: Comments
-const bodyParser = require('body-parser');
 const compression = require('compression');
 const express = require('express');
 const minifyHtml = require('express-minify-html');
