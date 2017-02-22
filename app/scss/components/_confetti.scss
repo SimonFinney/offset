@@ -3,13 +3,15 @@
 $total-confetti: 50;
 
 .confetti {
+  @include z-index('confetti');
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  pointer-events: none;
 
-  [data-view-active] > & {
+  [data-view-active] + & {
 
     .confetti__item {
       animation-play-state: running;
