@@ -49,6 +49,7 @@ let svg;
 let theater;
 let titles;
 let views;
+let restartButton;
 
 const app = {
   animations: {
@@ -366,6 +367,11 @@ app.animations.complete = () => {
   debounce(app.functions.reset, 3000);
 };
 
+restartButton = getElement('.camera__img-restart');
+
+on(restartButton, 'click', () => {
+  app.functions.reset();
+});
 
 app.functions.anonymize = () => {
   theater.addActor('anonymizing',

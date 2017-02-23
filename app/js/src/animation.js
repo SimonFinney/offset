@@ -840,6 +840,7 @@ function introduction() {
       visibility: 'visible',
       opacity: '1',
       display: 'block',
+      scaleY: 1,
     });
 
   // TweenMax.set(mouthFrown, {
