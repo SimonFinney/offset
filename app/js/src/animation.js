@@ -80,6 +80,7 @@ function anonymizing() {
   })
   .set([mouthNoSmile, mustache], {
     visibility: 'visible',
+    opacity: '1',
   })
   .set([fedora, sunglasses], {
     display: 'block',
@@ -186,10 +187,12 @@ function quiz(question, value) {
   TweenMax.set([mouthNoSmile, fedora, sunglasses], {
     display: 'none',
     opacity: '0',
+    display: 'block',
   });
-  TweenMax.set([mustache, eyesSmize], {
-    visibility: 'hidden',
-  });
+  TweenMax.set([mustache, eyesSmize, eyesSmizeRPupil, eyesSmizeRWhite,
+    eyesSmizeLPupil, eyesSmizeLWhite], {
+      visibility: 'hidden',
+    });
   TweenMax.set([mouthSlightSmile, wideEyes, bowtie], {
     visibility: 'visible',
   });
@@ -343,11 +346,12 @@ function kill() {
 
 function quizATwoRight() {
   // TODO: Animation for quiz section
-  TweenMax.set([eyesSmize, mouthSmile], {
-    visibility: 'visible',
-    opacity: 1,
-    display: 'block',
-  });
+  TweenMax.set([eyesSmize, eyesSmizeRPupil, eyesSmizeRWhite,
+    eyesSmizeLPupil, eyesSmizeLWhite, mouthSmile], {
+      visibility: 'visible',
+      opacity: 1,
+      display: 'block',
+    });
   TweenMax.set([wideEyes, halfEyes, mouthNoSmile], {
     opacity: 0,
   });
@@ -425,9 +429,10 @@ function quizAThreeRight() {
     scaleY: 1,
     display: 'block',
   });
-  TweenMax.set([eyesSmize, bigEyes, mouthSmile, mouthNoSmile], {
-    opacity: 0,
-  });
+  TweenMax.set([eyesSmize, eyesSmizeRPupil, eyesSmizeRWhite,
+    eyesSmizeLPupil, eyesSmizeLWhite, bigEyes, mouthSmile, mouthNoSmile], {
+      opacity: 0,
+    });
 
   timeline = new TimelineMax({ paused: true });
 
@@ -449,9 +454,10 @@ function quizAThreeWrong() {
     scaleY: 1,
     display: 'block',
   });
-  TweenMax.set([eyesSmize, bigEyes, mouthSmile, mouthNoSmile], {
-    opacity: 0,
-  });
+  TweenMax.set([eyesSmize, eyesSmizeRPupil, eyesSmizeRWhite,
+    eyesSmizeLPupil, eyesSmizeLWhite, bigEyes, mouthSmile, mouthNoSmile], {
+      opacity: 0,
+    });
 
   timeline = new TimelineMax({ paused: true });
 
@@ -467,7 +473,7 @@ function quizAThreeWrong() {
 function quizAFourRight() {
   // TODO: Animation for quiz section
   console.log('quizAFourRight');
-  TweenMax.set([eyesSmize, mouthUpturnedSmile, eyesHappyClosed], {
+  TweenMax.set([eyesSmize, eyesSmizeLPupil, eyesSmizeLWhite, mouthUpturnedSmile, eyesHappyClosed], {
     visibility: 'visible',
     opacity: 1,
     scaleY: 1,
@@ -489,6 +495,7 @@ function quizAFourRight() {
   })
   .set([eyesSmizeRPupil, eyesSmizeRWhite], {
     opacity: 1,
+    visibility: 'visible',
     delay: 0.2,
   })
   .set([eyesHappyClosed, mouthUpturnedSmile], {
@@ -543,9 +550,10 @@ function quizAFiveRight() {
     scaleY: 1,
     display: 'block',
   });
-  TweenMax.set([halfEyes, eyesSmize, eyesHappyClosed, mouthSmile, mouthOpen, mouthUpturnedSmile], {
-    opacity: 0,
-  });
+  TweenMax.set([halfEyes, eyesSmize, eyesSmizeLPupil, eyesSmizeLWhite,
+    eyesHappyClosed, mouthSmile, mouthOpen, mouthUpturnedSmile], {
+      opacity: 0,
+    });
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(bowtie, 0.1, {
@@ -566,9 +574,10 @@ function quizAFiveWrong() {
     scaleY: 1,
     display: 'block',
   });
-  TweenMax.set([halfEyes, eyesSmize, eyesHappyClosed, mouthSmile, mouthOpen, mouthUpturnedSmile], {
-    opacity: 0,
-  });
+  TweenMax.set([halfEyes, eyesSmize, eyesSmizeLPupil, eyesSmizeLWhite,
+    eyesHappyClosed, mouthSmile, mouthOpen, mouthUpturnedSmile], {
+      opacity: 0,
+    });
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(bowtie, 0.1, {
@@ -583,12 +592,13 @@ function quizAFiveWrong() {
 function quizASixRight() {
   // TODO: Animation for quiz section
   console.log('quizASizeRight');
-  TweenMax.set([eyesSmize, eyesSmizeRPupil, eyesSmizeRWhite, mouthBigSmile], {
-    visibility: 'visible',
-    opacity: 1,
-    scaleY: 1,
-    display: 'block',
-  });
+  TweenMax.set([eyesSmize, eyesSmizeLPupil, eyesSmizeLWhite,
+    eyesSmizeRPupil, eyesSmizeRWhite, mouthBigSmile], {
+      visibility: 'visible',
+      opacity: 1,
+      scaleY: 1,
+      display: 'block',
+    });
   TweenMax.set([worriedEyes, mouthWide, wideEyes, mouthMediumSmile], {
     opacity: 0,
   });
@@ -635,9 +645,10 @@ function quizASevenRight() {
     scaleY: 1,
     display: 'block',
   });
-  TweenMax.set([cryingEyes, mouthFrown, eyesSmize], {
-    opacity: 0,
-  });
+  TweenMax.set([cryingEyes, mouthFrown, eyesSmize, eyesSmizeLPupil, eyesSmizeLWhite,
+    eyesSmizeRPupil, eyesSmizeRWhite], {
+      opacity: 0,
+    });
 
   timeline = new TimelineMax({ paused: true });
 
@@ -657,9 +668,10 @@ function quizASevenWrong() {
     scaleY: 1,
     display: 'block',
   });
-  TweenMax.set([cryingEyes, mouthBigSmile, eyesSmize], {
-    opacity: 0,
-  });
+  TweenMax.set([cryingEyes, mouthBigSmile, eyesSmize, eyesSmizeLPupil, eyesSmizeLWhite,
+    eyesSmizeRPupil, eyesSmizeRWhite], {
+      opacity: 0,
+    });
 
   timeline = new TimelineMax({ paused: true });
 
@@ -673,12 +685,13 @@ function quizASevenWrong() {
 }
 
 function quizAEightRight() {
-  TweenMax.set([eyesSmize, eyesSmizeRPupil, eyesSmizeRWhite, mouthBigSmile], {
-    visibility: 'visible',
-    opacity: 1,
-    scaleY: 1,
-    display: 'block',
-  });
+  TweenMax.set([eyesSmize, eyesSmizeLPupil, eyesSmizeLWhite,
+    eyesSmizeRPupil, eyesSmizeRWhite, mouthBigSmile], {
+      visibility: 'visible',
+      opacity: 1,
+      scaleY: 1,
+      display: 'block',
+    });
   TweenMax.set([mouthFrown, eyesHappyClosed, eyesHappyClosedL, eyesClosed], {
     opacity: 0,
   });
@@ -723,9 +736,11 @@ function results() {
     opacity: '1',
     display: 'block',
   });
-  TweenMax.set([cryingEyes, eyesHappyClosed, eyesClosed, eyesSmize, mouthFrown, mouthWide, worriedEyes], {
-    opacity: '0',
-  });
+  TweenMax.set([cryingEyes, eyesHappyClosed, eyesClosed,
+    eyesSmize, eyesSmizeLPupil, eyesSmizeLWhite, eyesSmizeRPupil,
+    eyesSmizeRWhite, mouthFrown, mouthWide, worriedEyes], {
+      opacity: '0',
+    });
   TweenMax.set(svg, {
     y: topYOff,
     x: '1270px',
@@ -748,16 +763,16 @@ function selfie() {
     scaleY: 0.1,
     opacity: '0',
   });
-  TweenMax.set([eyesSmizeRPupil, eyesSmizeRWhite, eyesHappyClosedL], {
-    opacity: '1',
-  });
+  // TweenMax.set([eyesSmizeRPupil, eyesSmizeRWhite, eyesHappyClosedL], {
+  //   opacity: '1',
+  // });
   TweenMax.set([fedora, sunglasses], {
     display: 'none',
   });
   TweenMax.set([mouthGasp, eyesClosed], {
     visibility: 'hidden',
   });
-  TweenMax.set([mouthSlightSmile], {
+  TweenMax.set([mouthSlightSmile, eyesSmizeRPupil, eyesSmizeRWhite, eyesSmizeLPupil, eyesSmizeLWhite], {
     visibility: 'visible',
   });
 
@@ -798,7 +813,7 @@ function selfie() {
     repeat: +2,
     ease:SteppedEase.config(1),
   }, 'rtEye')
-  .to(eyesHappyClosed, 0.4, {
+  .to([eyesHappyClosed, eyesHappyClosedL], 0.4, {
     visibility: 'visible',
     opacity: '1',
     scaleY: 1,
@@ -826,8 +841,9 @@ function introduction() {
     x: '-288px',
   });
 
-  TweenMax.set([eyesSmize, bowtie, bigEyes, eyesClosed, cryingEyes, halfEyes,
-    eyesHappyClosed, wideEyes, worriedEyes, glassesSquare,
+  TweenMax.set([eyesSmize, eyesSmizeRPupil, eyesSmizeRWhite, eyesSmizeLPupil, eyesSmizeLWhite,
+    bowtie, bigEyes, eyesClosed, cryingEyes, halfEyes,
+    eyesHappyClosed, eyesHappyClosedL, wideEyes, worriedEyes, glassesSquare,
     hair, mouthBigSmile, mouthFrown, mouthNoSmile, mouthOpen, mouthSlightSmile,
     mouthUpturnedSmile, mouthMediumSmile, mouthSmile, mouthWide, mustache, partyHat], {
       opacity: '1',
@@ -840,6 +856,7 @@ function introduction() {
       visibility: 'visible',
       opacity: '1',
       display: 'block',
+      scaleY: 1,
     });
 
   // TweenMax.set(mouthFrown, {
@@ -851,7 +868,7 @@ function introduction() {
     opacity: '0',
   });
 
-  timeline = new TimelineMax({ paused: true });
+  timeline = new TimelineMax({ repeatDelay: 2, onComplete: restart });
 
   timeline.to(svg, 1.5, {
     x: '460px',
@@ -914,9 +931,39 @@ function introduction() {
   .to(svg, 0.5, {
     y: '220px',
     ease: Power2.easeInOut,
+  })
+  .to(svg, 1, {
+    y: topYOff,
+    ease: Power2.easeInOut,
+    delay: 3,
   });
 
-  timeline.play(0);
+  // timeline.play(0);
+  function restart() {
+    TweenLite.set(svg, {
+      y: '30px',
+      rotation: 90,
+      x: '-288px',
+    });
+
+    TweenMax.set([eyesSmize, bowtie, bigEyes, eyesClosed, cryingEyes, halfEyes,
+      eyesHappyClosed, wideEyes, worriedEyes, glassesSquare,
+      hair, mouthBigSmile, mouthFrown, mouthNoSmile, mouthOpen, mouthSlightSmile,
+      mouthUpturnedSmile, mouthMediumSmile, mouthSmile, mouthWide, mustache, partyHat], {
+        opacity: '1',
+        visibility: 'hidden',
+        scaleY: 1,
+      });
+
+    TweenMax.set([fedora, sunglasses, glasses, rightWhite,
+      rightPupil, leftWhite, leftPupil, mouthGasp], {
+        visibility: 'visible',
+        opacity: '1',
+        display: 'block',
+      });
+
+    timeline.restart();
+  }
 }
 
 

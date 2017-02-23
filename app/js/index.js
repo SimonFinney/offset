@@ -49,6 +49,7 @@ let svg;
 let theater;
 let titles;
 let views;
+let restartButton;
 
 const app = {
   animations: {
@@ -374,6 +375,11 @@ app.animations.complete = () => {
   debounce(app.functions.reset, 3000);
 };
 
+restartButton = getElement('.camera__img-restart');
+
+on(restartButton, 'click', () => {
+  app.functions.reset();
+});
 
 app.functions.anonymize = () => {
   theater.addActor('anonymizing',
@@ -391,6 +397,8 @@ app.functions.anonymize = () => {
     300,
     '.'
   ).addScene(() => transition(cameraImg, context, img));
+
+  restartButton.setAttribute('style', 'opacity: 1; transition: .5s opacity ease 3s');
 };
 
 
@@ -443,6 +451,8 @@ app.functions.reset = () => {
     app.animations
       .introduction();
   }
+
+  restartButton.setAttribute('style', 'opacity: 0;');
 };
 
 

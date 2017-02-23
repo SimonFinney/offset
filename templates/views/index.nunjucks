@@ -28,6 +28,7 @@
 
   <section data-view data-view-animation="confirmation">
     <div class="camera__container">
+      <button class="camera__img-restart">restart</button>
       <canvas class="camera__img" width="1024" height="768"></canvas>
     </div>
     <section class="section" data-view data-view-centered>
