@@ -74,27 +74,6 @@ function activate(view) {
 }
 
 
-function loadSvg(callback) {
-  once(
-    character,
-    'load',
-    event => {
-      svg = getElement(
-        'svg',
-        event.target
-          .getSVGDocument()
-      );
-
-      create(svg);
-
-      if (callback) {
-        callback();
-      }
-    }
-  );
-}
-
-
 function toggleView() {
   const nextView = views[
     (views.indexOf(currentView) + 1)
@@ -114,13 +93,9 @@ function toggleView() {
 
     const subviews = getElements('[data-view]', currentView);
 
-    nextView.appendChild(character);
-
     if (animation) {
-      loadSvg(() => {
-        kill();
-        app.animations[animation]();
-      });
+      kill();
+      app.animations[animation]();
     }
 
     if (func) {
@@ -313,6 +288,20 @@ function init() {
     li = getElements('.section__li', main);
     titles = getElements('[data-title]', main);
 
+    on(
+      character,
+      'load',
+      event => {
+        svg = getElement(
+          'svg',
+          event.target
+            .getSVGDocument()
+        );
+
+        create(svg);
+      }
+    );
+
     app.functions.reset();
 
     context = cameraImg.getContext('2d');
@@ -433,7 +422,10 @@ app.functions.reset = () => {
       .addScene(`heading:${heading.textContent}`),
   animationDelay);
 
-  loadSvg();
+  if (svg) {
+    app.animations
+      .introduction();
+  }
 };
 
 

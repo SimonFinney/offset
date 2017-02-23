@@ -3,7 +3,7 @@
 $character-offset: 288px;
 
 .character {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: -$character-offset;
   z-index: -1;
