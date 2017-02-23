@@ -389,6 +389,8 @@ app.functions.anonymize = () => {
     300,
     '.'
   ).addScene(() => pixelate(cameraImg, context, img));
+
+  restartButton.setAttribute('style', 'opacity: 1; transition: .5s opacity ease 3s');
 };
 
 
