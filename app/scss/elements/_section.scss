@@ -49,18 +49,21 @@
 }
 
 .section__question-count {
-  padding: 2px 16px;
+  padding: 2px 8px;
   font-weight: bold;
+  letter-spacing: 2px;
   text-transform: uppercase;
   background-color: $question-count-background;
   transition-delay: .1s;
 }
 
 .section__question {
+  max-width: 464px;
   margin-top: 56px;
   margin-bottom: 112px;
   font-size: rem(28px);
   font-weight: bold;
+  line-height: 40px;
   transition-delay: .2s;
 }
 
@@ -107,7 +110,7 @@
 
 .section__ol {
   width: 100%;
-  max-width: 344px;
+  max-width: 392px;
   padding-left: 0;
   margin-right: auto;
   margin-bottom: 56px;
@@ -125,7 +128,7 @@
   @include sy-ease-out;
   display: flex;
   font-weight: bold;
-  letter-spacing: .2px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   opacity: 0;
 
@@ -142,6 +145,11 @@
     content: counter(ol) '.';
     counter-increment: ol;
   }
+}
+
+.li__title {
+  margin-right: 100px;
+  white-space: nowrap;
 }
 
 .li__answer {
