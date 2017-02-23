@@ -1,6 +1,7 @@
 // Confetti
 
 $total-confetti: 50;
+$confetti-dimensions: 16px;
 
 .confetti {
   @include z-index('confetti');
@@ -22,11 +23,10 @@ $total-confetti: 50;
 .confetti__item {
   @include z-index('confetti__item');
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: $confetti-dimensions;
+  height: $confetti-dimensions;
   opacity: 0;
   animation-duration: 2s;
-  animation-play-state: paused;
 
   @for $index from 1 through $total-confetti {
 
@@ -56,7 +56,7 @@ $total-confetti: 50;
     }
 
     from {
-      top: -16px;
+      top: -$confetti-dimensions;
       opacity: 1;
     }
 
