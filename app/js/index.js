@@ -150,11 +150,20 @@ function pixelate(canvas, ctx, image, size = app.data.total) {
   const computedSize = (size * 2);
   const width = (canvas.width / computedSize);
   const height = (canvas.height / computedSize);
+  ctx.globalAlpha = 0.0;
 
-  ctx.drawImage(image, 0, 0, width, height);
-  ctx.drawImage(canvas, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
+  function loop() {
+    ctx.globalAlpha += 0.01;
+    ctx.drawImage(image, 0, 0, width, height);
+    ctx.drawImage(canvas, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
+    grayscale(canvas, ctx);
 
-  grayscale(canvas, ctx);
+    if (ctx.globalAlpha <= 0.99) {
+      requestAnimationFrame(loop);
+    }
+  }
+
+  loop();
 }
 
 
