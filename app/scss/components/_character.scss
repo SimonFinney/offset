@@ -1,10 +1,11 @@
 // Character
 
 .character {
+  @include z-index('character');
   position: absolute;
   left: -288px;
-  z-index: -1;
   width: calc(100% + 288px);
+  pointer-events: none;
 }
 
 [data-bowtie],
