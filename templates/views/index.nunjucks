@@ -28,7 +28,7 @@
 
   <section data-view data-view-animation="confirmation">
     <div class="camera__container">
-      <canvas class="camera__img"></canvas>
+      <canvas class="camera__img" width="1024" height="768"></canvas>
     </div>
     <section class="section" data-view data-view-centered>
       <h2 class="section__h2--confirmation">Lookin&apos; good!</h2>

@@ -146,23 +146,28 @@ function grayscale(canvas, ctx) {
 }
 
 
-function pixelate(canvas, ctx, image, size = app.data.total) {
-  const computedSize = (size * 2);
+function pixelate(canvas, ctx, image, size) {
+  const computedSize = ((size * 5) + 1);
   const width = (canvas.width / computedSize);
   const height = (canvas.height / computedSize);
+
+  ctx.drawImage(image, 0, 0, width, height);
+  ctx.drawImage(canvas, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
+  grayscale(canvas, ctx);
+}
+
+
+function transition(canvas, ctx, image, size = app.data.total) {
   ctx.globalAlpha = 0.0;
 
   function loop() {
     ctx.globalAlpha += 0.01;
-    ctx.drawImage(image, 0, 0, width, height);
-    ctx.drawImage(canvas, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
-    grayscale(canvas, ctx);
+    pixelate(canvas, ctx, image, size);
 
     if (ctx.globalAlpha <= 0.99) {
       requestAnimationFrame(loop);
     }
   }
-
   loop();
 }
 
@@ -230,7 +235,10 @@ function load(canvas) {
   const ctx = canvas.getContext('2d');
   const image = new Image();
   run(canvas, ctx, image, canvas.getAttribute('data-src'));
-  debounce(() => pixelate(canvas, ctx, image, canvas.getAttribute('data-modifier')));
+
+  debounce(() => {
+    pixelate(canvas, ctx, image, canvas.getAttribute('data-modifier'));
+  });
 }
 
 
@@ -382,7 +390,7 @@ app.functions.anonymize = () => {
     '.',
     300,
     '.'
-  ).addScene(() => pixelate(cameraImg, context, img));
+  ).addScene(() => transition(cameraImg, context, img));
 };
 
 
