@@ -851,7 +851,7 @@ function introduction() {
     opacity: '0',
   });
 
-  timeline = new TimelineMax({ paused: true });
+  timeline = new TimelineMax({ repeatDelay: 2, onComplete: restart });
 
   timeline.to(svg, 1.5, {
     x: '460px',
@@ -914,9 +914,39 @@ function introduction() {
   .to(svg, 0.5, {
     y: '220px',
     ease: Power2.easeInOut,
+  })
+  .to(svg, 1, {
+    y: topYOff,
+    ease: Power2.easeInOut,
+    delay: 3,
   });
 
-  timeline.play(0);
+  // timeline.play(0);
+  function restart() {
+    TweenLite.set(svg, {
+      y: '30px',
+      rotation: 90,
+      x: '-288px',
+    });
+
+    TweenMax.set([eyesSmize, bowtie, bigEyes, eyesClosed, cryingEyes, halfEyes,
+      eyesHappyClosed, wideEyes, worriedEyes, glassesSquare,
+      hair, mouthBigSmile, mouthFrown, mouthNoSmile, mouthOpen, mouthSlightSmile,
+      mouthUpturnedSmile, mouthMediumSmile, mouthSmile, mouthWide, mustache, partyHat], {
+        opacity: '1',
+        visibility: 'hidden',
+        scaleY: 1,
+      });
+
+    TweenMax.set([fedora, sunglasses, glasses, rightWhite,
+      rightPupil, leftWhite, leftPupil, mouthGasp], {
+        visibility: 'visible',
+        opacity: '1',
+        display: 'block',
+      });
+
+    timeline.restart();
+  }
 }
 
 
