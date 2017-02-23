@@ -451,6 +451,8 @@ app.functions.reset = () => {
     app.animations
       .introduction();
   }
+
+  restartButton.setAttribute('style', 'opacity: 0;');
 };
 
 
