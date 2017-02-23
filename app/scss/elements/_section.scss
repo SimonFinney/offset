@@ -1,7 +1,7 @@
 // Section
 
 .section {
-  width: 50%;
+  width: 60%;
   height: 100%;
   padding: 96px 64px;
   box-sizing: border-box;
@@ -82,11 +82,13 @@
 }
 
 .section__title,
-.section__title--small {
+.section__title--small,
+.section__title--conclusion {
   font-weight: bold;
 }
 
-.section__title {
+.section__title,
+.section__title--conclusion {
   margin-top: 192px;
   font-size: rem(72px);
   line-height: rem(88px);

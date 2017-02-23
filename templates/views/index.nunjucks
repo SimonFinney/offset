@@ -8,13 +8,12 @@
 
 {%- block content -%}
 
-  <object class="character" data="/images/character.svg" type="image/svg+xml" data-character></object>
-
   <section class="view--introduction" data-view>
     <button class="button--touch" data-view-toggle>
       <h1 class="button--touch__heading">See How Much You&apos;re <span id="heading" class="button--touch__heading__explode">Exposing</span></h1>
       <span class="button--touch__instructions">Touch anywhere to begin</span>
     </button>
+    <object class="character" data="/images/character.svg" type="image/svg+xml" data-character></object>
   </section>
 
   <section data-view data-view-animation="selfie" data-view-centered>
@@ -27,7 +26,9 @@
   </section>
 
   <section data-view data-view-animation="confirmation">
-    <canvas class="camera__img"></canvas>
+    <div class="camera__container">
+      <canvas class="camera__img"></canvas>
+    </div>
     <section class="section" data-view data-view-centered>
       <h2 class="section__h2--confirmation">Lookin&apos; good!</h2>
       <button class="camera__button--confirm" data-view-toggle>Use photo</button>

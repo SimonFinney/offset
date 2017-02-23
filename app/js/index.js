@@ -36,6 +36,7 @@ let cameraForm;
 let cameraImg;
 let cameraInput;
 let cameraInputHidden;
+let character;
 let context;
 let currentView;
 let heading;
@@ -73,6 +74,27 @@ function activate(view) {
 }
 
 
+function loadSvg(callback) {
+  once(
+    character,
+    'load',
+    event => {
+      svg = getElement(
+        'svg',
+        event.target
+          .getSVGDocument()
+      );
+
+      create(svg);
+
+      if (callback) {
+        callback();
+      }
+    }
+  );
+}
+
+
 function toggleView() {
   const nextView = views[
     (views.indexOf(currentView) + 1)
@@ -92,9 +114,13 @@ function toggleView() {
 
     const subviews = getElements('[data-view]', currentView);
 
+    nextView.appendChild(character);
+
     if (animation) {
-      kill();
-      app.animations[animation]();
+      loadSvg(() => {
+        kill();
+        app.animations[animation]();
+      });
     }
 
     if (func) {
@@ -281,24 +307,11 @@ function init() {
     cameraImg = getElement('.camera__img', main);
     cameraInput = getElement('.camera__input', main);
     cameraInputHidden = getElement('.camera__input--hidden', main);
+    character = getElement('[data-character]', main);
     heading = getElement('.button--touch__heading__explode', main);
     headingAnonymizing = getElement('.section__heading--anonymizing', main);
     li = getElements('.section__li', main);
     titles = getElements('[data-title]', main);
-
-    on(
-      getElement('[data-character]', main),
-      'load',
-      event => {
-        svg = getElement(
-          'svg',
-          event.target
-            .getSVGDocument()
-        );
-
-        create(svg);
-      }
-    );
 
     app.functions.reset();
 
@@ -420,10 +433,7 @@ app.functions.reset = () => {
       .addScene(`heading:${heading.textContent}`),
   animationDelay);
 
-  if (svg) {
-    app.animations
-      .introduction();
-  }
+  loadSvg();
 };
 
 

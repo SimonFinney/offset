@@ -12,12 +12,20 @@
   text-align: center;
 }
 
-.camera__img {
+.camera__container {
   @include z-index('camera__img');
   position: absolute;
   left: 0;
-  width: 50%;
+  width: 40%;
   height: 100%;
+  overflow: hidden;
+}
+
+.camera__img {
+  position: absolute;
+  height: 100%;
+  max-width: 512px;
+  transform: translate3d(-10%, 0, 0);
 }
 
 .camera__button,
