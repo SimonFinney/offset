@@ -1,10 +1,13 @@
 // Character
 
+$character-offset: 288px;
+
 .character {
-  @include z-index('character');
   position: absolute;
-  left: -288px;
-  width: calc(100% + 288px);
+  top: 0;
+  left: -$character-offset;
+  z-index: -1;
+  width: calc(100% + #{$character-offset});
   pointer-events: none;
 }
 
