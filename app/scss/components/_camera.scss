@@ -23,7 +23,7 @@
 
 .camera__img {
   position: absolute;
-  transform: translate3d(-25%, 0, 0);
+  transform: translate3d(-25%, 0, 0) rotate(180deg);
 }
 
 .camera__img-restart {

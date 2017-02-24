@@ -353,7 +353,14 @@ function init() {
 
     each(
       getElements('[data-view-toggle]', main),
-      element => on(element, 'click', toggleView)
+      element => on(element, 'click', () => {
+        if (currentView === views[10]) {
+          console.log('This is number 7');
+          setTimeout(toggleView, 3000);
+        } else {
+          toggleView();
+        }
+      })
     );
 
     each(

@@ -44,6 +44,7 @@ $z-index: (
   width: 100%;
   height: 100%;
   opacity: 0;
+  transition-duration: .5s;
   transform: translate3d(-50%, -50%, 0);
   box-sizing: border-box;
 
@@ -63,6 +64,7 @@ $z-index: (
   }
 
   &[data-view-previous] {
+    transition: .4s linear 0s all;
     transform: translate3d(-150%, -50%, 0);
   }
 
@@ -70,11 +72,14 @@ $z-index: (
     left: 70%;
 
     &[data-view-next] {
+      transition-duration: .1s;
       transform: translate3d(-50%, 50%, 0);
     }
 
     &[data-view-previous] {
-      transform: translate3d(-50%, -150%, 0);
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0);
+      transition-duration: .1s;
     }
   }
 }

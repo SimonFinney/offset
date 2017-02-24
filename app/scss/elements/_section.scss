@@ -40,7 +40,7 @@
 .section__button--small {
   @include sy-ease-out;
   opacity: 0;
-  transform: translate3d(0, 350%, 0);
+  transform: translate3d(0, 10%, 0);
 
   [data-view-active] > & {
     opacity: 1;
@@ -54,7 +54,7 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   background-color: $question-count-background;
-  transition-delay: .1s;
+  transition-delay: 1.4s;
 }
 
 .section__question {
@@ -64,7 +64,7 @@
   font-size: rem(28px);
   font-weight: bold;
   line-height: 40px;
-  transition-delay: .2s;
+  transition-delay: 1.5s;
 }
 
 .section__button--small {
@@ -74,7 +74,7 @@
   padding-bottom: 16px;
   margin-right: 24px;
   font-size: rem(20px);
-  transition-delay: .3s;
+  transition-delay: 1.5s;
 
   &:last-of-type {
     margin-right: 0;
@@ -103,6 +103,7 @@
   margin-bottom: 32px;
   transform: scale3d(1.4, 1.4, 1.4) translate3d(0, 75%, 0);
   transition-delay: 3s;
+  transition-duration: .8s;
   transform-origin: top left;
 
   [data-view-active] > & {
