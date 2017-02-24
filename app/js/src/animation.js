@@ -151,7 +151,7 @@ function confirmation() {
     y: '240px',
     ease: Power2.easeInOut,
   })
-  .to(eyesSmize, 2, {
+  .to(eyesSmize, 0.2, {
     opacity: 0,
     scaleY: 0.2,
     transformOrigin: 'top',
@@ -159,7 +159,7 @@ function confirmation() {
     yoyo: true,
     repeat: +1,
   }, 'rtEye')
-  .to(eyesHappyClosed, 2, {
+  .to(eyesHappyClosed, 0.2, {
     opacity: 1,
     scaleY: 1,
     transformOrigin: 'top',
