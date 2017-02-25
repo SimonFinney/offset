@@ -54,10 +54,16 @@
         <span class="section__question-count">Question {{ loop.index }} of {{ content.attributes.questions | length }}</span>
         <p class="section__question">{{ question.description }}</p>
 
+
         {%- for answer in question.answers -%}
 
-          <button class="section__button--small" value="{{ ((answer | lower) == (question.correct_answer | lower)) }}" data-animation-toggle data-view-toggle>{{ answer }}</button>
+          <button class="section__button--small" value="{{ ((answer | lower) == (question.correct_answer | lower)) }}"  data-view-toggle data-animation-toggle>{{ answer }}</button>
         {%- endfor -%}
+      </section>
+
+      <section class="section" data-view>
+        <p class="section__feedback">{{ question.feedback }}</p>
+        <button class="section__button--small" data-animation-toggle data-view-toggle>Next</button>
       </section>
     {%- endfor -%}
 

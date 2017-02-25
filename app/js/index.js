@@ -94,6 +94,8 @@ function toggleView() {
 
     const subviews = getElements('[data-view]', currentView);
 
+    // const feedbackView = currentView.getAttribute('data-view-feedback');
+
     if (animation) {
       kill();
       app.animations[animation]();
@@ -113,6 +115,15 @@ function toggleView() {
       currentView = views[0];
       activate(currentView);
     }
+
+    // if (currentView === feedbackViews) {
+    //   views = feedbackViews;
+
+    //   currentView = views[0];
+    //   activate(currentView);
+
+    //   console.log('This is the feedback view');
+    // }
   });
 }
 
@@ -354,7 +365,7 @@ function init() {
     each(
       getElements('[data-view-toggle]', main),
       element => on(element, 'click', () => {
-        if (currentView === views[10]) {
+        if (currentView === views[16]) {
           console.log('This is number 7');
           setTimeout(toggleView, 3000);
         } else {

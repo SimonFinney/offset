@@ -37,7 +37,9 @@
 
 .section__question-count,
 .section__question,
-.section__button--small {
+.section__button--small,
+.section__feedback,
+.section__feedback--button {
   @include sy-ease-out;
   opacity: 0;
   transform: translate3d(0, 10%, 0);
@@ -54,7 +56,7 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   background-color: $question-count-background;
-  transition-delay: 1.4s;
+  transition-delay: .3s;
 }
 
 .section__question {
@@ -64,17 +66,39 @@
   font-size: rem(28px);
   font-weight: bold;
   line-height: 40px;
-  transition-delay: 1.5s;
 }
 
-.section__button--small {
+.section__question {
+  transition-delay: .4s;
+}
+
+.section__feedback {
+  position: absolute;
+  top: 60%;
+  right: 56px;
+  width: 50%;
+  font-size: rem(28px);
+  font-weight: bold;
+  line-height: 40px;
+  transition-delay: 1s;
+}
+
+.section__feedback--button {
+  transition-delay: 2s;
+}
+
+.section__button--small,
+.section__feedback--button {
   @extend %button--primary;
   max-width: 152px;
   padding-top: 16px;
   padding-bottom: 16px;
   margin-right: 24px;
   font-size: rem(20px);
-  transition-delay: 1.5s;
+}
+
+.section__button--small {
+  transition-delay: .5s;
 
   &:last-of-type {
     margin-right: 0;
