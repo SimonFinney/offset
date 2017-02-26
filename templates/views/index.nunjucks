@@ -61,9 +61,9 @@
         {%- endfor -%}
       </section>
 
-      <section class="section" data-view>
+      <section class="section" data-view data-view-feedback>
         <p class="section__feedback">{{ question.feedback }}</p>
-        <button class="section__button--small" data-animation-toggle data-view-toggle>Next</button>
+        <!-- <button class="section__button--small" data-animation-toggle data-view-toggle>Next</button> -->
       </section>
     {%- endfor -%}
 

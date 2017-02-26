@@ -116,14 +116,10 @@ function toggleView() {
       activate(currentView);
     }
 
-    // if (currentView === feedbackViews) {
-    //   views = feedbackViews;
-
-    //   currentView = views[0];
-    //   activate(currentView);
-
-    //   console.log('This is the feedback view');
-    // }
+    if (currentView.hasAttribute('data-view-feedback')) {
+      // console.log('This is the feedback view');
+      setTimeout(toggleView, 3000);
+    }
   });
 }
 
@@ -366,13 +362,26 @@ function init() {
       getElements('[data-view-toggle]', main),
       element => on(element, 'click', () => {
         if (currentView === views[16]) {
-          console.log('This is number 7');
+          console.log('This is number 16');
           setTimeout(toggleView, 3000);
         } else {
           toggleView();
         }
       })
     );
+
+    // if (currentView.hasAttribute('data-view-feedback')) {
+    //   // setTimeout(toggleView, 3000);
+    //   // toggleView();
+    //   console.log('It has the attribute!');
+    // }
+
+    // each(
+    //   getElements('.section__feedback'),
+    //   sectionFeedback => on(sectionFeedback, 'click', () => {
+    //     setTimeout(toggleView, 3000);
+    //   })
+    // );
 
     each(
       getElements('.section__button--small'),
