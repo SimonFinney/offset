@@ -210,7 +210,7 @@ function quiz(question, value) {
     opacity: 0,
     yoyo: true,
     repeat: +1,
-    delay: .5,
+    delay: 0.5,
     ease: SteppedEase.config(1),
   }, 'rtEye')
   .to([eyesHappyClosed, eyesHappyClosedL], 0.1, {
@@ -225,7 +225,7 @@ function quiz(question, value) {
   .to(svg, 0.5, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 0.5,
   });
 
   timeline.play(0);
@@ -273,6 +273,9 @@ function quizAOneRight() {
     // opacity: 0,
     // scaleY: 0.2,
   });
+  TweenMax.set(svg, {
+    x: '720px',
+  });
   TweenMax.set(mouthSlightSmile, {
     opacity: 0,
   });
@@ -305,7 +308,7 @@ function quizAOneRight() {
   .to(svg, 0.5, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4,
   });
 
   timeline.play(0);
@@ -317,6 +320,9 @@ function quizAOneWrong() {
     opacity: 1,
     display: 'block',
     // delay: 0.5,
+  });
+  TweenMax.set(svg, {
+    x: '720px',
   });
   TweenMax.set([wideEyes, mouthSlightSmile], {
     opacity: 0,
@@ -339,7 +345,7 @@ function quizAOneWrong() {
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4.5,
   });
   // .set(halfEyes, {
   //   visibility: 'visible',
@@ -405,7 +411,7 @@ function quizATwoRight() {
   .to(svg, 0.5, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4,
   });
   // .set(eyesSmize, {
   //   visibility: 'visible',
@@ -450,7 +456,7 @@ function quizATwoWrong() {
   .to(svg, 1, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4,
   });
   // .to(bigEyes, 0.1, {
   //   transformOrigin: 'top',
@@ -480,7 +486,7 @@ function quizATwoWrong() {
 function quizAThreeRight() {
   // TODO: Animation for quiz section
   console.log('quizAThreeRight');
-  TweenMax.set([wideEyes, mouthGasp], {
+  TweenMax.set([wideEyes, mouthBigSmile], {
     visibility: 'visible',
     opacity: 1,
     scaleY: 1,
@@ -506,7 +512,7 @@ function quizAThreeRight() {
   .to(svg, 0.5, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4.5,
   });
 
   timeline.play(0);
@@ -541,7 +547,7 @@ function quizAThreeWrong() {
   .to(svg, 1, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4,
   });
 
   timeline.play(0);
@@ -556,7 +562,7 @@ function quizAFourRight() {
     scaleY: 1,
     display: 'block',
   });
-  TweenMax.set([eyesSmizeRPupil, eyesSmizeRWhite, eyesHappyClosedL], {
+  TweenMax.set([eyesSmizeRPupil, eyesSmizeRWhite, eyesHappyClosedL, mouthBigSmile], {
     opacity: 0,
   });
   TweenMax.set([leftPupil, leftWhite, rightPupil, rightWhite, mouthGasp, bigEyes, wideEyes], {
@@ -591,7 +597,7 @@ function quizAFourRight() {
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4,
   });
   // .to(eyesHappyClosed, 0.1, {
   //   opacity: 1,
@@ -613,7 +619,7 @@ function quizAFourWrong() {
     scaleY: 1,
     display: 'block',
   });
-  TweenMax.set([leftPupil, leftWhite, rightPupil, rightWhite, mouthGasp, bigEyes, wideEyes], {
+  TweenMax.set([leftPupil, leftWhite, rightPupil, rightWhite, mouthGasp, bigEyes, wideEyes, mouthBigSmile], {
     opacity: 0,
   });
 
@@ -632,7 +638,7 @@ function quizAFourWrong() {
   .to(svg, 1, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4,
   });
 
   timeline.play(0);
@@ -666,7 +672,7 @@ function quizAFiveRight() {
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4,
   });
 
   timeline.play(0);
@@ -700,7 +706,7 @@ function quizAFiveWrong() {
   .to(svg, 1, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4,
   });
 
   timeline.play(0);
@@ -735,7 +741,7 @@ function quizASixRight() {
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4.5,
   });
 
   timeline.play(0);
@@ -771,7 +777,7 @@ function quizASixWrong() {
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4,
   });
 
   timeline.play(0);
@@ -804,7 +810,7 @@ function quizASevenRight() {
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4.5,
   });
 
   timeline.play(0);
@@ -837,7 +843,7 @@ function quizASevenWrong() {
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4,
   });
 
   timeline.play(0);
@@ -869,7 +875,7 @@ function quizAEightRight() {
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4.4,
   });
 
   timeline.play(0);
@@ -901,7 +907,7 @@ function quizAEightWrong() {
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 1,
+    delay: 4,
   });
 
   timeline.play(0);

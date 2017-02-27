@@ -118,7 +118,7 @@ function toggleView() {
 
     if (currentView.hasAttribute('data-view-feedback')) {
       // console.log('This is the feedback view');
-      setTimeout(toggleView, 3000);
+      setTimeout(toggleView, 5000);
     }
   });
 }
