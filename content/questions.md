@@ -1,17 +1,17 @@
 ---
 personas:
-  - title: "Um...This is awkward."
+  - title: "This is awkward. You're, like, totally exposed."
     criteria:
       - 0
       - 1
       - 2
 
-  - title: "You're done! But you're exposing quite a bit."
+  - title: "But you're exposing quite a bit."
     criteria:
       - 3
       - 4
 
-  - title: "Nicely done! With just a few changes, your data will be even more private."
+  - title: "Nice! With just a few changes, your data will be even more private."
     criteria:
       - 5
       - 6
@@ -86,8 +86,8 @@ questions:
       - 'No'
     correct_answer: 'No'
 
-  - title: Automatic Updates Enabled?
-    description: 'Do you have automatic updates enabled for your software and operating system?'
+  - title: Keep Software Updated?
+    description: 'Do you keep your software and operating systems current with the latest updates?'
     feedback: |
       Cybercriminals love it when you don’t install updates when prompted, and they take full advantage of it.
     answers:

@@ -119,17 +119,24 @@
 
 .section__title,
 .section__title--conclusion {
-  margin-top: 192px;
   font-size: rem(72px);
   line-height: rem(88px);
   text-align: left;
 }
 
+.section__title {
+  margin-top: 192px;
+}
+
+.section__title--conclusion {
+  margin-top: 146px;
+}
+
 .section__title--small {
   @include font-size('24');
   @include sy-ease-out;
-  max-width: 350px;
-  margin-top: 0;
+  max-width: 280px;
+  margin-top: 8px;
   margin-right: auto;
   margin-bottom: 32px;
   line-height: 1.5;

@@ -69,6 +69,7 @@
     {%- endfor -%}
 
     <section class="section" data-view data-view-animation="results" data-view-centered data-view-results>
+      <span class="section__title--small" style="width: 100%; margin-bottom: -8px;">You're done!</span>
       <h2 class="section__title--small" data-title>You're a n00b</h2>
 
       <ol class="section__ol">
@@ -99,6 +100,7 @@
 
     <section class="section" data-view data-view-animation="complete">
       <h2 class="section__title--conclusion">Thanks for Playing</h2>
+      <p class="section__question">Be careful out there.</p>
     </section>
   </section>
 

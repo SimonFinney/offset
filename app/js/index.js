@@ -130,13 +130,6 @@ function toggleView() {
     if (currentView.hasAttribute('data-view-results')) {
       show();
     }
-
-    // if (currentView.hasAttribute('data-view-toggle')) {
-    //   each(
-    //     getElements('[data-animation-toggle]', main),
-    //     element => on(element, 'click', show)
-    //   );
-    // }
   });
 }
 
@@ -414,7 +407,7 @@ function init() {
 
 app.animations.complete = () => {
   complete();
-  debounce(app.functions.reset, 3000);
+  debounce(app.functions.reset, 5000);
 };
 
 

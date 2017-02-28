@@ -283,7 +283,7 @@ function quizAOneRight() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.4, {
-    y: '490px',
+    y: '480px',
     opacity: 1,
     ease: Circ.easeInOut,
   })
@@ -443,19 +443,14 @@ function quizATwoRight() {
 }
 
 function quizATwoWrong() {
-  // TODO: Animation for quiz section
-  console.log('quizATwoWrong');
-
   TweenMax.set([bigEyes, mouthNoSmile], {
     visibility: 'visible',
     opacity: 1,
     scaleY: 1,
     display: 'block',
-    // delay: 0.5,
   });
   TweenMax.set([wideEyes, halfEyes, mouthSmile], {
     opacity: 0,
-    // delay: 0.5,
   });
 
   timeline = new TimelineMax({ paused: true });
@@ -464,12 +459,6 @@ function quizATwoWrong() {
     y: '480px',
     ease: Circ.easeInOut,
   })
-  // .to(bowtie, 0.1, {
-  //   rotation: 0,
-  //   transformOrigin: 'center',
-  //   ease: Power0.easeInOut,
-  //   delay: 0.5,
-  // })
   .to(svg, 1, {
     y: bottomYOff,
     ease: Power2.easeInOut,
@@ -520,12 +509,6 @@ function quizAThreeRight() {
     y: '480px',
     ease: Circ.easeInOut,
   })
-  // .to(bowtie, 0.1, {
-  //   rotation: 360,
-  //   transformOrigin: 'center',
-  //   ease: Power0.easeInOut,
-  //   delay: 0.4,
-  // })
   .to(svg, 0.5, {
     y: bottomYOff,
     ease: Power2.easeInOut,
@@ -536,8 +519,6 @@ function quizAThreeRight() {
 }
 
 function quizAThreeWrong() {
-  // TODO: Animation for quiz section
-  console.log('quizAThreeWrong');
   TweenMax.set([leftPupil, leftWhite, rightPupil, rightWhite, mouthGasp], {
     visibility: 'visible',
     opacity: 1,
@@ -555,12 +536,6 @@ function quizAThreeWrong() {
     y: '480px',
     ease: Circ.easeInOut,
   })
-  // .to(bowtie, 0.1, {
-  //   rotation: 360,
-  //   transformOrigin: 'center',
-  //   ease: Power0.easeInOut,
-  //   delay: 0.5,
-  // })
   .to(svg, 1, {
     y: bottomYOff,
     ease: Power2.easeInOut,
@@ -571,8 +546,6 @@ function quizAThreeWrong() {
 }
 
 function quizAFourRight() {
-  // TODO: Animation for quiz section
-  console.log('quizAFourRight');
   TweenMax.set([eyesSmize, eyesSmizeLPupil, eyesSmizeLWhite, mouthUpturnedSmile, eyesHappyClosed], {
     visibility: 'visible',
     opacity: 1,
@@ -628,17 +601,16 @@ function quizAFourRight() {
 }
 
 function quizAFourWrong() {
-  // TODO: Animation for quiz section
-  console.log('quizAFourWrong');
   TweenMax.set([halfEyes, mouthOpen], {
     visibility: 'visible',
     opacity: 1,
     scaleY: 1,
     display: 'block',
   });
-  TweenMax.set([leftPupil, leftWhite, rightPupil, rightWhite, mouthGasp, bigEyes, wideEyes, mouthBigSmile], {
-    opacity: 0,
-  });
+  TweenMax.set([leftPupil, leftWhite, rightPupil, rightWhite,
+    mouthGasp, bigEyes, wideEyes, mouthBigSmile], {
+      opacity: 0,
+    });
 
   timeline = new TimelineMax({ paused: true });
 
@@ -646,12 +618,6 @@ function quizAFourWrong() {
     y: '480px',
     ease: Circ.easeInOut,
   })
-  // .to(bowtie, 0.1, {
-  //   rotation: 0,
-  //   transformOrigin: 'center',
-  //   ease: Power0.easeInOut,
-  //   delay: 0.5,
-  // })
   .to(svg, 1, {
     y: bottomYOff,
     ease: Power2.easeInOut,
@@ -662,8 +628,6 @@ function quizAFourWrong() {
 }
 
 function quizAFiveRight() {
-  // TODO: Animation for quiz section
-  console.log('quizAFiveRight');
   TweenMax.set([wideEyes, mouthMediumSmile], {
     visibility: 'visible',
     opacity: 1,
@@ -677,7 +641,7 @@ function quizAFiveRight() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.4, {
-    y: '480px',
+    y: '476px',
     ease: Circ.easeInOut,
   })
   .to(bowtie, 0.1, {
@@ -696,8 +660,6 @@ function quizAFiveRight() {
 }
 
 function quizAFiveWrong() {
-  // TODO: Animation for quiz section
-  console.log('quizAFiveWrong');
   TweenMax.set([worriedEyes, mouthWide], {
     visibility: 'visible',
     opacity: 1,
@@ -714,12 +676,6 @@ function quizAFiveWrong() {
     y: '480px',
     ease: Circ.easeInOut,
   })
-  // .to(bowtie, 0.1, {
-  //   rotation: 360,
-  //   transformOrigin: 'center',
-  //   ease: Power0.easeInOut,
-  //   delay: 0.5,
-  // })
   .to(svg, 1, {
     y: bottomYOff,
     ease: Power2.easeInOut,
@@ -730,8 +686,6 @@ function quizAFiveWrong() {
 }
 
 function quizASixRight() {
-  // TODO: Animation for quiz section
-  console.log('quizASizeRight');
   TweenMax.set([eyesSmize, eyesSmizeLPupil, eyesSmizeLWhite,
     eyesSmizeRPupil, eyesSmizeRWhite, mouthBigSmile], {
       visibility: 'visible',
@@ -749,12 +703,6 @@ function quizASixRight() {
     y: '480px',
     ease: Circ.easeInOut,
   })
-  // .to(bowtie, 0.1, {
-  //   rotation: 0,
-  //   transformOrigin: 'center',
-  //   ease: Power0.easeInOut,
-  //   delay: 0.5,
-  // })
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
@@ -765,18 +713,14 @@ function quizASixRight() {
 }
 
 function quizASixWrong() {
-  // TODO: Animation for quiz section
-  console.log('quizASizWrong');
   TweenMax.set([cryingEyes, mouthFrown], {
     visibility: 'visible',
     opacity: 1,
     scaleY: 1,
     display: 'block',
-    // delay: 0.5,
   });
   TweenMax.set([worriedEyes, mouthWide, wideEyes, mouthMediumSmile], {
     opacity: 0,
-    // delay: 0.5,
   });
 
   timeline = new TimelineMax({ paused: true });
@@ -785,12 +729,6 @@ function quizASixWrong() {
     y: '480px',
     ease: Circ.easeInOut,
   })
-  // .to(bowtie, 0.1, {
-  //   rotation: 0,
-  //   transformOrigin: 'center',
-  //   ease: Power0.easeInOut,
-  //   delay: 0.5,
-  // })
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
@@ -851,12 +789,6 @@ function quizASevenWrong() {
     y: '480px',
     ease: Circ.easeInOut,
   })
-  // .to(bowtie, 0.1, {
-  //   rotation: 360,
-  //   transformOrigin: 'center',
-  //   ease: Power0.easeInOut,
-  //   delay: 0.5,
-  // })
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
@@ -915,12 +847,6 @@ function quizAEightWrong() {
     y: '480px',
     ease: Circ.easeInOut,
   })
-  // .to(bowtie, 0.1, {
-  //   rotation: 360,
-  //   transformOrigin: 'center',
-  //   ease: Power0.easeInOut,
-  //   delay: 0.5,
-  // })
   .to(svg, 0.7, {
     y: bottomYOff,
     ease: Power2.easeInOut,
@@ -974,9 +900,10 @@ function selfie() {
   TweenMax.set([mouthGasp, eyesClosed], {
     visibility: 'hidden',
   });
-  TweenMax.set([mouthSlightSmile, eyesSmizeRPupil, eyesSmizeRWhite, eyesSmizeLPupil, eyesSmizeLWhite], {
-    visibility: 'visible',
-  });
+  TweenMax.set([mouthSlightSmile, eyesSmizeRPupil, eyesSmizeRWhite,
+    eyesSmizeLPupil, eyesSmizeLWhite], {
+      visibility: 'visible',
+    });
 
   timeline = new TimelineMax({ paused: true });
 
