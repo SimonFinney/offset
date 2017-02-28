@@ -33,9 +33,9 @@ questions:
     correct_answer: 'No'
 
   - title: Check Suspicious Email Links?
-    description: 'Do you check email links from unknown senders before clicking on them?'
+    description: 'Before clicking, do you check email links from unknown senders?'
     feedback: |
-      Be cautious clicking links even from friends if it's an unexpected email or a chain letter.
+      Be cautious clicking links or opening attachments, even from friends if it's an unexpected email or a chain letter. When in doubt, delete it.
     answers:
       - 'Yes'
       - 'No'
