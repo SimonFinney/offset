@@ -284,6 +284,7 @@ function quizAOneRight() {
 
   timeline.to(svg, 0.4, {
     y: '490px',
+    opacity: 1,
     ease: Circ.easeInOut,
   })
   .to(bowtie, 0.1, {
@@ -333,6 +334,7 @@ function quizAOneWrong() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.9, {
+    opacity: 1,
     y: '480px',
     ease: Circ.easeInOut,
   })
@@ -377,6 +379,22 @@ function kill() {
     rotation: 0,
     x: -window.innerWidth,
     y: -window.innerHeight,
+  });
+}
+
+function hide() {
+  timeline.stop();
+
+  TweenLite.set(svg, {
+    opacity: 0,
+  });
+}
+
+function show() {
+  timeline.play();
+
+  TweenLite.set(svg, {
+    opacity: 1,
   });
 }
 
@@ -1208,6 +1226,8 @@ export {
   confirmation,
   introduction,
   kill,
+  hide,
+  show,
   quiz,
   results,
   toggle,

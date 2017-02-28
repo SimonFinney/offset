@@ -62,13 +62,13 @@
         {%- endfor -%}
       </section>
 
-      <section class="section" data-view data-view-feedback>
+      <section class="section section__feedback-container" data-view data-view-feedback>
         <p class="section__feedback">{{ question.feedback }}</p>
-        <!-- <button class="section__button--small" data-animation-toggle data-view-toggle>Next</button> -->
+        <!-- <button class="section__button--feedback">Next Question</button> -->
       </section>
     {%- endfor -%}
 
-    <section class="section" data-view data-view-animation="results" data-view-centered>
+    <section class="section" data-view data-view-animation="results" data-view-centered data-view-results>
       <h2 class="section__title--small" data-title>You're a n00b</h2>
 
       <ol class="section__ol">

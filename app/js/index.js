@@ -10,6 +10,8 @@ import {
   confirmation,
   introduction,
   kill,
+  hide,
+  show,
   quiz,
   results,
   selfie,
@@ -50,6 +52,7 @@ let theater;
 let titles;
 let views;
 let restartButton;
+let feedbackTimer = null;
 
 const app = {
   animations: {
@@ -85,6 +88,8 @@ function toggleView() {
   once(currentView, 'transitionend', () => {
     toggleElement(currentView, 'view-active');
     activate(nextView);
+    // setTimeout(show, 1000);
+    // show();
 
     currentView = nextView;
 
@@ -93,8 +98,6 @@ function toggleView() {
     const timeout = currentView.getAttribute('data-view-timeout');
 
     const subviews = getElements('[data-view]', currentView);
-
-    // const feedbackView = currentView.getAttribute('data-view-feedback');
 
     if (animation) {
       kill();
@@ -117,9 +120,23 @@ function toggleView() {
     }
 
     if (currentView.hasAttribute('data-view-feedback')) {
-      // console.log('This is the feedback view');
-      setTimeout(toggleView, 5000);
+      feedbackTimer = setTimeout(toggleView, 7000);
+      each(
+        getElements('[data-animation-toggle]', main),
+        element => on(element, 'click', show)
+      );
     }
+
+    if (currentView.hasAttribute('data-view-results')) {
+      show();
+    }
+
+    // if (currentView.hasAttribute('data-view-toggle')) {
+    //   each(
+    //     getElements('[data-animation-toggle]', main),
+    //     element => on(element, 'click', show)
+    //   );
+    // }
   });
 }
 
@@ -370,18 +387,16 @@ function init() {
       })
     );
 
-    // if (currentView.hasAttribute('data-view-feedback')) {
-    //   // setTimeout(toggleView, 3000);
-    //   // toggleView();
-    //   console.log('It has the attribute!');
-    // }
-
-    // each(
-    //   getElements('.section__feedback'),
-    //   sectionFeedback => on(sectionFeedback, 'click', () => {
-    //     setTimeout(toggleView, 3000);
-    //   })
-    // );
+    each(
+      getElements('[data-view-feedback]', main),
+      element => on(element, 'click', () => {
+        toggleView();
+        hide();
+        if (feedbackTimer !== null) {
+          window.clearTimeout(feedbackTimer);
+        }
+      })
+    );
 
     each(
       getElements('.section__button--small'),
@@ -401,6 +416,7 @@ app.animations.complete = () => {
   complete();
   debounce(app.functions.reset, 3000);
 };
+
 
 restartButton = getElement('.camera__img-restart');
 
