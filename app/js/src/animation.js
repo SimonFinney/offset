@@ -61,6 +61,7 @@ const topYOff = '50px';
 const leftXOff = '-288px';
 const rightXOff = '1280px';
 const bottomYOff = '950px';
+const bottomYOn = '472px';
 
 
 function anonymizing() {
@@ -200,7 +201,7 @@ function quiz(question, value) {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.8, {
-    y: '480px',
+    y: bottomYOn,
     ease: Power2.easeInOut,
   })
   .add('rtEye', '+=.2')
@@ -283,7 +284,7 @@ function quizAOneRight() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.4, {
-    y: '480px',
+    y: bottomYOn,
     opacity: 1,
     ease: Circ.easeInOut,
   })
@@ -335,7 +336,7 @@ function quizAOneWrong() {
 
   timeline.to(svg, 0.9, {
     opacity: 1,
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   // .to(bowtie, 0.1, {
@@ -416,7 +417,7 @@ function quizATwoRight() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.4, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(bowtie, 0.1, {
@@ -456,7 +457,7 @@ function quizATwoWrong() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 1.3, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(svg, 1, {
@@ -506,7 +507,7 @@ function quizAThreeRight() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.4, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(svg, 0.5, {
@@ -533,7 +534,7 @@ function quizAThreeWrong() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.9, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(svg, 1, {
@@ -562,7 +563,7 @@ function quizAFourRight() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.4, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .set([eyesSmizeRPupil, eyesSmizeRWhite], {
@@ -615,7 +616,7 @@ function quizAFourWrong() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.9, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(svg, 1, {
@@ -673,7 +674,7 @@ function quizAFiveWrong() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.9, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(svg, 1, {
@@ -700,7 +701,7 @@ function quizASixRight() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.4, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(svg, 0.7, {
@@ -726,7 +727,7 @@ function quizASixWrong() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.9, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(svg, 0.7, {
@@ -753,7 +754,7 @@ function quizASevenRight() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.4, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(bowtie, 0.1, {
@@ -786,7 +787,7 @@ function quizASevenWrong() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.9, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(svg, 0.7, {
@@ -813,7 +814,7 @@ function quizAEightRight() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.4, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   }).to(bowtie, 0.1, {
     rotation: 360,
@@ -844,7 +845,7 @@ function quizAEightWrong() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.9, {
-    y: '480px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(svg, 0.7, {
