@@ -564,7 +564,7 @@ function quizAThreeWrong() {
   .to(svg, 1, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 4,
+    delay: 6,
   });
 
   timeline.play(0);

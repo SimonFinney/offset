@@ -126,12 +126,15 @@
 }
 
 .section__title--small {
-  @include font-size('36');
+  @include font-size('24');
   @include sy-ease-out;
+  max-width: 350px;
   margin-top: 0;
   margin-right: auto;
   margin-bottom: 32px;
-  transform: scale3d(1.4, 1.4, 1.4) translate3d(0, 75%, 0);
+  line-height: 1.5;
+  text-align: left;
+  transform: scale3d(1.8, 1.8, 1.8) translate3d(0, 75%, 0);
   transition-delay: 3s;
   transition-duration: .8s;
   transform-origin: top left;
@@ -143,7 +146,7 @@
 
 .section__ol {
   width: 100%;
-  // max-width: 392px;
+  max-width: 424px;
   padding-left: 0;
   margin-right: auto;
   margin-bottom: 56px;
@@ -161,8 +164,8 @@
   @include sy-ease-out;
   display: flex;
   font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  letter-spacing: .5px;
+  // text-transform: uppercase;
   opacity: 0;
 
   @for $index from 1 through 8 {
@@ -181,7 +184,7 @@
 }
 
 .li__title {
-  margin-right: 60px;
+  margin-right: 80px;
   white-space: nowrap;
 }
 

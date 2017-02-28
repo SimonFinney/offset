@@ -1,22 +1,22 @@
 ---
 personas:
-  - title: "You're a n00b"
+  - title: "Um...This is awkward."
     criteria:
       - 0
       - 1
       - 2
 
-  - title: "You're a bas1c gl1tch"
+  - title: "You're done! But you're exposing quite a bit."
     criteria:
       - 3
       - 4
 
-  - title: "You're a r0xx0r"
+  - title: "Nicely done! With just a few changes, your data will be even more private."
     criteria:
       - 5
       - 6
 
-  - title: "You're a l33t h4ck3r"
+  - title: "Woot! Looks like you're keeping your data locked down."
     criteria:
       - 7
       - 8
@@ -62,7 +62,7 @@ questions:
   - title: Password-Protected Devices?
     description: 'Do any of your devices (laptop, smartphone, or tablet) open without a password?'
     feedback: |
-      This should be a no-brainer. Use unique passwords/ passcodes for all your devices to keep your data secure.
+      This should be a no-brainer. Use unique passwords/passcodes for all your devices to keep your data secure.
     answers:
       - 'Yes'
       - 'No'
