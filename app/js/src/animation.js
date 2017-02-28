@@ -385,17 +385,26 @@ function kill() {
 function hide() {
   timeline.stop();
 
-  TweenLite.set(svg, {
-    opacity: 0,
+  timeline = new TimelineMax({ paused: true });
+
+  timeline.to(svg, 0.5, {
+    y: bottomYOff,
+    ease: Power2.easeInOut,
   });
+
+  timeline.play();
+
+  // TweenLite.set(svg, {
+  //   opacity: 0,
+  // });
 }
 
 function show() {
   timeline.play();
 
-  TweenLite.set(svg, {
-    opacity: 1,
-  });
+  // TweenLite.set(svg, {
+  //   opacity: 1,
+  // });
 }
 
 
