@@ -1,22 +1,22 @@
 ---
 personas:
-  - title: "This is awkward. You're, like, totally exposed."
+  - title: "Um... This is awkward."
     criteria:
       - 0
       - 1
       - 2
 
-  - title: "But you're exposing quite a bit."
+  - title: "Yikes... Your data is showing."
     criteria:
       - 3
       - 4
 
-  - title: "Nice! With just a few changes, your data will be even more private."
+  - title: "Woot! Your security behavior is stellar."
     criteria:
       - 5
       - 6
 
-  - title: "Woot! Looks like you're keeping your data locked down."
+  - title: "Nicely done! There is nothing to see here."
     criteria:
       - 7
       - 8
@@ -26,7 +26,7 @@ questions:
   - title: Public WiFi Shopper?
     description: 'When on public wifi, like at a coffee shop or airport, have you ever made an online purchase?'
     feedback: |
-      Public wifi networks are often unencrypted, meaning anyone in range can see what you're doing online. Stick to private wifi for purchases and banking.
+      Public wifi networks are often unencrypted, meaning anyone in range could see what you're doing online. Stick to private wifi for purchases and banking.
     answers:
       - 'Yes'
       - 'No'
@@ -62,7 +62,7 @@ questions:
   - title: Password-Protected Devices?
     description: 'Do any of your devices (laptop, smartphone, or tablet) open without a password?'
     feedback: |
-      This should be a no-brainer. Use unique passwords/passcodes for all your devices to keep your data secure.
+      This should be a no-brainer. Use unique passwords/passcodes for all your devices to keep your data secure. And make them long! Not just 4 digits.
     answers:
       - 'Yes'
       - 'No'
