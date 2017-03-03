@@ -4,7 +4,9 @@
 
   {%- for img in images | reverse -%}
 
-    <canvas class="img" data-modifier="{{ img.modifier }}" data-src="{{ img.src }}"></canvas>
+    <div class="img__container">
+      <canvas class="img" data-modifier="{{ img.modifier }}" data-delay="{{ (loop.index0 * 50) }}" data-src="{{ img.src }}"></canvas>
+    </div>
   {%- endfor -%}
 {%- endblock -%}
 

@@ -34,6 +34,7 @@ import io from 'socket.io-client';
 import theaterJS from 'theaterjs';
 
 // Variables
+let canvasElements;
 let cameraForm;
 let cameraImg;
 let cameraInput;
@@ -51,6 +52,8 @@ let selectedCameraToggleButton;
 let svg;
 let theater;
 let titles;
+let totalNumbers;
+let uniqueNumbers;
 let views;
 
 const maximumImagesLength = 16;
@@ -231,12 +234,33 @@ function check(event) {
 
 function run(canvas, contextToModify, image, src) {
   const ctx = contextToModify;
+
   ctx.imageSmoothingEnabled = false;
+  ctx.mozImageSmoothingEnabled = false;
+
   on(image, 'load', () => {
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-    canvas.removeAttribute('data-src');
+    canvas.setAttribute('data-active', '');
   });
   image.setAttribute('src', src);
+}
+
+
+function getUniqueValue() {
+  if (!uniqueNumbers.length) {
+    for (let currentNumber = 0; currentNumber < totalNumbers; currentNumber++) {
+      uniqueNumbers.push(currentNumber);
+    }
+  }
+
+  const randomIndex = Math.floor(
+    Math.random() * uniqueNumbers.length
+  );
+
+  const uniqueNumberValue = uniqueNumbers[randomIndex];
+
+  uniqueNumbers.splice(randomIndex, 1);
+  return uniqueNumberValue;
 }
 
 
@@ -246,7 +270,38 @@ function load(canvas) {
   run(canvas, ctx, image, canvas.getAttribute('data-src'));
 
   debounce(() => {
-    pixelate(canvas, ctx, image, canvas.getAttribute('data-modifier'));
+    pixelate(canvas, ctx, image, (canvas.getAttribute('data-modifier') / 3));
+  });
+}
+
+
+function randomiseImages() {
+  uniqueNumbers = [];
+  totalNumbers = getElements('.img', main).length;
+
+  canvasElements = [];
+
+  each(
+    getElements('[data-src]', main),
+    canvas => canvasElements.push(canvas)
+  );
+
+  each(canvasElements, canvas => {
+    canvas.removeAttribute('data-active');
+    const randomIndex = getUniqueValue();
+    const canvasContainer = main.childNodes[randomIndex];
+
+    canvasContainer.innerHTML = '';
+
+    const timeout = parseInt(
+      canvas.getAttribute('data-delay'),
+      10
+    );
+
+    setTimeout(() => {
+      load(canvas);
+      canvasContainer.appendChild(canvas);
+    }, timeout);
   });
 }
 
@@ -256,17 +311,25 @@ function add(image) {
     'canvas',
     {
       class: 'img',
+      'data-delay': '50',
       'data-src': image.src,
       'data-modifier': image.modifier,
     }
   );
 
-  load(canvas);
-  main.insertBefore(canvas, main.firstChild);
+  const canvasContainer = createElement(
+    'div',
+    { class: 'img__container' }
+  );
+
+  canvasContainer.appendChild(canvas);
+  main.insertBefore(canvasContainer, main.firstChild);
 
   if (main.childNodes.length >= maximumImagesLength) {
     main.removeChild(main.lastChild);
   }
+
+  randomiseImages();
 }
 
 
@@ -301,12 +364,9 @@ function init() {
 
   if ((app.element.getAttribute('data-app') === 'receive')) {
     const socket = io();
-
-    each(
-      getElements('[data-src]', app.element),
-      load
-    );
     socket.on('receive', add);
+
+    randomiseImages();
   } else {
     cameraForm = getElement('.camera__form', main);
     cameraImg = getElement('.camera__img', main);
