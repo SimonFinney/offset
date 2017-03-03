@@ -54,6 +54,8 @@ let views;
 let restartButton;
 let feedbackTimer = null;
 
+const maximumImagesLength = 16;
+
 const app = {
   animations: {
     anonymizing,
@@ -272,6 +274,10 @@ function add(image) {
 
   load(canvas);
   main.insertBefore(canvas, main.firstChild);
+
+  if (main.childNodes.length >= maximumImagesLength) {
+    main.removeChild(main.lastChild);
+  }
 }
 
 
@@ -321,7 +327,10 @@ function init() {
     heading = getElement('.button--touch__heading__explode', main);
     headingAnonymizing = getElement('.section__heading--anonymizing', main);
     li = getElements('.section__li', main);
+    restartButton = getElement('.camera__img-restart', main);
     titles = getElements('[data-title]', main);
+
+    on(restartButton, 'click', app.functions.reset);
 
     on(
       character,
@@ -409,13 +418,6 @@ app.animations.complete = () => {
   complete();
   debounce(app.functions.reset, 5000);
 };
-
-
-restartButton = getElement('.camera__img-restart');
-
-on(restartButton, 'click', () => {
-  app.functions.reset();
-});
 
 app.functions.anonymize = () => {
   theater.addActor('anonymizing',

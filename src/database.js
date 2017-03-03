@@ -28,15 +28,16 @@ function create(newData, callback) {
 
 
 function getValue(databaseReference, callback) {
-  databaseReference.once('value')
-    .then(value =>
-      callback(value.val())
-    );
+
 }
 
 
-function get(callback) {
-  getValue(data, callback);
+function get(callback, limit = 16) {
+  data.limitToLast(limit)
+    .once('value')
+    .then(value =>
+      callback(value.val())
+  );
 }
 
 
