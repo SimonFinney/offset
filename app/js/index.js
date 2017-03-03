@@ -327,7 +327,7 @@ function init() {
     heading = getElement('.button--touch__heading__explode', main);
     headingAnonymizing = getElement('.section__heading--anonymizing', main);
     li = getElements('.section__li', main);
-    restartButton = getElement('.camera__img-restart', main);
+    restartButton = getElement('.camera__img--restart', main);
     titles = getElements('[data-title]', main);
 
     on(restartButton, 'click', app.functions.reset);
@@ -436,7 +436,9 @@ app.functions.anonymize = () => {
     '.'
   ).addScene(() => transition(cameraImg, context, img));
 
-  restartButton.setAttribute('style', 'opacity: 1; transition: .5s opacity ease 3s');
+  toggleElement(restartButton);
+
+  // restartButton.setAttribute('style', 'opacity: 1; transition: .5s opacity ease 3s');
 };
 
 
@@ -490,7 +492,9 @@ app.functions.reset = () => {
       .introduction();
   }
 
-  restartButton.setAttribute('style', 'opacity: 0;');
+  toggleElement(restartButton);
+
+  //restartButton.setAttribute('style', 'opacity: 0;');
 };
 
 

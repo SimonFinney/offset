@@ -94,6 +94,7 @@
 //   transition-delay: 1s;
 // }
 
+
 .section__button--small {
   @extend %button--primary;
   max-width: 152px;
@@ -101,9 +102,6 @@
   padding-bottom: 16px;
   margin-right: 24px;
   font-size: rem(20px);
-}
-
-.section__button--small {
   transition-delay: .5s;
 
   &:last-of-type {
