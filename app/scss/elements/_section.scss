@@ -1,6 +1,7 @@
 // Section
 
-.section {
+.section,
+.section__feedback-container {
   width: 60%;
   height: 100%;
   padding: 96px 64px;
@@ -73,27 +74,21 @@
 }
 
 .section__feedback-container {
-  position: absolute;
-  top: 100%;
-  right: 62px;
-  width: 45%;
-  margin-left: 112px;
+  display: flex;
+  padding-right: 0;
+  padding-bottom: 64px;
+  padding-left: 0;
 }
 
 .section__feedback {
+  width: 50%;
+  margin-top: auto;
+  margin-right: 32px;
+  margin-left: auto;
   font-size: rem(21px);
   font-weight: bold;
   line-height: 30px;
 }
-
-// .section__button--feedback {
-//   position: relative;
-//   bottom: -16px;
-//   padding: 0;
-//   text-align: left;
-//   transition-delay: 1s;
-// }
-
 
 .section__button--small {
   @extend %button--primary;
@@ -147,6 +142,10 @@
   [data-view-active] > & {
     transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
   }
+}
+
+.title--small__lead {
+  display: block;
 }
 
 .section__ol {
@@ -223,7 +222,4 @@
 
 .section__button--reset {
   @extend %button--secondary;
-  @include font-size('16');
-  font-weight: 400;
-  letter-spacing: .1px;
 }

@@ -30,6 +30,9 @@
 }
 
 %button--secondary {
+  @include font-size('16');
+  font-weight: 400;
+  letter-spacing: .1px;
   color: $white;
   background-color: transparent;
 }

@@ -46,15 +46,16 @@ let headingAnonymizing;
 let img;
 let li;
 let main;
+let restartButton;
 let selectedCameraToggleButton;
 let svg;
 let theater;
 let titles;
 let views;
-let restartButton;
-let feedbackTimer = null;
 
 const maximumImagesLength = 16;
+
+let feedbackTimer = null;
 
 const app = {
   animations: {
@@ -70,7 +71,7 @@ const app = {
     count: 0,
     personas: window.personas,
   },
-  functions: {},
+  functions: { results: show },
 };
 
 
@@ -81,6 +82,8 @@ function activate(view) {
 
 
 function toggleView() {
+  feedbackTimer ? clearTimeout(feedbackTimer) : null;
+
   const nextView = views[
     (views.indexOf(currentView) + 1)
   ];
@@ -90,8 +93,6 @@ function toggleView() {
   once(currentView, 'transitionend', () => {
     toggleElement(currentView, 'view-active');
     activate(nextView);
-    // setTimeout(show, 1000);
-    // show();
 
     currentView = nextView;
 
@@ -119,18 +120,6 @@ function toggleView() {
 
       currentView = views[0];
       activate(currentView);
-    }
-
-    if (currentView.hasAttribute('data-view-feedback')) {
-      feedbackTimer = setTimeout(toggleView, 7000);
-      each(
-        getElements('[data-animation-toggle]', main),
-        element => on(element, 'click', show)
-      );
-    }
-
-    if (currentView.hasAttribute('data-view-results')) {
-      show();
     }
   });
 }
@@ -368,36 +357,24 @@ function init() {
 
     each(
       getElements('[data-animation-toggle]', main),
-      element => on(element, 'click', () =>
+      element => on(element, 'click', () => {
         toggle(
           element.parentNode
             .getAttribute('data-question'),
           element.getAttribute('value')
-        )
-      )
+        );
+        show();
+      })
     );
 
     each(
       getElements('[data-view-toggle]', main),
-      element => on(element, 'click', () => {
-        if (currentView === views[16]) {
-          console.log('This is number 16');
-          setTimeout(toggleView, 3000);
-        } else {
-          toggleView();
-        }
-      })
+      element => on(element, 'click', toggleView)
     );
 
     each(
-      getElements('[data-view-feedback]', main),
-      element => on(element, 'click', () => {
-        toggleView();
-        hide();
-        if (feedbackTimer !== null) {
-          window.clearTimeout(feedbackTimer);
-        }
-      })
+      getElements('.section__feedback-container', main),
+      element => on(element, 'click', hide)
     );
 
     each(
@@ -437,8 +414,11 @@ app.functions.anonymize = () => {
   ).addScene(() => transition(cameraImg, context, img));
 
   toggleElement(restartButton);
+};
 
-  // restartButton.setAttribute('style', 'opacity: 1; transition: .5s opacity ease 3s');
+
+app.functions.feedback = () => {
+  feedbackTimer = setTimeout(toggleView, 8000);
 };
 
 
@@ -493,8 +473,6 @@ app.functions.reset = () => {
   }
 
   toggleElement(restartButton);
-
-  //restartButton.setAttribute('style', 'opacity: 0;');
 };
 
 
