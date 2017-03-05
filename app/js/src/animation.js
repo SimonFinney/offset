@@ -226,7 +226,7 @@ function quiz(question, value) {
   .to(svg, 0.5, {
     y: bottomYOff,
     ease: Power2.easeInOut,
-    delay: 0.5,
+    delay: 0.3,
   });
 
   timeline.play(0);
@@ -293,7 +293,7 @@ function quizAOneRight() {
     transformOrigin: 'center',
     ease: Power0.easeInOut,
     delay: 0.5,
-  })
+  });
   // .add('rtEye', '+=.1')
   // .to(mouthSmile, 0.1, {
   //   scaleY: 1,
@@ -307,11 +307,11 @@ function quizAOneRight() {
   //   opacity: 0,
   //   ease: SteppedEase.config(1),
   // }, 'rtEye')
-  .to(svg, 0.5, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6,
-  });
+  // .to(svg, 0.5, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6,
+  // });
 
   timeline.play(0);
 }
@@ -338,18 +338,18 @@ function quizAOneWrong() {
     opacity: 1,
     y: bottomYOn,
     ease: Circ.easeInOut,
-  })
+  });
   // .to(bowtie, 0.1, {
   //   rotation: 360,
   //   transformOrigin: 'center',
   //   ease: Circ.easeInOut,
   //   delay: 0.4,
   // })
-  .to(svg, 0.7, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6.5,
-  });
+  // .to(svg, 0.7, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6.5,
+  // });
   // .set(halfEyes, {
   //   visibility: 'visible',
   // })
@@ -425,12 +425,12 @@ function quizATwoRight() {
     transformOrigin: 'center',
     ease: Power0.easeInOut,
     delay: 0.4,
-  })
-  .to(svg, 0.5, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6,
   });
+  // .to(svg, 0.5, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6,
+  // });
   // .set(eyesSmize, {
   //   visibility: 'visible',
   // })
@@ -459,12 +459,12 @@ function quizATwoWrong() {
   timeline.to(svg, 1.3, {
     y: bottomYOn,
     ease: Circ.easeInOut,
-  })
-  .to(svg, 1, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6,
   });
+  // .to(svg, 1, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6,
+  // });
   // .to(bigEyes, 0.1, {
   //   transformOrigin: 'top',
   //   scaleY: 1,
@@ -509,12 +509,12 @@ function quizAThreeRight() {
   timeline.to(svg, 0.4, {
     y: bottomYOn,
     ease: Circ.easeInOut,
-  })
-  .to(svg, 0.5, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6.5,
   });
+  // .to(svg, 0.5, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6.5,
+  // });
 
   timeline.play(0);
 }
@@ -536,12 +536,12 @@ function quizAThreeWrong() {
   timeline.to(svg, 0.9, {
     y: bottomYOn,
     ease: Circ.easeInOut,
-  })
-  .to(svg, 1, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6,
   });
+  // .to(svg, 1, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6,
+  // });
 
   timeline.play(0);
 }
@@ -584,12 +584,12 @@ function quizAFourRight() {
     transformOrigin: 'center',
     ease: Power0.easeInOut,
     delay: 0.4,
-  })
-  .to(svg, 0.7, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6,
   });
+  // .to(svg, 0.7, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6,
+  // });
   // .to(eyesHappyClosed, 0.1, {
   //   opacity: 1,
   //   visibility: 'visible',
@@ -618,12 +618,12 @@ function quizAFourWrong() {
   timeline.to(svg, 0.9, {
     y: bottomYOn,
     ease: Circ.easeInOut,
-  })
-  .to(svg, 1, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6,
   });
+  // .to(svg, 1, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6,
+  // });
 
   timeline.play(0);
 }
@@ -642,7 +642,7 @@ function quizAFiveRight() {
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.4, {
-    y: '476px',
+    y: bottomYOn,
     ease: Circ.easeInOut,
   })
   .to(bowtie, 0.1, {
@@ -650,12 +650,12 @@ function quizAFiveRight() {
     transformOrigin: 'center',
     ease: Power0.easeInOut,
     delay: 0.5,
-  })
-  .to(svg, 0.7, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6,
   });
+  // .to(svg, 0.7, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6,
+  // });
 
   timeline.play(0);
 }
@@ -676,12 +676,12 @@ function quizAFiveWrong() {
   timeline.to(svg, 0.9, {
     y: bottomYOn,
     ease: Circ.easeInOut,
-  })
-  .to(svg, 1, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6,
   });
+  // .to(svg, 1, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6,
+  // });
 
   timeline.play(0);
 }
@@ -703,12 +703,12 @@ function quizASixRight() {
   timeline.to(svg, 0.4, {
     y: bottomYOn,
     ease: Circ.easeInOut,
-  })
-  .to(svg, 0.7, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6.5,
   });
+  // .to(svg, 0.7, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6.5,
+  // });
 
   timeline.play(0);
 }
@@ -729,12 +729,12 @@ function quizASixWrong() {
   timeline.to(svg, 0.9, {
     y: bottomYOn,
     ease: Circ.easeInOut,
-  })
-  .to(svg, 0.7, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6,
   });
+  // .to(svg, 0.7, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6,
+  // });
 
   timeline.play(0);
 }
@@ -762,12 +762,12 @@ function quizASevenRight() {
     transformOrigin: 'center',
     ease: Power0.easeInOut,
     delay: 0.5,
-  })
-  .to(svg, 0.7, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6.5,
   });
+  // .to(svg, 0.7, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6.5,
+  // });
 
   timeline.play(0);
 }
@@ -789,12 +789,12 @@ function quizASevenWrong() {
   timeline.to(svg, 0.9, {
     y: bottomYOn,
     ease: Circ.easeInOut,
-  })
-  .to(svg, 0.7, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6,
   });
+  // .to(svg, 0.7, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6,
+  // });
 
   timeline.play(0);
 }
@@ -821,12 +821,12 @@ function quizAEightRight() {
     transformOrigin: 'center',
     ease: Power0.easeInOut,
     delay: 0.5,
-  })
-  .to(svg, 0.7, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6.4,
   });
+  // .to(svg, 0.7, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6.4,
+  // });
 
   timeline.play(0);
 }
@@ -847,12 +847,12 @@ function quizAEightWrong() {
   timeline.to(svg, 0.9, {
     y: bottomYOn,
     ease: Circ.easeInOut,
-  })
-  .to(svg, 0.7, {
-    y: bottomYOff,
-    ease: Power2.easeInOut,
-    delay: 6,
   });
+  // .to(svg, 0.7, {
+  //   y: bottomYOff,
+  //   ease: Power2.easeInOut,
+  //   delay: 6,
+  // });
 
   timeline.play(0);
 }
