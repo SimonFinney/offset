@@ -15,7 +15,7 @@ $confetti-dimensions: 16px;
   [data-view-active] > & {
 
     .confetti__item {
-      display: block;
+      display: inline-block;
     }
   }
 }
