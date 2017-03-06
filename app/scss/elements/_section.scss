@@ -124,32 +124,12 @@
   margin-top: 146px;
 }
 
-// .section__title--small {
-//   @include font-size('24');
-//   @include sy-ease-out;
-//   max-width: 280px;
-//   margin-top: 8px;
-//   margin-right: auto;
-//   margin-bottom: 32px;
-//   line-height: 1.5;
-//   text-align: left;
-//   transform: scale3d(1.8, 1.8, 1.8) translate3d(0, 75%, 0);
-//   transition-delay: 3s;
-//   transition-duration: .8s;
-//   transform-origin: top left;
-
-//   [data-view-active] > & {
-//     transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
-//   }
-// }
-
 .section__title--small,
 .title--small__lead,
 .title--small__persona {
   @include font-size('24');
   @include sy-ease-out;
   max-width: 280px;
-  margin-top: -24px;
   margin-right: auto;
   margin-bottom: 32px;
   line-height: 1.5;
@@ -160,15 +140,18 @@
   transform-origin: bottom left;
 }
 
-.title--small__lead,
-.title--small__persona {
-  [data-view-active] > .section__title--small & {
+.section__title--small {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  [data-view-active] > & {
     transform: translate3d(0, 0, 0);
   }
 }
 
-.section__title--small {
-  [data-view-active] > & {
+.title--small__lead,
+.title--small__persona {
+  [data-view-active] > .section__title--small & {
     transform: translate3d(0, 0, 0);
   }
 }

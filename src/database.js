@@ -27,11 +27,6 @@ function create(newData, callback) {
 }
 
 
-function getValue(databaseReference, callback) {
-
-}
-
-
 function get(callback, limit = 16) {
   data.limitToLast(limit)
     .once('value')

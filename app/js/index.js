@@ -478,7 +478,10 @@ app.functions.anonymize = () => {
 
 
 app.functions.feedback = () => {
-  feedbackTimer = setTimeout(toggleView, 8000);
+  feedbackTimer = setTimeout(() => {
+    hide();
+    toggleView();
+  }, 8000);
 };
 
 
