@@ -45,57 +45,20 @@ $confetti-dimensions: 16px;
 
   @keyframes confetti--#{$index} {
 
-    // 0%,
-    // 50%,
-    // 100% {
-    //   transform: skew(-33deg);
-    // }
+    0%,
+    50%,
+    100% {
+      transform: skew(-33deg);
+    }
 
-    // 0%,
-    // 100% {
-    //   left: (100% - random(100));
-    // }
-
-    // 0% {
-    //   top: -$confetti-dimensions;
-    //   opacity: 1;
-    // }
-
-    // 25%,
-    // 75% {
-    //   transform: skew(33deg);
-    // }
-
-    // 100% {
-    //   top: 75%;
-    //   left: (0% + random(100));
-    //   opacity: 0;
-    // }
     0% {
       top: -$confetti-dimensions;
       left: (100% - random(100));
       opacity: 1;
-      transform: skew(-33deg);
     }
 
-    25% {
-      // top: 25%;
-      // left: (75% - random(100));
-      // opacity: 1;
-      transform: skew(33deg);
-    }
-
-    50% {
-      // top: 40%;
-      // left: (50% - random(100));
-      // opacity: .5;
-      transform: skew(-33deg);
-    }
-
+    25%,
     75% {
-      // top: 60%;
-      // left: (25% - random(100));
-      // opacity: .25;
       transform: skew(33deg);
     }
 
@@ -103,7 +66,6 @@ $confetti-dimensions: 16px;
       top: 75%;
       left: (0% + random(100));
       opacity: 0;
-      transform: skew(-33deg);
     }
   }
 }
