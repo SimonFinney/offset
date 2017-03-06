@@ -18,6 +18,14 @@
     </button>
   </section>
 
+  <div class="confetti">
+
+    {%- for i in range(0, 50) -%}
+
+      <div class="confetti__item"></div>
+    {%- endfor -%}
+  </div>
+
   <section data-view data-view-animation="selfie" data-view-centered>
     <h2 class="camera__h2">Snap a selfie to track your progress</h2>
     <form class="camera__form" enctype="multipart/form-data" data-action="/submit" data-method="post">
@@ -89,14 +97,6 @@
       <button class="section__button--post-photo" data-submit data-view-toggle>Post photo</button>
       <button class="section__button--reset" data-view-toggle>No thanks</button>
     </section>
-
-    <div class="confetti">
-
-      {%- for i in range(0, 50) -%}
-
-        <div class="confetti__item"></div>
-      {%- endfor -%}
-    </div>
 
     <section class="section" data-view data-view-animation="complete">
       <h2 class="section__title--conclusion">Thanks for Playing</h2>
