@@ -5,17 +5,17 @@ $confetti-dimensions: 16px;
 
 .confetti {
   @include z-index('confetti');
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
 
-  [data-view-active] + & {
+  [data-view-active] > & {
 
     .confetti__item {
-      animation-play-state: running;
+      display: block;
     }
   }
 }
@@ -23,11 +23,11 @@ $confetti-dimensions: 16px;
 .confetti__item {
   @include z-index('confetti__item');
   position: absolute;
+  display: none;
   width: $confetti-dimensions;
   height: $confetti-dimensions;
   opacity: 0;
   animation-duration: 2s;
-  animation-play-state: paused;
 
   @for $index from 1 through $total-confetti {
 
