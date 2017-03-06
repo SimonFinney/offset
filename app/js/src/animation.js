@@ -61,7 +61,7 @@ const topYOff = '50px';
 const leftXOff = '-288px';
 const rightXOff = '1280px';
 const bottomYOff = '950px';
-const bottomYOn = '472px';
+const bottomYOn = '464px';
 
 
 function anonymizing() {

@@ -135,7 +135,7 @@
   line-height: 1.5;
   text-align: left;
   transform: translate3d(0, 125%, 0);
-  transition-delay: 3s;
+  transition-delay: 2s;
   transition-duration: .8s;
   transform-origin: bottom left;
 }
@@ -163,13 +163,13 @@
 
   [data-view-active] > .section__title--small & {
     opacity: 0;
-    transform: scale3d(0, 0, 0);
+    // transform: scale3d(0, 0, 0);
   }
 }
 
 .title--small__persona {
   opacity: 0;
-  transform: scale3d(0, 0, 0);
+  transform: scale3d(1, 1, 1);
 
   [data-view-active] > .section__title--small & {
     opacity: 1;
@@ -203,7 +203,7 @@
   @for $index from 1 through 8 {
 
     &:nth-child(#{$index}) {
-      transition-delay: (3s + ($index / 4));
+      transition-delay: (3.5s + ($index / 4));
     }
   }
 
