@@ -12,7 +12,7 @@ $confetti-dimensions: 16px;
   height: 100%;
   pointer-events: none;
 
-  &[data-active] {
+  [data-view-active] + & {
 
     .confetti__item {
       animation-play-state: running;
