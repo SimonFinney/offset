@@ -59,6 +59,7 @@ let views;
 const maximumImagesLength = 16;
 
 let feedbackTimer = null;
+let timeoutTimer = null;
 
 const app = {
   animations: {
@@ -115,7 +116,7 @@ function toggleView() {
     }
 
     if (timeout) {
-      debounce(toggleView, timeout);
+      timeoutTimer = setTimeout(toggleView, timeout);
     }
 
     if (subviews.length) {
@@ -486,6 +487,8 @@ app.functions.feedback = () => {
 
 
 app.functions.reset = () => {
+  timeoutTimer ? clearTimeout(timeoutTimer) : null;
+
   app.data
     .answers = [];
 
