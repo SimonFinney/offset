@@ -357,13 +357,7 @@ function reset(element) {
   const className = element.getAttribute('class');
   element.removeAttribute('class');
 
-  /* element.classList
-    .remove(className); */
-
   void element.offsetWidth;
-
-  /* element.classList
-    .add(className); */
 
   element.setAttribute('class', className);
 }
