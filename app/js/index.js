@@ -30,8 +30,8 @@ import {
   toggleElement,
 } from './src/util';
 
-import io from 'socket.io-client';
-import theaterJS from 'theaterjs';
+import io from 'socket.io-client/dist/socket.io.min';
+import theaterJS from 'theaterjs/dist/theater.min';
 
 // Variables
 let canvasElements;

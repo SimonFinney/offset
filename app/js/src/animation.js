@@ -8,7 +8,7 @@ import {
   TimelineMax,
   TweenLite,
   TweenMax,
-} from 'gsap';
+} from 'gsap/src/minified/TweenMax.min';
 
 import { getElement } from './util';
 
