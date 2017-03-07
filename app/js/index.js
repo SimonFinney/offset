@@ -85,8 +85,13 @@ function activate(view) {
 }
 
 
+function manageTimer(timer) {
+  timer ? clearTimeout(timer) : null;
+}
+
+
 function toggleView() {
-  feedbackTimer ? clearTimeout(feedbackTimer) : null;
+  manageTimer(feedbackTimer);
 
   const nextView = views[
     (views.indexOf(currentView) + 1)
@@ -348,14 +353,19 @@ function read() {
 }
 
 
-function reset(element, className) {
-  element.classList
-    .remove(className);
+function reset(element) {
+  const className = element.getAttribute('class');
+  element.removeAttribute('class');
+
+  /* element.classList
+    .remove(className); */
 
   void element.offsetWidth;
 
-  element.classList
-    .add(className);
+  /* element.classList
+    .add(className); */
+
+  element.setAttribute('class', className);
 }
 
 
@@ -487,7 +497,8 @@ app.functions.feedback = () => {
 
 
 app.functions.reset = () => {
-  timeoutTimer ? clearTimeout(timeoutTimer) : null;
+  manageTimer(feedbackTimer);
+  manageTimer(timeoutTimer);
 
   app.data
     .answers = [];
@@ -510,7 +521,7 @@ app.functions.reset = () => {
 
   each(
     getElements('.confetti__item', app.element),
-    confetti => reset(confetti, 'confetti__item')
+    confettiItem => reset(confettiItem)
   );
 
   activate(currentView);

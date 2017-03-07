@@ -16,6 +16,7 @@
   @include z-index('camera__img');
   position: absolute;
   left: 0;
+  display: flex;
   width: 40%;
   height: 100%;
   overflow: hidden;
@@ -29,9 +30,10 @@
 .camera__img--restart {
   @include font-size('14');
   @include sy-ease-out;
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
+  @include z-index('camera__img--restart');
+  margin-top: auto;
+  margin-bottom: 24px;
+  margin-left: 24px;
   font-family: $base-font-family;
   font-weight: bold;
   letter-spacing: .24px;
@@ -41,9 +43,11 @@
   background-color: transparent;
   border: 0;
   opacity: 0;
+  visibility: hidden;
 
   &[data-active] {
     opacity: 1;
+    visibility: visible;
   }
 }
 
