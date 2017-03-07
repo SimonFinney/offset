@@ -36,8 +36,32 @@ $confetti-dimensions: 16px;
 
       background-color: $background-color;
       animation-delay: ((4 / 100) * $index) + s;
-      animation-name: confetti--#{$index};
+      animation-name: confetti, confetti--#{$index};
     }
+  }
+}
+
+@keyframes confetti {
+
+  0%,
+  50%,
+  100% {
+    transform: skew(-33deg);
+  }
+
+  0% {
+    top: -$confetti-dimensions;
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    transform: skew(33deg);
+  }
+
+  100% {
+    top: 75%;
+    opacity: 0;
   }
 }
 
@@ -45,27 +69,12 @@ $confetti-dimensions: 16px;
 
   @keyframes confetti--#{$index} {
 
-    0%,
-    50%,
-    100% {
-      transform: skew(-33deg);
-    }
-
     0% {
-      top: -$confetti-dimensions;
       left: (100% - random(100));
-      opacity: 1;
-    }
-
-    25%,
-    75% {
-      transform: skew(33deg);
     }
 
     100% {
-      top: 75%;
       left: (0% + random(100));
-      opacity: 0;
     }
   }
 }
