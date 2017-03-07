@@ -249,24 +249,6 @@ function quizAOneRight() {
     ease: Power0.easeInOut,
     delay: 0.5,
   });
-  // .add('rtEye', '+=.1')
-  // .to(mouthSmile, 0.1, {
-  //   scaleY: 1,
-  //   transformOrigin: 'top',
-  //   opacity: 1,
-  //   ease: SteppedEase.config(1),
-  // }, 'rtEye')
-  // .to(mouthSlightSmile, 0.1, {
-  //   scaleY: 0.1,
-  //   transformOrigin: 'top',
-  //   opacity: 0,
-  //   ease: SteppedEase.config(1),
-  // }, 'rtEye')
-  // .to(svg, 0.5, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6,
-  // });
 
   timeline.play(0);
 }
@@ -293,35 +275,6 @@ function quizAOneWrong() {
     y: bottomYOn,
     ease: Circ.easeInOut,
   });
-  // .to(bowtie, 0.1, {
-  //   rotation: 360,
-  //   transformOrigin: 'center',
-  //   ease: Circ.easeInOut,
-  //   delay: 0.4,
-  // })
-  // .to(svg, 0.7, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6.5,
-  // });
-  // .set(halfEyes, {
-  //   visibility: 'visible',
-  // })
-  // .to(wideEyes, 0.1, {
-  //   transformOrigin: 'top',
-  //   scaleY: 0.1,
-  //   opacity: 0,
-  //   ease: SteppedEase.config(1),
-  // })
-  // .to(mouthSlightSmile, 0.1, {
-  //   opacity: 0,
-  //   ease: SteppedEase.config(1),
-  // })
-  // .to(mouthNoSmile, 0.1, {
-  //   display: 'block',
-  //   opacity: 1,
-  //   ease: SteppedEase.config(1),
-  // });
 
   timeline.play(0);
 }
@@ -379,19 +332,6 @@ function quizATwoRight() {
     ease: Power0.easeInOut,
     delay: 0.4,
   });
-  // .to(svg, 0.5, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6,
-  // });
-  // .set(eyesSmize, {
-  //   visibility: 'visible',
-  // })
-  // .to([wideEyes, halfEyes], 0.05, {
-  //   opacity: 0,
-  //   transformOrigin: 'top',
-  //   scaleY: 0.1,
-  // });
 
   timeline.play(0);
 }
@@ -413,32 +353,6 @@ function quizATwoWrong() {
     y: bottomYOn,
     ease: Circ.easeInOut,
   });
-  // .to(svg, 1, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6,
-  // });
-  // .to(bigEyes, 0.1, {
-  //   transformOrigin: 'top',
-  //   scaleY: 1,
-  //   opacity: 1,
-  //   ease: SteppedEase.config(1),
-  // })
-  // .to([wideEyes, halfEyes], 0.1, {
-  //   opacity: 0,
-  //   scaleY: 0.1,
-  //   ease: SteppedEase.config(1),
-  // })
-  // .to(mouthSmile, 0.1, {
-  //   opacity: 0,
-  //   scaley: 0.1,
-  //   ease: SteppedEase.config(1),
-  // })
-  // .to(mouthNoSmile, 0.1, {
-  //   display: 'block',
-  //   opacity: 1,
-  //   ease: SteppedEase.config(1),
-  // });
 
   timeline.play(0);
 }
@@ -461,11 +375,6 @@ function quizAThreeRight() {
     y: bottomYOn,
     ease: Circ.easeInOut,
   });
-  // .to(svg, 0.5, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6.5,
-  // });
 
   timeline.play(0);
 }
@@ -488,11 +397,6 @@ function quizAThreeWrong() {
     y: bottomYOn,
     ease: Circ.easeInOut,
   });
-  // .to(svg, 1, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6,
-  // });
 
   timeline.play(0);
 }
@@ -536,18 +440,6 @@ function quizAFourRight() {
     ease: Power0.easeInOut,
     delay: 0.4,
   });
-  // .to(svg, 0.7, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6,
-  // });
-  // .to(eyesHappyClosed, 0.1, {
-  //   opacity: 1,
-  //   visibility: 'visible',
-  //   scaleY: 1,
-  //   yoyo: true,
-  //   repeat: +1,
-  // });
 
   timeline.play(0);
 }
@@ -570,11 +462,6 @@ function quizAFourWrong() {
     y: bottomYOn,
     ease: Circ.easeInOut,
   });
-  // .to(svg, 1, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6,
-  // });
 
   timeline.play(0);
 }
@@ -602,11 +489,6 @@ function quizAFiveRight() {
     ease: Power0.easeInOut,
     delay: 0.5,
   });
-  // .to(svg, 0.7, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6,
-  // });
 
   timeline.play(0);
 }
@@ -628,11 +510,6 @@ function quizAFiveWrong() {
     y: bottomYOn,
     ease: Circ.easeInOut,
   });
-  // .to(svg, 1, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6,
-  // });
 
   timeline.play(0);
 }
@@ -655,11 +532,6 @@ function quizASixRight() {
     y: bottomYOn,
     ease: Circ.easeInOut,
   });
-  // .to(svg, 0.7, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6.5,
-  // });
 
   timeline.play(0);
 }
@@ -681,11 +553,6 @@ function quizASixWrong() {
     y: bottomYOn,
     ease: Circ.easeInOut,
   });
-  // .to(svg, 0.7, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6,
-  // });
 
   timeline.play(0);
 }
@@ -714,11 +581,6 @@ function quizASevenRight() {
     ease: Power0.easeInOut,
     delay: 0.5,
   });
-  // .to(svg, 0.7, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6.5,
-  // });
 
   timeline.play(0);
 }
@@ -741,11 +603,6 @@ function quizASevenWrong() {
     y: bottomYOn,
     ease: Circ.easeInOut,
   });
-  // .to(svg, 0.7, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6,
-  // });
 
   timeline.play(0);
 }
@@ -773,11 +630,6 @@ function quizAEightRight() {
     ease: Power0.easeInOut,
     delay: 0.5,
   });
-  // .to(svg, 0.7, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6.4,
-  // });
 
   timeline.play(0);
 }
@@ -799,11 +651,6 @@ function quizAEightWrong() {
     y: bottomYOn,
     ease: Circ.easeInOut,
   });
-  // .to(svg, 0.7, {
-  //   y: bottomYOff,
-  //   ease: Power2.easeInOut,
-  //   delay: 6,
-  // });
 
   timeline.play(0);
 }
@@ -843,9 +690,6 @@ function selfie() {
     scaleY: 0.1,
     opacity: '0',
   });
-  // TweenMax.set([eyesSmizeRPupil, eyesSmizeRWhite, eyesHappyClosedL], {
-  //   opacity: '1',
-  // });
   TweenMax.set([fedora, sunglasses], {
     display: 'none',
   });
@@ -966,10 +810,6 @@ function introduction() {
       display: 'block',
       scaleY: 1,
     });
-
-  // TweenMax.set(mouthFrown, {
-  //   opacity: 0,
-  // });
 
   TweenMax.set(eyesClosed, {
     scaleY: 0.1,
