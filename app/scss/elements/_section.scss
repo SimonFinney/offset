@@ -241,7 +241,7 @@
 .section__button--reset {
   @include sy-ease-out;
   transform: translate3d(0, 350%, 0);
-  transition-delay: 5.33s;
+  transition-delay: 5.53s;
 
   [data-view-active] > & {
     transform: translate3d(0, 0, 0);

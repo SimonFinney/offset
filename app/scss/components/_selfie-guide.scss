@@ -1,7 +1,7 @@
 // Selfie Guide
 
 .selfie-guide {
-  @include sy-ease-out;
+  @include sy-ease-out(1);
   position: absolute;
   top: 0;
   left: 0;
@@ -9,16 +9,40 @@
   width: 100%;
   pointer-events: none;
   opacity: 0;
+
+  [data-view-active] > & {
+    opacity: 1;
+    transition-delay: 3s;
+  }
 }
 
-// [data-turn-camera],
-// [data-take-photo],
-// [data-look-here] {
-//   opacity: 0;
-// }
+[data-look-here],
+[data-take-photo],
+[data-turn-camera] {
+  @include sy-ease-out;
+  opacity: 0;
+}
 
-[data-view-active] > .selfie-guide {
-  opacity: 1;
-  transition-delay: 3s;
-  transition-duration: 1s;
+[data-look-here] {
+  transition-delay: 5s;
+}
+
+[data-take-photo] {
+  transition-delay: 6.5s;
+}
+
+[data-turn-camera] {
+  transition-delay: 3.5s;
+}
+
+[data-selfie-guide] {
+
+  &[data-active] {
+
+    > [data-look-here],
+    > [data-take-photo],
+    > [data-turn-camera] {
+      opacity: 1;
+    }
+  }
 }

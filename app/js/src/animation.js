@@ -735,7 +735,7 @@ function selfie() {
     scaleY: 0.2,
     transformOrigin: '50% 50%',
     yoyo: true,
-    repeat: +2,
+    // repeat: +1,
     ease: SteppedEase.config(1),
   }, 'rtEye')
   .to([eyesHappyClosed, eyesHappyClosedL], 0.4, {
@@ -743,7 +743,7 @@ function selfie() {
     opacity: '1',
     scaleY: 1,
     yoyo: true,
-    repeat: +2,
+    // repeat: +1,
     ease: SteppedEase.config(1),
   }, 'rtEye')
   .to(mouthBigSmile, 0.4, {
@@ -752,8 +752,13 @@ function selfie() {
     scaleY: 1,
     ease: SteppedEase.config(1),
     yoyo: true,
-    repeat: +2,
-  }, 'rtEye');
+    // repeat: +1,
+  }, 'rtEye')
+  .to(svg, 0.8, {
+    y: bottomYOff,
+    ease: Power2.easeInOut,
+    delay: 0.3,
+  });
 
   timeline.play(0);
 }

@@ -18,8 +18,9 @@
     </button>
   </section>
 
-  <section data-view data-view-animation="selfie" data-view-centered>
+  <section data-view data-view-animation="selfie" data-view-centered data-view-function="selfie">
     <h2 class="camera__h2">Snap a selfie to track your progress</h2>
+    <object class="selfie-guide" data="/images/selfie-guide.svg" type="image/svg+xml"></object>
     <form class="camera__form" enctype="multipart/form-data" data-action="/submit" data-method="post">
       <input class="camera__input" accept="image/*" name="file" type="file" capture hidden>
       <input class="camera__input--hidden" name="modifier" type="hidden" value="{{ content.attributes.questions | length }}">
@@ -27,7 +28,7 @@
     </form>
   </section>
 
-  <section data-view data-view-animation="confirmation">
+  <section data-view data-view-animation="confirmation" data-view-function="confirmation">
     <div class="camera__container">
       <canvas class="camera__img" width="1024" height="768"></canvas>
       <button class="camera__img--restart" data-active>Restart</button>

@@ -44,6 +44,8 @@ let context;
 let currentView;
 let heading;
 let headingAnonymizing;
+let instructions;
+let instructionsSvg;
 let img;
 let li;
 let main;
@@ -75,7 +77,11 @@ const app = {
     count: 0,
     personas: window.personas,
   },
-  functions: { results: show },
+  functions: {
+    confirmation: () => toggleElement(instructionsSvg),
+    results: show,
+    selfie: () => toggleElement(instructionsSvg),
+  },
 };
 
 
@@ -380,6 +386,7 @@ function init() {
     character = getElement('[data-character]', main);
     heading = getElement('.button--touch__heading__explode', main);
     headingAnonymizing = getElement('.section__heading--anonymizing', main);
+    instructions = getElement('.selfie-guide', main);
     li = getElements('.section__li', main);
     restartButton = getElement('.camera__img--restart', main);
     titles = getElements('[data-title]', main);
@@ -397,6 +404,18 @@ function init() {
         );
 
         create(svg);
+      }
+    );
+
+    on(
+      instructions,
+      'load',
+      event => {
+        instructionsSvg = getElement(
+          'svg',
+          event.target
+            .getSVGDocument()
+        );
       }
     );
 
