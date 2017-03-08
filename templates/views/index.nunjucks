@@ -64,6 +64,7 @@
 
       <section class="section__feedback-container" data-view data-view-toggle data-view-function="feedback">
         <p class="section__feedback">{{ question.feedback }}</p>
+        <p class="section__feedback--touch">Touch screen to continue</p>
       </section>
     {%- endfor -%}
 

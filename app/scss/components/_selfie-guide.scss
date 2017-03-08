@@ -19,7 +19,7 @@
 [data-look-here],
 [data-take-photo],
 [data-turn-camera] {
-  @include sy-ease-out;
+  @include sy-ease-out(.8);
   opacity: 0;
 }
 

@@ -866,7 +866,7 @@ function introduction() {
     delay: 0.5,
   })
   .set(svg, {
-    x: '1120px',
+    x: '720px',
     y: topYOff,
     rotation: 180,
   })

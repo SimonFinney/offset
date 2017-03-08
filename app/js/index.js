@@ -505,7 +505,7 @@ app.functions.feedback = () => {
   feedbackTimer = setTimeout(() => {
     hide();
     toggleView();
-  }, 8000);
+  }, 7000);
 };
 
 
