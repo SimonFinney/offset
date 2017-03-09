@@ -391,7 +391,9 @@ function init() {
     restartButton = getElement('.camera__img--restart', main);
     titles = getElements('[data-title]', main);
 
-    on(restartButton, 'click', app.functions.reset);
+    on(restartButton, 'click', () => {
+      location.reload();
+    });
 
     on(
       character,
