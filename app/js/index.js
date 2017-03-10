@@ -61,7 +61,6 @@ let views;
 const maximumImagesLength = 16;
 
 let feedbackTimer = null;
-let timeoutTimer = null;
 
 const app = {
   animations: {
@@ -92,13 +91,8 @@ function activate(view) {
 }
 
 
-function manageTimer(timer) {
-  timer ? clearTimeout(timer) : null;
-}
-
-
 function toggleView() {
-  manageTimer(feedbackTimer);
+  feedbackTimer ? clearTimeout(feedbackTimer) : null;
 
   const nextView = views[
     (views.indexOf(currentView) + 1)
@@ -128,7 +122,7 @@ function toggleView() {
     }
 
     if (timeout) {
-      timeoutTimer = setTimeout(toggleView, timeout);
+      debounce(toggleView, timeout);
     }
 
     if (subviews.length) {
@@ -360,16 +354,6 @@ function read() {
 }
 
 
-function reset(element) {
-  const className = element.getAttribute('class');
-  element.removeAttribute('class');
-
-  void element.offsetWidth;
-
-  element.setAttribute('class', className);
-}
-
-
 function init() {
   app.element = getElement('[data-app]');
   main = getElement('.main', app.element);
@@ -420,16 +404,6 @@ function init() {
       }
     );
 
-    manageTimer(feedbackTimer);
-    manageTimer(timeoutTimer);
-
-    app.data
-      .answers = [];
-
-    app.data
-      .count = 0;
-
-    cameraForm.reset();
     img = new Image();
     theater = theaterJS();
 
@@ -441,11 +415,6 @@ function init() {
       view.removeAttribute('data-view-previous');
       view.setAttribute('data-view-next', '');
     });
-
-    each(
-      getElements('.confetti__item', app.element),
-      confettiItem => reset(confettiItem)
-    );
 
     activate(currentView);
 
@@ -467,14 +436,7 @@ function init() {
         .addScene(`heading:${heading.textContent}`),
     animationDelay);
 
-    if (svg) {
-      app.animations
-        .introduction();
-    }
-
     toggleElement(restartButton);
-
-    // app.functions.reset();
 
     context = cameraImg.getContext('2d');
 
