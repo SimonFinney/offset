@@ -38,3 +38,9 @@ deploy:
     manifest: production-manifest.yml
     on:
       branch: master
+
+  - api_key: ${API_KEY}
+    app:
+      master: sxsw-2017
+    provider: heroku
+    skip_cleanup: true
