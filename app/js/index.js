@@ -79,6 +79,7 @@ const app = {
   },
   functions: {
     confirmation: () => toggleElement(instructionsSvg),
+    reset: () => location.reload(),
     results: show,
     selfie: () => toggleElement(instructionsSvg),
   },
@@ -391,9 +392,7 @@ function init() {
     restartButton = getElement('.camera__img--restart', main);
     titles = getElements('[data-title]', main);
 
-    on(restartButton, 'click', () => {
-      location.reload();
-    });
+    on(restartButton, 'click', () => location.reload());
 
     on(
       character,
@@ -421,7 +420,61 @@ function init() {
       }
     );
 
-    app.functions.reset();
+    manageTimer(feedbackTimer);
+    manageTimer(timeoutTimer);
+
+    app.data
+      .answers = [];
+
+    app.data
+      .count = 0;
+
+    cameraForm.reset();
+    img = new Image();
+    theater = theaterJS();
+
+    views = getElements('[data-view]', main);
+    currentView = getElement('[data-view]', main);
+
+    each(views, view => {
+      view.removeAttribute('data-view-active');
+      view.removeAttribute('data-view-previous');
+      view.setAttribute('data-view-next', '');
+    });
+
+    each(
+      getElements('.confetti__item', app.element),
+      confettiItem => reset(confettiItem)
+    );
+
+    activate(currentView);
+
+    const animationDelay = (
+      parseInt(
+        window.getComputedStyle(heading)
+          .animationDelay,
+        10
+      )
+    * 1000);
+
+    debounce(() =>
+      theater.addActor('heading',
+        {
+          accuracy: 0.33,
+          speed: 0.75,
+        }
+      )
+        .addScene(`heading:${heading.textContent}`),
+    animationDelay);
+
+    if (svg) {
+      app.animations
+        .introduction();
+    }
+
+    toggleElement(restartButton);
+
+    // app.functions.reset();
 
     context = cameraImg.getContext('2d');
 
@@ -508,63 +561,6 @@ app.functions.feedback = () => {
     hide();
     toggleView();
   }, 7000);
-};
-
-
-app.functions.reset = () => {
-  manageTimer(feedbackTimer);
-  manageTimer(timeoutTimer);
-
-  app.data
-    .answers = [];
-
-  app.data
-    .count = 0;
-
-  cameraForm.reset();
-  img = new Image();
-  theater = theaterJS();
-
-  views = getElements('[data-view]', main);
-  currentView = getElement('[data-view]', main);
-
-  each(views, view => {
-    view.removeAttribute('data-view-active');
-    view.removeAttribute('data-view-previous');
-    view.setAttribute('data-view-next', '');
-  });
-
-  each(
-    getElements('.confetti__item', app.element),
-    confettiItem => reset(confettiItem)
-  );
-
-  activate(currentView);
-
-  const animationDelay = (
-    parseInt(
-      window.getComputedStyle(heading)
-        .animationDelay,
-      10
-    )
-  * 1000);
-
-  debounce(() =>
-    theater.addActor('heading',
-      {
-        accuracy: 0.33,
-        speed: 0.75,
-      }
-    )
-      .addScene(`heading:${heading.textContent}`),
-  animationDelay);
-
-  if (svg) {
-    app.animations
-      .introduction();
-  }
-
-  toggleElement(restartButton);
 };
 
 
