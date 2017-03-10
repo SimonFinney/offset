@@ -488,6 +488,11 @@ function init() {
       'click',
       () => ajax(cameraForm)
     );
+
+    if (svg) {
+      app.animations
+        .introduction();
+    }
   }
 }
 
