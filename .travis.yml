@@ -15,17 +15,6 @@ before_install:
 script: npm run build
 
 deploy:
-  - edge: true
-    skip_cleanup: true
-    api: https://api.ng.bluemix.net
-    provider: cloudfoundry
-    username: SIMONFIN@ie.ibm.com
-    password: ${PASSWORD}
-    organization: simonfin@ie.ibm.com
-    space: security
-    manifest: manifest.yml
-    on:
-      branch: dev
 
   - edge: true
     skip_cleanup: true
