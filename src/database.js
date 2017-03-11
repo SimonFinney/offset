@@ -5,6 +5,9 @@ const firebase = require('firebase');
 
 const util = require('./util');
 
+const maximumEntries = 16;
+const scheduledInterval = 3600000; // Every hour
+
 const firebaseConfiguration = {
   apiKey: util.getConfiguration('firebaseApiKey'),
   databaseURL: util.getConfiguration('firebaseDatabaseURL'),
@@ -27,7 +30,7 @@ function create(newData, callback) {
 }
 
 
-function get(callback, limit = 16) {
+function get(callback, limit = maximumEntries) {
   data.limitToLast(limit)
     .once('value')
     .then(value =>
@@ -36,8 +39,23 @@ function get(callback, limit = 16) {
 }
 
 
+function clean() {
+  data.once('value', value => {
+    if (value.numChildren() > maximumEntries) {
+      let childCount = 0;
+      value.forEach(child =>
+        (++childCount <= (value.numChildren() - maximumEntries)) ?
+          data.child(child.key).remove() :
+          null
+      );
+    }
+  });
+}
+
+
 function init(callback) {
   data.on('child_added', callback);
+  setInterval(clean, scheduledInterval);
 }
 
 

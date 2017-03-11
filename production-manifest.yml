@@ -2,6 +2,6 @@ inherit: base-manifest.yml
 
 applications:
 - host: sxsw-2017
-  instances: 2
+  instances: 3
   name: SXSW 2017
-  memory: 512MB
+  memory: 341MB

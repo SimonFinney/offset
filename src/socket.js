@@ -9,10 +9,10 @@ let io;
 
 function init(server) {
   io = socket.listen(server);
-  io.on('connection', connection => console.log(connection));
-
-  database.init(
-    value => io.emit('receive', value.val())
+  io.on('connection', () =>
+    database.init(
+      value => io.emit('receive', value.val())
+    )
   );
 }
 
