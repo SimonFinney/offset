@@ -18,12 +18,12 @@ deploy:
 
   - edge: true
     skip_cleanup: true
-    api: https://api.stage1.ng.bluemix.net
+    api: https://api.w3ibm.ng.bluemix.net
     provider: cloudfoundry
     username: SIMONFIN@ie.ibm.com
     password: ${PASSWORD}
-    organization: simonfin@ie.ibm.com
-    space: security
+    organization: IBMSecurity
+    space: sxsw-2017
     manifest: production-manifest.yml
     on:
       branch: master

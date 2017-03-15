@@ -1,4 +1,4 @@
 command: node index.js
 disk_quota: 1024M
-domain: stage1.mybluemix.net
+domain: w3ibm.mybluemix.net
 path: .
