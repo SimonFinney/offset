@@ -18,7 +18,7 @@ deploy:
 
   - edge: true
     skip_cleanup: true
-    api: https://api.ng.bluemix.net
+    api: https://api.stage1.ng.bluemix.net
     provider: cloudfoundry
     username: SIMONFIN@ie.ibm.com
     password: ${PASSWORD}
@@ -27,9 +27,3 @@ deploy:
     manifest: production-manifest.yml
     on:
       branch: master
-
-  - api_key: ${API_KEY}
-    app:
-      master: sxsw-2017
-    provider: heroku
-    skip_cleanup: true
