@@ -18,7 +18,7 @@ deploy:
 
   - edge: true
     skip_cleanup: true
-    api: https://api.w3ibm.ng.bluemix.net
+    api: https://api.w3ibm.bluemix.net
     provider: cloudfoundry
     username: SIMONFIN@ie.ibm.com
     password: ${PASSWORD}
@@ -30,7 +30,7 @@ deploy:
 
   - edge: true
     skip_cleanup: true
-    api: https://api.w3ibm.ng.bluemix.net
+    api: https://api.w3ibm.bluemix.net
     provider: cloudfoundry
     username: SIMONFIN@ie.ibm.com
     password: ${PASSWORD}
