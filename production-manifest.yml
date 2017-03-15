@@ -4,4 +4,4 @@ applications:
 - host: sxsw-2017
   instances: 1
   name: SXSW 2017
-  memory: 64MB
+  memory: 128MB

@@ -24,6 +24,18 @@ deploy:
     password: ${PASSWORD}
     organization: IBMSecurity
     space: sxsw-2017
+    manifest: manifest.yml
+    on:
+      branch: dev
+
+  - edge: true
+    skip_cleanup: true
+    api: https://api.w3ibm.ng.bluemix.net
+    provider: cloudfoundry
+    username: SIMONFIN@ie.ibm.com
+    password: ${PASSWORD}
+    organization: IBMSecurity
+    space: sxsw-2017
     manifest: production-manifest.yml
     on:
       branch: master
