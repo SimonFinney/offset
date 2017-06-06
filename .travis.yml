@@ -19,8 +19,8 @@ deploy:
     provider: cloudfoundry
     username: SIMONFIN@ie.ibm.com
     password: ${PASSWORD}
-    organization: security
-    space: sxsw-2017
+    organization: simonfin@ie.ibm.com
+    space: security
     manifest: manifest.yml
     on:
       branch: dev
@@ -31,8 +31,8 @@ deploy:
     provider: cloudfoundry
     username: SIMONFIN@ie.ibm.com
     password: ${PASSWORD}
-    organization: security
-    space: sxsw-2017
+    organization: simonfin@ie.ibm.com
+    space: security
     manifest: production-manifest.yml
     on:
       branch: master
