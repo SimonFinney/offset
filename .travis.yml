@@ -17,7 +17,6 @@ deploy:
     password: ${PASSWORD}
     organization: simonfin@ie.ibm.com
     space: studios-dublin
-    manifest: manifest/dev.yml
     on:
       branch: dev
 
@@ -29,6 +28,5 @@ deploy:
     password: ${PASSWORD}
     organization: simonfin@ie.ibm.com
     space: studios-dublin
-    manifest: manifest/master.yml
     on:
       branch: master

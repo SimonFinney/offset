@@ -1,0 +1,20 @@
+---
+defaults: &defaults  
+  path: .
+  domain: mybluemix.net
+  disk_quota: 1024M
+  instances: 1
+  command: node index.js
+
+applications:
+  - <<: defaults
+    host: staging-offset
+    name: STAGING OFFSET
+    memory: 64MB
+
+  - <<: defaults 
+    host: OFFSET
+    name: OFFSET
+    memory: 128MB
+
+

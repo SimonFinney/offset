@@ -1,6 +1,0 @@
-inherit: base.yml
-
-applications:
-- host: OFFSET
-  name: OFFSET
-  memory: 128MB

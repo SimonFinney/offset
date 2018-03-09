@@ -1,5 +1,0 @@
-command: node index.js
-disk_quota: 1024M
-domain: mybluemix.net
-instances: 1
-path: .
