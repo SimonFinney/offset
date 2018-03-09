@@ -23,7 +23,7 @@
     <object class="selfie-guide" data="/images/selfie-guide.svg" type="image/svg+xml"></object>
     <form class="camera__form" enctype="multipart/form-data" data-action="/submit" data-method="post">
       <input class="camera__input" accept="image/*" name="file" type="file" capture hidden>
-      <input class="camera__input--hidden" name="modifier" type="hidden" value="{{ content.attributes.questions | length }}">
+      <input class="camera__input--hidden" name="modifier" type="hidden" value="{{ content.questions | length }}">
       <button class="camera__button" type="button" data-camera-toggle>Take photo</button>
     </form>
   </section>
@@ -50,10 +50,10 @@
       <button class="section__button" data-view-toggle>Start</button>
     </section>
 
-    {%- for question in content.attributes.questions -%}
+    {%- for question in content.questions -%}
 
       <section class="section" data-question="{{ loop.index }}" data-view {%- if loop.first %} data-view-animation="quiz" {%- endif -%}>
-        <span class="section__question-count">Question {{ loop.index }} of {{ content.attributes.questions | length }}</span>
+        <span class="section__question-count">Question {{ loop.index }} of {{ content.questions | length }}</span>
         <p class="section__question">{{ question.description }}</p>
 
         {%- for answer in question.answers -%}
@@ -85,7 +85,7 @@
 
       <ol class="section__ol">
 
-        {%- for question in content.attributes.questions -%}
+        {%- for question in content.questions -%}
 
           <li class="section__li">
             <span class="li__title">{{ question.title }}</span>
@@ -112,5 +112,5 @@
 
 {%- block script -%}
 
-    window.personas = {{ content.attributes.personas | dump | safe }};
+    window.personas = {{ content.personas | dump | safe }};
 {%- endblock -%}

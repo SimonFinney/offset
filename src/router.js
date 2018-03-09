@@ -1,17 +1,15 @@
 // TODO: Comments
 
 const express = require('express');
-const frontMatter = require('front-matter');
 const fs = require('fs');
-const marked = require('marked');
 const multer = require('multer');
+const yaml = require('js-yaml');
 
 const database = require('./database');
 const img = require('./img');
 const util = require('./util');
 
-const content = frontMatter(fs.readFileSync('content/questions.md', 'utf-8'));
-content.body = marked(content.body);
+const content = yaml.safeLoad(fs.readFileSync('content/content.yml', 'utf-8'));
 
 const name = require('../package.json').name;
 const router = express.Router();
@@ -24,7 +22,7 @@ function getRoute(request) {
 router.get('/', (request, response) => {
   const route = getRoute(request);
 
-  content.attributes.questions = util.shuffle(content.attributes.questions);
+  content.questions = util.shuffle(content.questions);
 
   response.render('views/index.nunjucks', {
     content,

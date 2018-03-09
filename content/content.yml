@@ -1,4 +1,3 @@
----
 personas:
   - title: 'Um... This is awkward.'
     criteria:
@@ -86,4 +85,3 @@ questions:
       - 'Yes'
       - 'No'
     correct_answer: 'Yes'
----

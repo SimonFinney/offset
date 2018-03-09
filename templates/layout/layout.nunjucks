@@ -9,7 +9,7 @@
     {% block head -%}
     {%- endblock -%}
   </head>
-  <body class="body" data-app="{{ route }}" {%- if content %} data-questions-length="{{ content.attributes.questions | length }}" {%- endif -%}>
+  <body class="body" data-app="{{ route }}" {%- if content %} data-questions-length="{{ content.questions | length }}" {%- endif -%}>
 
     <main class="main">
 
