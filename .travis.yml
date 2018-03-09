@@ -18,10 +18,10 @@ deploy:
     organization: simonfin@ie.ibm.com
     space: studios-dublin
 
-  - <<: defaults
+  - "<<": defaults
     on:
       branch: dev
 
-  - <<: defaults
+  - "<<": defaults
     on:
       branch: master
