@@ -1,5 +1,5 @@
 ---
-defaults: &defaults  
+_defaults: &_defaults  
   path: .
   domain: mybluemix.net
   disk_quota: 1024M
