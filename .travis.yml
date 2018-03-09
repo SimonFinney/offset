@@ -18,7 +18,6 @@ _template: &_template
   space: studios-dublin
 
 deploy:
-
   - <<: *_template
     on:
       branch: dev
