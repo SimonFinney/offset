@@ -3,14 +3,12 @@
 // TODO: Comments
 const firebase = require('firebase');
 
-const util = require('./util');
-
 const maximumEntries = 16;
 const scheduledInterval = 3600000; // Every hour
 
 const firebaseConfiguration = {
-  apiKey: util.getConfiguration('firebaseApiKey'),
-  databaseURL: util.getConfiguration('firebaseDatabaseURL'),
+  apiKey: process.env.FIREBASE_API_KEY,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfiguration);
@@ -18,8 +16,8 @@ const firebaseApp = firebase.initializeApp(firebaseConfiguration);
 firebase
   .auth()
   .signInWithEmailAndPassword(
-    util.getConfiguration('firebaseEmail'),
-    util.getConfiguration('firebasePassword')
+    process.env.FIREBASE_EMAIL,
+    process.env.FIREBASE_PASSWORD
   );
 
 const database = firebaseApp.database();

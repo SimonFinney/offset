@@ -24,6 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "compression": "^1.6.1",
+    "dotenv": "^5.0.1",
     "express": "^4.13.4",
     "express-minify-html": "^0.4.0",
     "firebase": "^3.6.9",

@@ -2,9 +2,12 @@
 
 // TODO: Comments
 const compression = require('compression');
+const dotenv = require('dotenv');
 const express = require('express');
 const minifyHtml = require('express-minify-html');
 const nunjucks = require('nunjucks');
+
+dotenv.load();
 
 const router = require('./src/router');
 const socket = require('./src/socket');
