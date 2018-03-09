@@ -8,9 +8,8 @@
   },
   "scripts": {
     "dev": "node_modules/gulp/bin/gulp.js",
-    "build": "npm run dev build",
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "yarn dev build",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
