@@ -7,7 +7,7 @@ cache:
 
 script: yarn build
 
-_template: &_template
+_deploy: &_deploy
   edge: true
   skip_cleanup: true
   provider: cloudfoundry
@@ -18,10 +18,10 @@ _template: &_template
   space: studios-dublin
 
 deploy:
-  - <<: *_template
+  - <<: *_deploy
     on:
       branch: dev
 
-  - <<: *_template
+  - <<: *_deploy
     on:
       branch: master

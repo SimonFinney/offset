@@ -10,11 +10,11 @@ applications:
   - name: STAGING OFFSET 
     host: staging-offset
     memory: 64MB
-    <<: defaults
+    <<: *_defaults
 
   - name: OFFSET 
     host: offset
     memory: 128MB
-    <<: defaults
+    <<: *_defaults
 
 
