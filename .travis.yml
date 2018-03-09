@@ -5,7 +5,7 @@ cache:
   - node_modules
   - yarn
 
-script: yarn build
+before_deploy: yarn build
 
 _deploy: &_deploy
   edge: true
