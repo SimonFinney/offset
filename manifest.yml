@@ -7,14 +7,16 @@ _defaults: &_defaults
   command: node index.js
 
 applications:
-  - name: STAGING OFFSET 
-    host: staging-offset
+  - <<: *_defaults 
+    name: STAGING OFFSET
     memory: 64MB
-    <<: *_defaults
+    routes:
+    - route: staging-offset
 
-  - name: OFFSET 
-    host: offset
+  - <<: *_defaults 
+    name: OFFSET 
     memory: 128MB
-    <<: *_defaults
+    routes:
+    - route: offset
 
 
