@@ -1,7 +1,7 @@
 {
-  "name": "OFFSET-2018",
+  "name": "offset",
   "version": "0.1.0",
-  "description": "OFFSET 2018",
+  "description": "OFFSET Dublin",
   "main": "index.js",
   "scripts": {
     "dev": "node_modules/gulp/bin/gulp.js",
@@ -11,16 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.ibm.com:SIMONFIN/offset-2018.git"
+    "url": "git@github.com:SimonFinney/offset.git"
   },
-  "keywords": [
-    "ibm",
-    "studios",
-    "dublin",
-    "offset",
-    "2018"
-  ],
-  "author": "Simon Finney <SIMONFIN@ie.ibm.com>",
+  "keywords": ["ibm", "studios", "dublin", "offset"],
+  "author": "Simon Finney <simonjfinney@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "compression": "^1.6.1",
@@ -68,8 +62,5 @@
     "stylelint-scss": "^2.3.0",
     "theaterjs": "^3.1.0",
     "webpack-stream": "^3.2.0"
-  },
-  "engines": {
-    "node": ">=7.5.0"
   }
 }

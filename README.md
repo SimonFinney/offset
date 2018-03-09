@@ -1,3 +1,3 @@
-# offset-2018
+# offset
 
-OFFSET 2018
+OFFSET Dublin
