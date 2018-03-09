@@ -8,25 +8,20 @@ cache:
 script: yarn build
 
 deploy:
-
-  - edge: true
+  defaults: &defaults  
+    edge: true
     skip_cleanup: true
-    api: https://api.ng.bluemix.net
     provider: cloudfoundry
+    api: https://api.ng.bluemix.net
     username: apikey
     password: ${PASSWORD}
     organization: simonfin@ie.ibm.com
     space: studios-dublin
+
+  - <<: defaults
     on:
       branch: dev
 
-  - edge: true
-    skip_cleanup: true
-    api: https://api.ng.bluemix.net
-    provider: cloudfoundry
-    username: apikey
-    password: ${PASSWORD}
-    organization: simonfin@ie.ibm.com
-    space: studios-dublin
+  - <<: defaults
     on:
       branch: master
