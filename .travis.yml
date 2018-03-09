@@ -3,8 +3,9 @@ language: node_js
 cache:
   directories:
   - node_modules
+  - yarn
 
-script: npm run build
+script: yarn build
 
 deploy:
 
@@ -15,7 +16,7 @@ deploy:
     username: SIMONFIN@ie.ibm.com
     password: ${PASSWORD}
     organization: simonfin@ie.ibm.com
-    space: offset
+    space: studios-dublin
     manifest: manifest/dev.yml
     on:
       branch: dev
@@ -27,7 +28,7 @@ deploy:
     username: SIMONFIN@ie.ibm.com
     password: ${PASSWORD}
     organization: simonfin@ie.ibm.com
-    space: offset
+    space: studios-dublin
     manifest: manifest/master.yml
     on:
       branch: master
