@@ -13,7 +13,6 @@ $confetti-dimensions: 16px;
   pointer-events: none;
 
   [data-view-active] > & {
-
     .confetti__item {
       display: inline-block;
     }
@@ -30,7 +29,6 @@ $confetti-dimensions: 16px;
   animation-duration: 2s;
 
   @for $index from 1 through $total-confetti {
-
     &:nth-child(#{$index}) {
       $background-color: rgb(random(255), random(255), random(255));
 
@@ -42,7 +40,6 @@ $confetti-dimensions: 16px;
 }
 
 @keyframes confetti {
-
   0%,
   50%,
   100% {
@@ -66,9 +63,7 @@ $confetti-dimensions: 16px;
 }
 
 @for $index from 1 through $total-confetti {
-
   @keyframes confetti--#{$index} {
-
     0% {
       left: (100% - random(100));
     }

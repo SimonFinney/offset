@@ -5,7 +5,7 @@
 .button--touch__heading__explode,
 .button--touch__instructions {
   opacity: 0;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   animation-name: fade-in;
   animation-fill-mode: forwards;
 }
@@ -16,10 +16,11 @@
   padding: 0;
   color: inherit;
   text-align: initial;
+  font-family: $base-font-family;
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  animation-delay: .1s;
+  animation-delay: 0.1s;
 }
 
 .button--touch__heading,
@@ -30,11 +31,11 @@
 
 .button--touch__heading {
   margin-top: 96px;
-  font-size: rem(100px);
+  font-size: rem(100);
   font-weight: bold;
-  line-height: rem(140px);
+  line-height: rem(140);
   letter-spacing: normal;
-  animation-delay: .3s;
+  animation-delay: 0.3s;
 }
 
 .button--touch__heading__explode {
@@ -46,13 +47,13 @@
   line-height: normal;
   color: $gray-90;
   background-color: $white;
-  animation-delay: .6s;
+  animation-delay: 0.6s;
 }
 
 .button--touch__instructions {
-  @include font-size('16');
   display: block;
+  font-size: rem(16);
   margin-top: 176px;
-  letter-spacing: .1px;
+  letter-spacing: 0.1px;
   animation-delay: 1s;
 }

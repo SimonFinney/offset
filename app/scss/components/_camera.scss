@@ -2,12 +2,12 @@
 
 .camera__h2 {
   @extend %h2;
-  @include sy-ease-out(1);
+  @include ease-out(1);
   width: 66%;
   transform: translate3d(0, 100%, 0) scale3d(1, 1, 1);
 
   [data-view-active] > & {
-    transform: translate3d(0, -10%, 0) scale3d(.5, .5, .5);
+    transform: translate3d(0, -10%, 0) scale3d(0.5, 0.5, 0.5);
     transition-delay: 2.5s;
   }
 }
@@ -34,15 +34,14 @@
 }
 
 .camera__img--restart {
-  @include font-size('14');
-  @include sy-ease-out;
+  @include ease-out;
   @include z-index('camera__img--restart');
   margin-top: auto;
   margin-bottom: 24px;
   margin-left: 24px;
   font-family: $base-font-family;
   font-weight: bold;
-  letter-spacing: .24px;
+  letter-spacing: 0.24px;
   color: $white;
   text-shadow: $text-shadow;
   text-transform: capitalize;
@@ -69,7 +68,7 @@
 }
 
 .camera__button {
-  @include sy-ease-out(1);
+  @include ease-out(1);
   opacity: 0;
   transform: translate3d(0, 225%, 0);
 
@@ -81,9 +80,9 @@
 
 .camera__button--confirm,
 .camera__button--retake {
-  @include sy-ease-out;
+  @include ease-out;
   transform: translate3d(0, 425%, 0);
-  transition-delay: .6s;
+  transition-delay: 0.6s;
 
   [data-view-active] [data-view-active] > & {
     transform: translate3d(0, 0, 0);

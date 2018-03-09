@@ -1,10 +1,18 @@
 // Color
 
-$question-count-background: #595859;
-$icon-happy: #40d5bb;
-$icon-sad: #ff509e;
+$white: #fff;
 
-$background-primary: #204348;
-$background-secondary: #dc518e;
+$gray-70: #565656;
+$gray-90: #252525;
+$gray-100: #171717;
 
-$text-shadow: 1px 1px 2px rgba($white, .5);
+$magenta-50: #ee538b;
+
+$teal-30: #20d5d2;
+
+$question-count-background: $gray-70;
+
+$icon-happy: $teal-30;
+$icon-sad: $magenta-50;
+
+$text-shadow: 1px 1px 2px rgba($white, 0.5);

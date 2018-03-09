@@ -2,15 +2,13 @@
 
 .body {
   height: 100%;
+  margin: 0;
+  font-family: $base-font-family;
   color: $white;
-
-  &:not([data-app='receive']) {
-    max-width: 1024px;
-    background-color: $gray-90;
-  }
+  max-width: 1024px;
+  background-color: $gray-90;
 
   &[data-app='receive'] {
-    background-image: url('../images/placeholder.png');
-    background-size: 100vw 100vh;
+    max-width: initial;
   }
 }

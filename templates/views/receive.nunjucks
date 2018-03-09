@@ -9,8 +9,3 @@
     </div>
   {%- endfor -%}
 {%- endblock -%}
-
-{%- block script -%}
-
-  <script src="/js/bundle.js"></script>
-{%- endblock -%}

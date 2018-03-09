@@ -39,9 +39,6 @@ require('./gulp/tasks/nodemon')(gulp, config.nodemon);
 // Sass
 require('./gulp/tasks/sass')(gulp, browserSync, config);
 
-// Sass-Lint
-require('./gulp/tasks/sass-lint')(gulp, config.paths);
-
 // SVG sprites
 require('./gulp/tasks/svg-sprite')(gulp, config);
 

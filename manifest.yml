@@ -1,7 +1,0 @@
-inherit: base-manifest.yml
-
-applications:
-- host: staging-sxsw-2017
-  instances: 1
-  name: STAGING SXSW 2017
-  memory: 64MB

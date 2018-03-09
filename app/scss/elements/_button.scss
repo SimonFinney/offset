@@ -6,6 +6,7 @@
   padding-right: 32px;
   padding-left: 32px;
   font-family: $base-font-family;
+  font-size: rem(16);
   font-weight: bold;
   text-transform: capitalize;
   cursor: pointer;
@@ -13,7 +14,6 @@
 }
 
 %button--large {
-  @include font-size('24');
   max-width: 244px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -30,9 +30,8 @@
 }
 
 %button--secondary {
-  @include font-size('16');
   font-weight: 400;
-  letter-spacing: .1px;
+  letter-spacing: 0.1px;
   color: $white;
   background-color: transparent;
 }

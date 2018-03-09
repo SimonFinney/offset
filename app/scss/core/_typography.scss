@@ -1,0 +1,8 @@
+// Typography
+
+$base-font-family: 'ibm-plex-sans', sans-serif;
+$base-font-size: 16;
+
+@function rem($size) {
+  @return #{$size / $base-font-size}rem;
+}

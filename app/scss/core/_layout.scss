@@ -1,23 +1,19 @@
 // Layout
 
-$breakpoints: (
-  // Breakpoint
-);
+$breakpoints: ();
 
 $z-index: (
   camera__img,
   camera__img--restart,
   character,
   confetti,
-  confetti__item,
+  confetti__item
 );
-
 
 // Returns breakpoints from the associated Sass map
 @mixin media-query($breakpoint-name) {
-
   @if not map-has-key($breakpoints, $breakpoint-name) {
-    @error 'Unknown breakpoint "#{$breakpoint-name}"';
+    @error 'Unknown breakpoint '#{$breakpoint-name}'';
   }
 
   @media #{map-get($breakpoints, $breakpoint-name)} {
@@ -26,7 +22,6 @@ $z-index: (
 }
 
 @mixin reset-focus {
-
   &:focus {
     outline: 0;
   }
@@ -38,7 +33,7 @@ $z-index: (
 }
 
 [data-view] {
-  @include sy-ease-out(.5);
+  @include ease-out(0.5);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -65,7 +60,7 @@ $z-index: (
 
   &[data-view-previous] {
     transform: translate3d(-150%, -50%, 0);
-    transition-duration: .4s;
+    transition-duration: 0.4s;
   }
 
   [data-view] {
@@ -73,13 +68,13 @@ $z-index: (
 
     &[data-view-next] {
       transform: translate3d(-50%, 50%, 0);
-      transition-duration: .1s;
+      transition-duration: 0.1s;
     }
 
     &[data-view-previous] {
       opacity: 0;
       transform: translate3d(-50%, -50%, 0);
-      transition-duration: .1s;
+      transition-duration: 0.1s;
     }
   }
 }

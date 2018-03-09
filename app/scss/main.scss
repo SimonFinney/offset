@@ -2,29 +2,24 @@
 // Sass manifest
 
 // Imports
-@import '../../node_modules/@ibm/security-components/dist/scss/global/global';
+@import '../../node_modules/carbon-components/scss/globals/scss/styles';
 
 // Core
-@import
-'core/color',
-'core/layout',
-'core/motion';
+@import 'core/color', 'core/motion', 'core/layout', 'core/typography';
 
 // Elements
-@import
-'elements/body',
-'elements/button',
-'elements/h2',
-'elements/html',
-'elements/img',
-'elements/main',
-'elements/section';
+@import 'elements/body',
+  'elements/button',
+  'elements/h2',
+  'elements/html',
+  'elements/img',
+  'elements/main',
+  'elements/section';
 
 // Components
-@import
-'components/button--touch',
-'components/camera',
-'components/character',
-'components/confetti',
-'components/selfie-guide',
-'components/view';
+@import 'components/button--touch',
+  'components/camera',
+  'components/character',
+  'components/confetti',
+  'components/selfie-guide',
+  'components/view';

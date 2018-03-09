@@ -11,21 +11,21 @@ personas:
       - 3
       - 4
 
-  - title: 'Woot! Your security behavior is stellar.'
+  - title: 'Woot! Your security behaviour is stellar.'
     criteria:
       - 5
       - 6
 
-  - title: 'Nicely done! There is nothing to see here.'
+  - title: 'Nicely done! There’s nothing to see here.'
     criteria:
       - 7
       - 8
 
 questions:
 
-  - title: Public WiFi Shopper?
-    description: 'When on public wifi, like at a coffee shop or airport, have you ever made an online purchase?'
-    feedback: "Public wifi networks are often unencrypted, meaning anyone in range could see what you're doing online. Stick to private wifi for purchases and banking."
+  - title: Public Wi-Fi Shopper?
+    description: 'When on public Wi-Fi, like at a coffee shop or airport, have you ever made an online purchase?'
+    feedback: "Public Wi-Fi networks are often unencrypted, meaning anyone in range could see what you’re doing online. Stick to private Wi-Fi for purchases and banking."
     answers:
       - 'Yes'
       - 'No'
@@ -33,13 +33,13 @@ questions:
 
   - title: Check Suspicious Email Links?
     description: 'Before clicking, do you check email links from unknown senders?'
-    feedback: "Be cautious clicking links or opening attachments, even from friends if it's an unexpected email or a chain letter. When in doubt, delete it."
+    feedback: "Be cautious clicking links or opening attachments, even from friends if it’s an unexpected email or a chain letter. When in doubt, delete it."
     answers:
       - 'Yes'
       - 'No'
     correct_answer: 'Yes'
 
-  - title: Bank Login Same as Social Login?
+  - title: Bank Login Same as Social?
     description: 'Is your social login and password the same as your online banking login and password?'
     feedback: "It’s hard to keep track of different passwords, but that’s what a password manager is for. You shouldn’t be reusing passwords, period."
     answers:
@@ -64,8 +64,8 @@ questions:
     correct_answer: 'No'
 
   - title: Use Random USB Drives?
-    description: "Have you ever found a USB drive and plugged it into your computer to see what's on it?"
-    feedback: 'That "free" USB drive can infect or completely destroy your computer.'
+    description: "Have you ever found a USB drive and plugged it into your computer to see what’s on it?"
+    feedback: "That ‘free’ USB drive can infect or completely destroy your computer."
     answers:
       - 'Yes'
       - 'No'

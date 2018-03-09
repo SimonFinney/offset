@@ -12,29 +12,25 @@ const util = require('./src/util');
 
 const app = express();
 
-const serverDirectory = (util.isDebug() ? '.tmp' : 'dist');
+const serverDirectory = util.isDebug() ? '.tmp' : 'dist';
 const staticAssets = express.static(`${__dirname}/${serverDirectory}/`);
 
 app.use(staticAssets);
 
 app.use('/', router);
 
-app.use(
-  compression()
-);
+app.use(compression());
 
 app.use(
-  minifyHtml(
-    {
-      htmlMinifier: {
-        collapseBooleanAttributes: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
-        removeComments: true,
-        removeEmptyAttributes: true,
-      },
-    }
-  )
+  minifyHtml({
+    htmlMinifier: {
+      collapseBooleanAttributes: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true,
+      removeComments: true,
+      removeEmptyAttributes: true,
+    },
+  })
 );
 
 nunjucks.configure('templates', {
@@ -42,8 +38,8 @@ nunjucks.configure('templates', {
   express: app,
 });
 
-app.host = app.set('host', (process.env.HOST || 'http://localhost'));
-app.port = app.set('port', (process.env.PORT || 8080));
+app.host = app.set('host', process.env.HOST || 'http://localhost');
+app.port = app.set('port', process.env.PORT || 8080);
 
 const port = app.get('port');
 

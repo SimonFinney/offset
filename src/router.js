@@ -10,21 +10,16 @@ const database = require('./database');
 const img = require('./img');
 const util = require('./util');
 
-const content = frontMatter(
-  fs.readFileSync('content/questions.md', 'utf-8')
-);
+const content = frontMatter(fs.readFileSync('content/questions.md', 'utf-8'));
 content.body = marked(content.body);
 
 const name = require('../package.json').name;
 const router = express.Router();
 const upload = multer();
 
-
 function getRoute(request) {
-  return request.url
-    .replace('/', '');
+  return request.url.replace('/', '');
 }
-
 
 router.get('/', (request, response) => {
   const route = getRoute(request);
@@ -38,13 +33,11 @@ router.get('/', (request, response) => {
   });
 });
 
-
 router.get('/receive', (request, response) => {
   const route = getRoute(request);
 
   database.get(data => {
-    const images = Object.keys(data)
-      .map(id => data[id]);
+    const images = data && Object.keys(data).map(id => data[id]);
 
     response.render('views/receive.nunjucks', {
       images,
@@ -53,7 +46,6 @@ router.get('/receive', (request, response) => {
     });
   });
 });
-
 
 router.post('/submit', upload.single('file'), (request, response) => {
   const modifier = request.body.modifier;
@@ -66,6 +58,5 @@ router.post('/submit', upload.single('file'), (request, response) => {
 
   database.create(data, () => response.redirect('/'));
 });
-
 
 module.exports = router;

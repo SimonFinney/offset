@@ -3,14 +3,11 @@
 // Paths
 const spritesheet = 'sprite.svg';
 
-const paths = new (function paths() {
+const paths = new function paths() {
   this.app = 'app/';
   this.dist = 'dist/';
 
-  this.extras = [
-    'fonts/',
-    'manifest.json',
-  ];
+  this.extras = ['fonts/', 'manifest.json'];
 
   this.images = 'images/';
   this.icons = `${this.app}${this.images}/icons/**/*`;
@@ -22,13 +19,10 @@ const paths = new (function paths() {
   this.scss = `${this.app}scss/**/*.scss`;
   this.spritesheet = `${imageSuffix}/${spritesheet}`;
   this.tmp = '.tmp/';
-});
-
+}();
 
 // Configuration
-const browsers = [
-  '> 5%',
-];
+const browsers = ['> 5%'];
 
 const autoprefixer = { browsers };
 
@@ -64,10 +58,10 @@ const webpack = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         loader: 'babel',
         query: {
-          presets: ['es2015'],
+          presets: ['env'],
         },
       },
     ],

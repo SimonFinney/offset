@@ -13,7 +13,7 @@
 
   <section class="view--introduction" data-view>
     <button class="button--touch" data-view-toggle>
-      <h1 class="button--touch__heading">See How Much You&apos;re <span id="heading" class="button--touch__heading__explode">Exposing</span></h1>
+      <h1 class="button--touch__heading">See How Much You’re <span id="heading" class="button--touch__heading__explode">Exposing</span></h1>
       <span class="button--touch__instructions">Touch anywhere to begin</span>
     </button>
   </section>
@@ -24,7 +24,7 @@
     <form class="camera__form" enctype="multipart/form-data" data-action="/submit" data-method="post">
       <input class="camera__input" accept="image/*" name="file" type="file" capture hidden>
       <input class="camera__input--hidden" name="modifier" type="hidden" value="{{ content.attributes.questions | length }}">
-      <button class="camera__button" type="button" data-camera-toggle>Take Photo</button>
+      <button class="camera__button" type="button" data-camera-toggle>Take photo</button>
     </form>
   </section>
 
@@ -34,19 +34,19 @@
       <button class="camera__img--restart" data-active>Restart</button>
     </div>
     <section class="section" data-view data-view-centered>
-      <h2 class="section__h2--confirmation">Lookin&apos; good!</h2>
+      <h2 class="section__h2--confirmation">Lookin’ good!</h2>
       <button class="camera__button--confirm" data-view-toggle>Use photo</button>
       <button class="camera__button--retake" data-camera-retake data-camera-toggle>Retake</button>
     </section>
 
     <section class="section" data-view data-view-animation="anonymizing" data-view-function="anonymize" data-view-timeout="3000">
       <h2 class="section__h2">
-        <span id="anonymizing" class="section__heading--anonymizing" data-title="Anonymizing">data-title</span>
+        <span id="anonymizing" class="section__heading--anonymizing" data-title="Anonymising">data-title</span>
       </h2>
     </section>
 
     <section class="section" data-view data-view-centered>
-      <h2 class="section__h2">Start Quiz</h2>
+      <h2 class="section__h2">Start quiz</h2>
       <button class="section__button" data-view-toggle>Start</button>
     </section>
 
@@ -79,7 +79,7 @@
       </div>
 
       <h2 class="section__title--small">
-        <span class="title--small__lead">You're done!</span>
+        <span class="title--small__lead">You’re done!</span>
         <span class="title--small__persona" data-title>data-title</span>
       </h2>
 
@@ -102,7 +102,7 @@
     </section>
 
     <section class="section" data-view data-view-animation="complete">
-      <h2 class="section__title--conclusion">Thanks for Playing</h2>
+      <h2 class="section__title--conclusion">Thanks for playing!</h2>
       <p class="section__question">Be careful out there.</p>
     </section>
 
@@ -111,9 +111,6 @@
 {%- endblock -%}
 
 {%- block script -%}
-  <script>
 
     window.personas = {{ content.attributes.personas | dump | safe }};
-  </script>
-  <script src="/js/bundle.js"></script>
 {%- endblock -%}

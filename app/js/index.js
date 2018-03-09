@@ -84,19 +84,15 @@ const app = {
   },
 };
 
-
 function activate(view) {
   toggleElement(view, 'view-next');
   toggleElement(view, 'view-active');
 }
 
-
 function toggleView() {
   feedbackTimer ? clearTimeout(feedbackTimer) : null;
 
-  const nextView = views[
-    (views.indexOf(currentView) + 1)
-  ];
+  const nextView = views[views.indexOf(currentView) + 1];
 
   toggleElement(currentView, 'view-previous');
 
@@ -134,28 +130,25 @@ function toggleView() {
   });
 }
 
-
 function determinePersona(answersLength) {
-  each(app.data
-    .personas, persona =>
-      each(persona.criteria, criterion => {
-        (criterion === answersLength) ?
-          each(titles, titleToModify => {
+  each(app.data.personas, persona =>
+    each(persona.criteria, criterion => {
+      criterion === answersLength
+        ? each(titles, titleToModify => {
             const title = titleToModify;
             title.textContent = persona.title;
-          }) :
-          null;
-      })
+          })
+        : null;
+    })
   );
 }
-
 
 function grayscale(canvas, ctx) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const pixels = imageData.data;
 
   for (let i = 0; i < pixels.length; i += 4) {
-    const gs = ((pixels[i] * 0.3) + (pixels[i + 1] * 0.59) + (pixels[i + 2] * 0.11));
+    const gs = pixels[i] * 0.3 + pixels[i + 1] * 0.59 + pixels[i + 2] * 0.11;
     pixels[i] = gs;
     pixels[i + 1] = gs;
     pixels[i + 2] = gs;
@@ -164,17 +157,15 @@ function grayscale(canvas, ctx) {
   ctx.putImageData(imageData, 0, 0);
 }
 
-
 function pixelate(canvas, ctx, image, size) {
-  const computedSize = ((size * 5) + 1);
-  const width = (canvas.width / computedSize);
-  const height = (canvas.height / computedSize);
+  const computedSize = size * 5 + 1;
+  const width = canvas.width / computedSize;
+  const height = canvas.height / computedSize;
 
   ctx.drawImage(image, 0, 0, width, height);
   ctx.drawImage(canvas, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
   grayscale(canvas, ctx);
 }
-
 
 function transition(canvas, ctx, image, size = app.data.total) {
   ctx.globalAlpha = 0.0;
@@ -190,16 +181,13 @@ function transition(canvas, ctx, image, size = app.data.total) {
   loop();
 }
 
-
 function check(event) {
   const button = event.target;
-  const isCorrect = (button.getAttribute('value') === 'true');
+  const isCorrect = button.getAttribute('value') === 'true';
 
-  app.data.count = isCorrect ?
-    app.data.count :
-    (app.data.count + 1);
+  app.data.count = isCorrect ? app.data.count : app.data.count + 1;
 
-  const modifier = (app.data.total - app.data.count);
+  const modifier = app.data.total - app.data.count;
   cameraInputHidden.setAttribute('value', modifier);
 
   pixelate(cameraImg, context, img, modifier);
@@ -209,35 +197,21 @@ function check(event) {
     textContent: button.textContent,
   });
 
-  determinePersona(
-    app.data
-      .answers
-      .filter(answer => answer.isCorrect)
-      .length
-  );
+  determinePersona(app.data.answers.filter(answer => answer.isCorrect).length);
 
-  const answer = li[
-    (
-      app.data
-      .answers
-      .length - 1
-    )
-  ];
+  const answer = li[app.data.answers.length - 1];
 
-  getElement('.li__answer', answer)
-    .textContent = button.textContent;
+  getElement('.li__answer', answer).textContent = button.textContent;
 
   const icon = getElement('.li__icon', answer);
   icon.setAttribute('data-icon', isCorrect);
 
-  getElement('use', icon)
-    .setAttributeNS(
-      'http://www.w3.org/1999/xlink',
-      'href',
-      `${icon.getAttribute('data-href')}${isCorrect}`
+  getElement('use', icon).setAttributeNS(
+    'http://www.w3.org/1999/xlink',
+    'href',
+    `${icon.getAttribute('data-href')}${isCorrect}`
   );
 }
-
 
 function run(canvas, contextToModify, image, src) {
   const ctx = contextToModify;
@@ -252,7 +226,6 @@ function run(canvas, contextToModify, image, src) {
   image.setAttribute('src', src);
 }
 
-
 function getUniqueValue() {
   if (!uniqueNumbers.length) {
     for (let currentNumber = 0; currentNumber < totalNumbers; currentNumber++) {
@@ -260,9 +233,7 @@ function getUniqueValue() {
     }
   }
 
-  const randomIndex = Math.floor(
-    Math.random() * uniqueNumbers.length
-  );
+  const randomIndex = Math.floor(Math.random() * uniqueNumbers.length);
 
   const uniqueNumberValue = uniqueNumbers[randomIndex];
 
@@ -270,17 +241,15 @@ function getUniqueValue() {
   return uniqueNumberValue;
 }
 
-
 function load(canvas) {
   const ctx = canvas.getContext('2d');
   const image = new Image();
   run(canvas, ctx, image, canvas.getAttribute('data-src'));
 
   debounce(() => {
-    pixelate(canvas, ctx, image, (canvas.getAttribute('data-modifier') / 3));
+    pixelate(canvas, ctx, image, canvas.getAttribute('data-modifier') / 3);
   });
 }
-
 
 function randomiseImages() {
   uniqueNumbers = [];
@@ -288,10 +257,7 @@ function randomiseImages() {
 
   canvasElements = [];
 
-  each(
-    getElements('[data-src]', main),
-    canvas => canvasElements.push(canvas)
-  );
+  each(getElements('[data-src]', main), canvas => canvasElements.push(canvas));
 
   each(canvasElements, canvas => {
     canvas.removeAttribute('data-active');
@@ -300,10 +266,7 @@ function randomiseImages() {
 
     canvasContainer.innerHTML = '';
 
-    const timeout = parseInt(
-      canvas.getAttribute('data-delay'),
-      10
-    );
+    const timeout = parseInt(canvas.getAttribute('data-delay'), 10);
 
     setTimeout(() => {
       load(canvas);
@@ -312,22 +275,15 @@ function randomiseImages() {
   });
 }
 
-
 function add(image) {
-  const canvas = createElement(
-    'canvas',
-    {
-      class: 'img',
-      'data-delay': '50',
-      'data-src': image.src,
-      'data-modifier': image.modifier,
-    }
-  );
+  const canvas = createElement('canvas', {
+    class: 'img',
+    'data-delay': '50',
+    'data-src': image.src,
+    'data-modifier': image.modifier,
+  });
 
-  const canvasContainer = createElement(
-    'div',
-    { class: 'img__container' }
-  );
+  const canvasContainer = createElement('div', { class: 'img__container' });
 
   canvasContainer.appendChild(canvas);
   main.insertBefore(canvasContainer, main.firstChild);
@@ -339,26 +295,26 @@ function add(image) {
   randomiseImages();
 }
 
-
 function read() {
   if (cameraInput.files && cameraInput.files[0]) {
     const fileReader = new FileReader();
 
-    on(fileReader, 'load', event => run(cameraImg, context, img, event.target.result));
+    on(fileReader, 'load', event =>
+      run(cameraImg, context, img, event.target.result)
+    );
     fileReader.readAsDataURL(cameraInput.files[0]);
 
-    !selectedCameraToggleButton.hasAttribute('data-camera-retake') ?
-      toggleView() :
-      null;
+    !selectedCameraToggleButton.hasAttribute('data-camera-retake')
+      ? toggleView()
+      : null;
   }
 }
-
 
 function init() {
   app.element = getElement('[data-app]');
   main = getElement('.main', app.element);
 
-  if ((app.element.getAttribute('data-app') === 'receive')) {
+  if (app.element.getAttribute('data-app') === 'receive') {
     const socket = io();
     socket.on('receive', add);
 
@@ -378,31 +334,15 @@ function init() {
 
     on(restartButton, 'click', () => location.reload());
 
-    on(
-      character,
-      'load',
-      event => {
-        svg = getElement(
-          'svg',
-          event.target
-            .getSVGDocument()
-        );
+    on(character, 'load', event => {
+      svg = getElement('svg', event.target.getSVGDocument());
 
-        create(svg);
-      }
-    );
+      create(svg);
+    });
 
-    on(
-      instructions,
-      'load',
-      event => {
-        instructionsSvg = getElement(
-          'svg',
-          event.target
-            .getSVGDocument()
-        );
-      }
-    );
+    on(instructions, 'load', event => {
+      instructionsSvg = getElement('svg', event.target.getSVGDocument());
+    });
 
     img = new Image();
     theater = theaterJS();
@@ -418,36 +358,32 @@ function init() {
 
     activate(currentView);
 
-    const animationDelay = (
-      parseInt(
-        window.getComputedStyle(heading)
-          .animationDelay,
-        10
-      )
-    * 1000);
+    const animationDelay =
+      parseInt(window.getComputedStyle(heading).animationDelay, 10) * 1000;
 
-    debounce(() =>
-      theater.addActor('heading',
-        {
-          accuracy: 0.33,
-          speed: 0.75,
-        }
-      )
-        .addScene(`heading:${heading.textContent}`),
-    animationDelay);
+    debounce(
+      () =>
+        theater
+          .addActor('heading', {
+            accuracy: 0.33,
+            speed: 0.75,
+          })
+          .addScene(`heading:${heading.textContent}`),
+      animationDelay
+    );
 
     toggleElement(restartButton);
 
     context = cameraImg.getContext('2d');
 
     app.data.total = parseInt(
-      getElement('[data-questions-length]').getAttribute('data-questions-length'),
+      getElement('[data-questions-length]').getAttribute(
+        'data-questions-length'
+      ),
       10
     );
 
-    each(
-      getElements('[data-camera-toggle]', main),
-      cameraToggleButton =>
+    each(getElements('[data-camera-toggle]', main), cameraToggleButton =>
       on(cameraToggleButton, 'click', () => {
         selectedCameraToggleButton = cameraToggleButton;
         cameraInput.click();
@@ -456,46 +392,35 @@ function init() {
 
     on(cameraInput, 'change', read);
 
-    each(
-      getElements('[data-animation-toggle]', main),
-      element => on(element, 'click', () => {
+    each(getElements('[data-animation-toggle]', main), element =>
+      on(element, 'click', () => {
         toggle(
-          element.parentNode
-            .getAttribute('data-question'),
+          element.parentNode.getAttribute('data-question'),
           element.getAttribute('value')
         );
         show();
       })
     );
 
-    each(
-      getElements('[data-view-toggle]', main),
-      element => on(element, 'click', toggleView)
+    each(getElements('[data-view-toggle]', main), element =>
+      on(element, 'click', toggleView)
     );
 
-    each(
-      getElements('.section__feedback-container', main),
-      element => on(element, 'click', hide)
+    each(getElements('.section__feedback-container', main), element =>
+      on(element, 'click', hide)
     );
 
-    each(
-      getElements('.section__button--small'),
-      sectionButton => on(sectionButton, 'click', check)
+    each(getElements('.section__button--small'), sectionButton =>
+      on(sectionButton, 'click', check)
     );
 
-    on(
-      getElement('[data-submit]', main),
-      'click',
-      () => ajax(cameraForm)
-    );
+    on(getElement('[data-submit]', main), 'click', () => ajax(cameraForm));
 
     if (svg) {
-      app.animations
-        .introduction();
+      app.animations.introduction();
     }
   }
 }
-
 
 app.animations.complete = () => {
   complete();
@@ -503,25 +428,24 @@ app.animations.complete = () => {
 };
 
 app.functions.anonymize = () => {
-  theater.addActor('anonymizing',
-    {
+  theater
+    .addActor('anonymizing', {
       accuracy: 0.5,
       speed: 1,
-    }
-  )
-  .addScene(
-    `anonymizing:${headingAnonymizing.getAttribute('data-title')}`,
-    300,
-    '.',
-    300,
-    '.',
-    300,
-    '.'
-  ).addScene(() => transition(cameraImg, context, img));
+    })
+    .addScene(
+      `anonymizing:${headingAnonymizing.getAttribute('data-title')}`,
+      300,
+      '.',
+      300,
+      '.',
+      300,
+      '.'
+    )
+    .addScene(() => transition(cameraImg, context, img));
 
   toggleElement(restartButton);
 };
-
 
 app.functions.feedback = () => {
   feedbackTimer = setTimeout(() => {
@@ -529,6 +453,5 @@ app.functions.feedback = () => {
     toggleView();
   }, 7000);
 };
-
 
 on(document, 'DOMContentLoaded', init);

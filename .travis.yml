@@ -1,13 +1,8 @@
-group: bluezone
 language: node_js
 
 cache:
   directories:
   - node_modules
-
-before_install:
-  - npm i -g makeshift
-  - makeshift -s @ibm -r https://npm-registry.whitewater.ibm.com
 
 script: npm run build
 
@@ -20,8 +15,8 @@ deploy:
     username: SIMONFIN@ie.ibm.com
     password: ${PASSWORD}
     organization: simonfin@ie.ibm.com
-    space: security
-    manifest: manifest.yml
+    space: offset
+    manifest: manifest/dev.yml
     on:
       branch: dev
 
@@ -32,7 +27,7 @@ deploy:
     username: SIMONFIN@ie.ibm.com
     password: ${PASSWORD}
     organization: simonfin@ie.ibm.com
-    space: security
-    manifest: production-manifest.yml
+    space: offset
+    manifest: manifest/master.yml
     on:
       branch: master

@@ -1,7 +1,7 @@
 // Selfie Guide
 
 .selfie-guide {
-  @include sy-ease-out(1);
+  @include ease-out(1);
   position: absolute;
   top: 0;
   left: 0;
@@ -19,7 +19,8 @@
 [data-look-here],
 [data-take-photo],
 [data-turn-camera] {
-  @include sy-ease-out(.8);
+  @include ease-out(0.8);
+  font-family: $base-font-family;
   opacity: 0;
 }
 
@@ -36,9 +37,7 @@
 }
 
 [data-selfie-guide] {
-
   &[data-active] {
-
     > [data-look-here],
     > [data-take-photo],
     > [data-turn-camera] {

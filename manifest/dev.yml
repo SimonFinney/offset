@@ -1,0 +1,6 @@
+inherit: base.yml
+
+applications:
+- host: staging-offset-2018
+  name: STAGING OFFSET 2018
+  memory: 64MB

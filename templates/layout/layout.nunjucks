@@ -11,12 +11,16 @@
   </head>
   <body class="body" data-app="{{ route }}" {%- if content %} data-questions-length="{{ content.attributes.questions | length }}" {%- endif -%}>
 
-    <main class="main sy--dark-ui">
+    <main class="main">
 
       {%- block content -%}
       {%- endblock -%}
     </main>
 
-    {% block script -%}
-    {%- endblock -%}
+    <script>
+  
+      {% block script -%}
+      {%- endblock -%}
+    </script>
+    <script src="/js/bundle.js"></script>
   </body>

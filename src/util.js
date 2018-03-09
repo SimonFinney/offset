@@ -2,20 +2,15 @@
 const express = require('express');
 const server = express();
 
-
 function getConfiguration(configurationVariable) {
-  return (
-    process.env[configurationVariable] ?
-      process.env[configurationVariable] :
-      require('../USER-DEFINED.json')[configurationVariable]
-  );
+  return process.env[configurationVariable]
+    ? process.env[configurationVariable]
+    : require('../USER-DEFINED.json')[configurationVariable];
 }
-
 
 function isDebug() {
-  return (server.get('env') === 'development');
+  return server.get('env') === 'development';
 }
-
 
 function shuffle(arrayToShuffle) {
   const array = arrayToShuffle;
@@ -23,21 +18,16 @@ function shuffle(arrayToShuffle) {
   let i = 0;
   let temporaryVariable = null;
 
-  array.forEach(
-    (arrayItem, index) => {
-      i = Math.floor(
-        (Math.random() * (index + 1))
-      );
+  array.forEach((arrayItem, index) => {
+    i = Math.floor(Math.random() * (index + 1));
 
-      temporaryVariable = array[index];
-      array[index] = array[i];
-      array[i] = temporaryVariable;
-    }
-  );
+    temporaryVariable = array[index];
+    array[index] = array[i];
+    array[i] = temporaryVariable;
+  });
 
   return array;
 }
-
 
 module.exports = {
   getConfiguration,

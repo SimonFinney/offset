@@ -6,32 +6,6 @@ $character-offset: 288px;
   position: absolute;
   top: 0;
   left: -$character-offset;
-  z-index: -1;
   width: calc(100% + #{$character-offset});
   pointer-events: none;
-}
-
-[data-bowtie],
-[data-eyes-big],
-[data-eyes-closed],
-[data-eyes-cry],
-[data-eyes-half],
-[data-eyes-happy-closed],
-[data-eyes-wide],
-[data-eyes-worry],
-[data-eyes-smize],
-[data-glasses-square],
-[data-hair],
-[data-mouth-big-smile],
-[data-mouth-frown],
-[data-mouth-no-smile],
-[data-mouth-open],
-[data-mouth-slight-smile],
-[data-mouth-upturned-smile],
-[data-mouth-medium-smile],
-[data-mouth-smile],
-[data-mouth-wide],
-[data-mustache],
-[data-party-hat] {
-  visibility: hidden;
 }

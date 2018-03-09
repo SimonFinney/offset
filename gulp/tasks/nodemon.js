@@ -3,7 +3,6 @@
 const nodemon = require('gulp-nodemon');
 let hasNodemonStarted = false;
 
-
 function start(callback) {
   if (!hasNodemonStarted) {
     hasNodemonStarted = !hasNodemonStarted;
@@ -11,9 +10,7 @@ function start(callback) {
   }
 }
 
-
 module.exports = (gulp, nodemonConfig) =>
-
-  gulp.task('nodemon', (callback) =>
+  gulp.task('nodemon', callback =>
     nodemon(nodemonConfig).on('start', () => start(callback))
   );

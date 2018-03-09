@@ -1,0 +1,6 @@
+inherit: base.yml
+
+applications:
+- host: OFFSET-2018
+  name: OFFSET 2018
+  memory: 128MB
