@@ -14,7 +14,7 @@ applications:
 
   - <<: *_defaults 
     name: OFFSET 
-    memory: 872MB
+    memory: 832MB
     routes:
       - route: offset.mybluemix.net
 
