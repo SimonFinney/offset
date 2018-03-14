@@ -8,13 +8,13 @@ _defaults: &_defaults
 applications:
   - <<: *_defaults 
     name: STAGING OFFSET
-    memory: 64MB
+    memory: 128MB
     routes:
       - route: staging-offset.mybluemix.net
 
   - <<: *_defaults 
     name: OFFSET 
-    memory: 128MB
+    memory: 872MB
     routes:
       - route: offset.mybluemix.net
 
