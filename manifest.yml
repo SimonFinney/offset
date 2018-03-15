@@ -3,10 +3,8 @@ applications:
   - name: OFFSET 
     disk_quota: 1024M
     instances: 1
-    memory: 906MB
+    memory: 960MB
     path: .
     command: node index.js
     routes:
       - route: offset.mybluemix.net
-
-
