@@ -16,3 +16,6 @@ deploy:
   password: ${PASSWORD}
   organization: simonfin@ie.ibm.com
   space: studios-dublin
+  on:
+    all_branches: true
+
