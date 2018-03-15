@@ -315,7 +315,7 @@ function init() {
   main = getElement('.main', app.element);
 
   if (app.element.getAttribute('data-app') === 'receive') {
-    const socket = io();
+    const socket = io.connect('/');
     socket.on('receive', add);
 
     randomiseImages();
