@@ -1,16 +1,4 @@
 // Utilities
-const express = require('express');
-const server = express();
-
-function getConfiguration(configurationVariable) {
-  return process.env[configurationVariable]
-    ? process.env[configurationVariable]
-    : require('../USER-DEFINED.json')[configurationVariable];
-}
-
-function isDebug() {
-  return server.get('env') === 'development';
-}
 
 function shuffle(arrayToShuffle) {
   const array = arrayToShuffle;
@@ -30,7 +18,5 @@ function shuffle(arrayToShuffle) {
 }
 
 module.exports = {
-  getConfiguration,
-  isDebug,
   shuffle,
 };

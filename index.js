@@ -11,11 +11,10 @@ dotenv.load();
 
 const router = require('./src/router');
 const socket = require('./src/socket');
-const util = require('./src/util');
 
 const app = express();
 
-const serverDirectory = util.isDebug() ? '.tmp' : 'dist';
+const serverDirectory = app.get('env') === 'development' ? '.tmp' : 'dist';
 const staticAssets = express.static(`${__dirname}/${serverDirectory}/`);
 
 app.use(staticAssets);
@@ -47,8 +46,6 @@ app.port = app.set('port', process.env.PORT || 8080);
 const port = app.get('port');
 
 const server = app.listen(port, () => {
-  app.address = `${app.get('host')}:${port}`;
-  console.log(`Listening at ${app.address}`);
+  console.log(`${app.get('host')}:${port}`);
+  socket.init(server);
 });
-
-socket.init(server);
