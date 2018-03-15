@@ -1,20 +1,11 @@
 ---
-_defaults: &_defaults  
-  path: .
-  disk_quota: 1024M
-  instances: 1
-  command: node index.js
-
 applications:
-  - <<: *_defaults 
-    name: STAGING OFFSET
-    memory: 128MB
-    routes:
-      - route: staging-offset.mybluemix.net
-
-  - <<: *_defaults 
-    name: OFFSET 
-    memory: 832MB
+  - name: OFFSET 
+    disk_quota: 1024M
+    instances: 1
+    memory: 906MB
+    path: .
+    command: node index.js
     routes:
       - route: offset.mybluemix.net
 
