@@ -1,12 +1,13 @@
 # Hidden files and folders
 .*
 
+# Package folders
+node_modules
+yarn
+
 # Development directories
 app
 gulp
-
-# Package folders
-node_modules
 
 # Individual files
 gulpfile.js
