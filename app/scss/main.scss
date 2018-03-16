@@ -1,8 +1,10 @@
 @charset 'utf-8';
 // Sass manifest
 
-// Imports
-@import '../../node_modules/carbon-components/scss/globals/scss/styles';
+$css--plex: true !default;
+
+// Font face
+@import '../../node_modules/carbon-components/scss/globals/scss/css--font-face';
 
 // Core
 @import 'core/color', 'core/motion', 'core/layout', 'core/typography';
