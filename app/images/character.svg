@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="/css/main.css" type="text/css"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="216" height="288">
   <path id="body" fill="#40D5BB" d="M184 288V157.7c0-42.9-34-77.7-76-77.7s-76 34.8-76 77.7V288h152z"/>
   <g data-bowtie="">

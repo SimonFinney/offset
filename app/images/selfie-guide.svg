@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet href="/css/main.css" type="text/css"?>
+<!-- <?xml-stylesheet href="/css/main.css" type="text/css"?> -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 1024 768" enable-background="new 0 0 1024 768" xml:space="preserve" data-selfie-guide="">
+     viewBox="0 0 1024 768" enable-background="new 0 0 1024 768" xml:space="preserve" data-selfie-guide="" font-family="'ibm-plex-sans', sans-serif">
 <g id="pretend-ipad" data-pretend-ipad="">
     <g>
         <path id="body-2" fill="#40D5BB" d="M583.3,524.7V394.3c0-42.9-34-77.7-76-77.7l0,0c-42,0-76,34.8-76,77.7v130.3H583.3z"/>

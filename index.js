@@ -4,7 +4,6 @@
 const compression = require('compression');
 const dotenv = require('dotenv');
 const express = require('express');
-const minifyHtml = require('express-minify-html');
 const nunjucks = require('nunjucks');
 
 dotenv.load();
@@ -22,18 +21,6 @@ app.use(staticAssets);
 app.use('/', router);
 
 app.use(compression());
-
-app.use(
-  minifyHtml({
-    htmlMinifier: {
-      collapseBooleanAttributes: true,
-      collapseWhitespace: true,
-      removeAttributeQuotes: true,
-      removeComments: true,
-      removeEmptyAttributes: true,
-    },
-  })
-);
 
 nunjucks.configure('templates', {
   autoescape: true,

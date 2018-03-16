@@ -28,7 +28,6 @@
     "compression": "^1.6.1",
     "dotenv": "^5.0.1",
     "express": "^4.13.4",
-    "express-minify-html": "^0.4.0",
     "firebase": "^3.6.9",
     "js-yaml": "^3.11.0",
     "multer": "^1.3.0",
