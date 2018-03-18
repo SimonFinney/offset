@@ -1,4 +1,4 @@
-// Clean
+// TODO: Document
 
 const del = require('del');
 

@@ -1,4 +1,4 @@
-// TODO: Comments
+// TODO: Document
 
 const express = require('express');
 const fs = require('fs');

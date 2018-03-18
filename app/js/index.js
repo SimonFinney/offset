@@ -1,14 +1,10 @@
-// Main
+// TODO: Document
 
-// TODO: Comments
-
-// Imports
 import {
   create,
   anonymizing,
   complete,
   confirmation,
-  introduction,
   kill,
   hide,
   show,
@@ -33,7 +29,6 @@ import {
 import io from 'socket.io-client';
 import theaterJS from 'theaterjs/dist/theater.min';
 
-// Variables
 let canvasElements;
 let cameraForm;
 let cameraImg;
@@ -45,13 +40,12 @@ let currentView;
 let heading;
 let headingAnonymizing;
 let instructions;
-let instructionsSvg;
 let img;
 let li;
 let main;
 let restartButton;
 let selectedCameraToggleButton;
-let svg;
+// let svg;
 let theater;
 let titles;
 let totalNumbers;
@@ -66,7 +60,6 @@ const app = {
   animations: {
     anonymizing,
     confirmation,
-    introduction,
     quiz,
     results,
     selfie,
@@ -77,10 +70,10 @@ const app = {
     personas: window.personas,
   },
   functions: {
-    confirmation: () => toggleElement(instructionsSvg),
+    confirmation: () => toggleElement(instructions),
     reset: () => location.reload(),
     results: show,
-    selfie: () => toggleElement(instructionsSvg),
+    selfie: () => toggleElement(instructions),
   },
 };
 
@@ -90,7 +83,9 @@ function activate(view) {
 }
 
 function toggleView() {
-  feedbackTimer ? clearTimeout(feedbackTimer) : null;
+  if (feedbackTimer) {
+    clearTimeout(feedbackTimer);
+  }
 
   const nextView = views[views.indexOf(currentView) + 1];
 
@@ -133,12 +128,12 @@ function toggleView() {
 function determinePersona(answersLength) {
   each(app.data.personas, persona =>
     each(persona.criteria, criterion => {
-      criterion === answersLength
-        ? each(titles, titleToModify => {
-            const title = titleToModify;
-            title.textContent = persona.title;
-          })
-        : null;
+      if (criterion === answersLength) {
+        each(titles, titleToModify => {
+          const title = titleToModify;
+          title.textContent = persona.title;
+        });
+      }
     })
   );
 }
@@ -168,13 +163,14 @@ function pixelate(canvas, ctx, image, size) {
 }
 
 function transition(canvas, ctx, image, size = app.data.total) {
-  ctx.globalAlpha = 0.0;
+  const canvasContext = ctx;
+  canvasContext.globalAlpha = 0.0;
 
   function loop() {
-    ctx.globalAlpha += 0.01;
-    pixelate(canvas, ctx, image, size);
+    canvasContext.globalAlpha += 0.01;
+    pixelate(canvas, canvasContext, image, size);
 
-    if (ctx.globalAlpha <= 0.99) {
+    if (canvasContext.globalAlpha <= 0.99) {
       requestAnimationFrame(loop);
     }
   }
@@ -304,9 +300,9 @@ function read() {
     );
     fileReader.readAsDataURL(cameraInput.files[0]);
 
-    !selectedCameraToggleButton.hasAttribute('data-camera-retake')
-      ? toggleView()
-      : null;
+    if (!selectedCameraToggleButton.hasAttribute('data-camera-retake')) {
+      toggleView();
+    }
   }
 }
 
@@ -334,15 +330,12 @@ function init() {
 
     on(restartButton, 'click', () => location.reload());
 
-    on(character, 'load', event => {
+    create(character);
+
+    /* on(character, 'load', event => {
       svg = getElement('svg', event.target.getSVGDocument());
-
       create(svg);
-    });
-
-    on(instructions, 'load', event => {
-      instructionsSvg = getElement('svg', event.target.getSVGDocument());
-    });
+    }); */
 
     img = new Image();
     theater = theaterJS();
@@ -415,10 +408,6 @@ function init() {
     );
 
     on(getElement('[data-submit]', main), 'click', () => ajax(cameraForm));
-
-    if (svg) {
-      app.animations.introduction();
-    }
   }
 }
 

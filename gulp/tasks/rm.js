@@ -1,4 +1,4 @@
-// Move
+// TODO: Document
 
 module.exports = (gulp, runSequence) =>
   gulp.task('rm', callback =>

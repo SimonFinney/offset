@@ -1,11 +1,11 @@
-// Character
-
-$character-offset: 288px;
+$character-width: 216px;
+$character-height: 288px;
 
 .character {
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: -$character-offset;
-  width: calc(100% + #{$character-offset});
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
 }

@@ -1,4 +1,4 @@
-// Utilities
+// TODO: Document
 
 function shuffle(arrayToShuffle) {
   const array = arrayToShuffle;

@@ -1,10 +1,9 @@
-// Database
+// TODO: Document
 
-// TODO: Comments
 const firebase = require('firebase');
 
 const maximumEntries = 16;
-const scheduledInterval = 3600000; // Every hour
+const scheduledInterval = 3600000;
 
 const firebaseConfiguration = {
   apiKey: process.env.FIREBASE_API_KEY,

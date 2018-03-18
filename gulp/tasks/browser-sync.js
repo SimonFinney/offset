@@ -1,4 +1,4 @@
-// BrowserSync
+// TODO: Document
 
 module.exports = (gulp, browserSync, browserSyncConfig) => {
   gulp.task('browser-sync', ['nodemon'], () =>

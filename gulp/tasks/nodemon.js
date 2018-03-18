@@ -1,4 +1,4 @@
-// Nodemon
+// TODO: Document
 
 const nodemon = require('gulp-nodemon');
 let hasNodemonStarted = false;

@@ -1,4 +1,4 @@
-// Images
+// TODO: Document
 
 const imagemin = require('gulp-imagemin');
 

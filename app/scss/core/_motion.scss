@@ -1,5 +1,3 @@
-// Motion
-
 @mixin ease-out($duration: 1) {
   transition: #{$duration}s ease-out;
 }

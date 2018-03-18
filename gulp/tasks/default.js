@@ -1,4 +1,4 @@
-// Default
+// TODO: Document
 
 module.exports = (gulp, runSequence) =>
   gulp.task('default', callback =>

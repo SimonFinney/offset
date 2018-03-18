@@ -1,4 +1,4 @@
-// Watch
+// TODO: Document
 
 module.exports = (gulp, runSequence, paths) =>
   gulp.task('watch', () => {

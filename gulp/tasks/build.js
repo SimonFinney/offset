@@ -1,4 +1,4 @@
-// Build
+// TODO: Document
 
 module.exports = (gulp, runSequence) =>
   gulp.task('build', callback =>

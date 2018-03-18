@@ -1,3 +1,5 @@
+// TODO: Document
+
 module.exports = (gulp, paths) =>
   gulp.task('extras', () =>
     paths.extras.forEach(path => {

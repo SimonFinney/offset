@@ -1,5 +1,3 @@
-// Layout
-
 $breakpoints: ();
 
 $z-index: (
@@ -10,7 +8,6 @@ $z-index: (
   confetti__item
 );
 
-// Returns breakpoints from the associated Sass map
 @mixin media-query($breakpoint-name) {
   @if not map-has-key($breakpoints, $breakpoint-name) {
     @error 'Unknown breakpoint '#{$breakpoint-name}'';
@@ -27,7 +24,6 @@ $z-index: (
   }
 }
 
-// Returns z-index order for the element passed in
 @mixin z-index($element) {
   z-index: index($z-index, $element);
 }

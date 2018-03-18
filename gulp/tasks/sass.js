@@ -1,4 +1,4 @@
-// Sass
+// TODO: Document
 
 const autoprefixer = require('gulp-autoprefixer');
 const sass = require('gulp-sass');

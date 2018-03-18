@@ -1,6 +1,5 @@
-// Utilities
+// TODO: Document
 
-// TODO: Comments
 function ajax(form) {
   const request = new XMLHttpRequest();
   request.open(
@@ -25,7 +24,6 @@ function createElement(tag, attributes, text) {
   return element;
 }
 
-// Moves function to the end of the call stack
 function debounce(func, timeout = 0) {
   setTimeout(func, timeout);
 }
@@ -65,9 +63,12 @@ function once(element, eventType, functionToCall) {
 
 function toggleElement(element, dataAttribute = 'active', attributeValue = '') {
   const attribute = `data-${dataAttribute}`;
-  element.hasAttribute(attribute)
-    ? element.removeAttribute(attribute)
-    : element.setAttribute(attribute, attributeValue);
+
+  if (element.hasAttribute(attribute)) {
+    element.removeAttribute(attribute);
+  } else {
+    element.setAttribute(attribute, attributeValue);
+  }
 }
 
 export {

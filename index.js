@@ -1,6 +1,5 @@
-// Server
+// TODO: Document
 
-// TODO: Comments
 const compression = require('compression');
 const dotenv = require('dotenv');
 const express = require('express');

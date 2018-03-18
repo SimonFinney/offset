@@ -1,6 +1,5 @@
-// Module configuration
+// TODO: Document
 
-// Paths
 const spritesheet = 'sprite.svg';
 
 const paths = new function paths() {
@@ -21,7 +20,6 @@ const paths = new function paths() {
   this.tmp = '.tmp/';
 }();
 
-// Configuration
 const browsers = ['> 5%'];
 
 const autoprefixer = { browsers };
@@ -42,7 +40,7 @@ const nodemon = {
 const svgSprite = {
   mode: {
     symbol: {
-      bust: false, // Prevents cache-busting suffix
+      bust: false,
       dest: './',
       sprite: `${paths.images}${spritesheet}`,
     },

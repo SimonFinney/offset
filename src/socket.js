@@ -1,4 +1,4 @@
-// Socket
+// TODO: Document
 
 const socket = require('socket.io');
 

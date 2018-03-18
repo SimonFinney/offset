@@ -1,4 +1,4 @@
-// ESLint
+// TODO: Document
 
 const eslint = require('gulp-eslint');
 

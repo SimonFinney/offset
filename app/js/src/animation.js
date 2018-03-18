@@ -1,4 +1,4 @@
-// Animate
+// TODO: Document
 
 import {
   Circ,
@@ -59,11 +59,11 @@ let timeline;
 
 let hair;
 
-const topYOff = '50px';
-const leftXOff = '-288px';
-const rightXOff = '1280px';
-const bottomYOff = '950px';
-const bottomYOn = '464px';
+const topYOff = -288;
+const leftXOff = -288;
+const rightXOff = 1280;
+const bottomYOff = 950;
+const bottomYOn = 480;
 
 function anonymizing() {
   timeline = new TimelineMax({ paused: true });
@@ -75,7 +75,7 @@ function anonymizing() {
     })
     .set(svg, {
       x: rightXOff,
-      y: '740px',
+      y: 480,
       rotation: -90,
     })
     .set([mouthBigSmile, mouthSlightSmile], {
@@ -89,7 +89,7 @@ function anonymizing() {
       display: 'block',
     })
     .to(svg, 0.8, {
-      x: '1040px',
+      x: 768,
       ease: Power2.easeInOut,
     })
     .to(svg, 1.5, {
@@ -112,7 +112,7 @@ function complete() {
   });
   TweenMax.set(svg, {
     y: bottomYOff,
-    x: '1000px',
+    x: 720,
     rotation: 0,
   });
 
@@ -129,7 +129,7 @@ function complete() {
 function confirmation() {
   TweenMax.set(svg, {
     y: topYOff,
-    x: '1120px',
+    x: 625,
     rotation: 180,
   });
 
@@ -147,7 +147,7 @@ function confirmation() {
 
   timeline
     .to(svg, 1, {
-      y: '240px',
+      y: -25,
       ease: Power2.easeInOut,
     })
     .to(
@@ -183,7 +183,7 @@ function confirmation() {
 function quiz() {
   TweenMax.set(svg, {
     y: bottomYOff,
-    x: '820px',
+    x: 450,
     rotation: 0,
   });
   TweenMax.set(
@@ -262,7 +262,7 @@ function quizAOneRight() {
     visibility: 'visible',
   });
   TweenMax.set(svg, {
-    x: '720px',
+    x: 450,
   });
   TweenMax.set(mouthSlightSmile, {
     opacity: 0,
@@ -291,10 +291,9 @@ function quizAOneWrong() {
     visibility: 'visible',
     opacity: 1,
     display: 'block',
-    // delay: 0.5,
   });
   TweenMax.set(svg, {
-    x: '720px',
+    x: 450,
   });
   TweenMax.set([wideEyes, mouthSlightSmile], {
     opacity: 0,
@@ -850,14 +849,14 @@ function results() {
   );
   TweenMax.set(svg, {
     y: topYOff,
-    x: '1270px',
+    x: 768,
     rotation: 180,
   });
 
   timeline = new TimelineMax({ paused: true });
 
   timeline.to(svg, 0.5, {
-    y: '240px',
+    y: -40,
     ease: Power0.easeInOut,
   });
 
@@ -896,7 +895,7 @@ function selfie() {
       ease: Power2.easeInOut,
     })
     .set(svg, {
-      x: '690px',
+      x: 400,
       y: bottomYOff,
       rotation: 0,
     })
@@ -926,7 +925,6 @@ function selfie() {
         scaleY: 0.2,
         transformOrigin: '50% 50%',
         yoyo: true,
-        // repeat: +1,
         ease: SteppedEase.config(1),
       },
       'rtEye'
@@ -939,7 +937,7 @@ function selfie() {
         opacity: '1',
         scaleY: 1,
         yoyo: true,
-        // repeat: +1,
+
         ease: SteppedEase.config(1),
       },
       'rtEye'
@@ -953,7 +951,6 @@ function selfie() {
         scaleY: 1,
         ease: SteppedEase.config(1),
         yoyo: true,
-        // repeat: +1,
       },
       'rtEye'
     )
@@ -1028,9 +1025,9 @@ function restart() {
 
 function introduction() {
   TweenLite.set(svg, {
-    y: '30px',
+    y: -25,
     rotation: 90,
-    x: '-288px',
+    x: -svg.clientWidth,
   });
 
   TweenMax.set(
@@ -1098,7 +1095,7 @@ function introduction() {
 
   timeline
     .to(svg, 1.5, {
-      x: '460px',
+      x: 5,
       ease: Power2.easeInOut,
     })
     .to(svg, 0.4, {
@@ -1109,13 +1106,13 @@ function introduction() {
     .set(svg, {
       rotation: 0,
       y: bottomYOff,
-      x: '920px',
+      x: 640,
     })
     .set([fedora, sunglasses], {
       display: 'none',
     })
     .to(svg, 0.5, {
-      y: '520px',
+      y: 520,
       ease: Power2.easeInOut,
     })
     .add('rtEye', '+=.2')
@@ -1165,7 +1162,7 @@ function introduction() {
       display: 'none',
     })
     .to(svg, 0.5, {
-      y: '220px',
+      y: 0,
       ease: Power2.easeInOut,
     })
     .to(svg, 1, {
@@ -1220,6 +1217,7 @@ function create(element) {
   mouthFrown = getElement('[data-mouth-frown]', svg);
 
   mustache = getElement('[data-mustache]', svg);
+
   introduction();
 }
 
@@ -1267,7 +1265,6 @@ export {
   anonymizing,
   complete,
   confirmation,
-  introduction,
   kill,
   hide,
   show,

@@ -1,15 +1,11 @@
 @charset 'utf-8';
-// Sass manifest
 
 $css--plex: true !default;
 
-// Font face
 @import '../../node_modules/carbon-components/scss/globals/scss/css--font-face';
 
-// Core
 @import 'core/color', 'core/motion', 'core/layout', 'core/typography';
 
-// Elements
 @import 'elements/body',
   'elements/button',
   'elements/h2',
@@ -18,7 +14,6 @@ $css--plex: true !default;
   'elements/main',
   'elements/section';
 
-// Components
 @import 'components/button--touch',
   'components/camera',
   'components/character',

@@ -1,4 +1,4 @@
-// JavaScript
+// TODO: Document
 
 const webpack = require('webpack-stream');
 
