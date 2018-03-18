@@ -332,11 +332,6 @@ function init() {
 
     create(character);
 
-    /* on(character, 'load', event => {
-      svg = getElement('svg', event.target.getSVGDocument());
-      create(svg);
-    }); */
-
     img = new Image();
     theater = theaterJS();
 
