@@ -1,5 +1,5 @@
-@mixin ease-out($duration: 1) {
-  transition: #{$duration}s ease-out;
+@mixin ease-out($duration: 1, $property: all) {
+  transition: #{$duration}s ease-out $property;
 }
 
 @keyframes fade-in {

@@ -3,13 +3,32 @@
   width: 25vw;
   height: 25vh;
   transform: rotate(180deg);
+  overflow: hidden;
 }
 
+// Monitor - 1280 x 720
+// iPad - 1024 x 768
+
+// 720 / 1280 = .5625
+// 768 / 1024 .75
+// 248 / 640 = .3875
+
+// 248 / 853 = 
+
+// 150 / 300 = 0.5
+
 .img {
-  @include ease-out;
-  width: 100%;
+  @include ease-out($property: opacity);
+  width: 50vw;
   height: 100%;
+  // width: 600px;
+  //height: 300px;
+  //width: 100%;
+  //height: 100%;
+  //width: 25vw;
+  //height: 12.5vh;
   opacity: 0;
+  transform: translateX(-25%);
 
   &[data-active] {
     opacity: 1;
