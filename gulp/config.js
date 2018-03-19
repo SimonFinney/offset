@@ -6,8 +6,6 @@ const paths = new function paths() {
   this.app = 'app/';
   this.dist = 'dist/';
 
-  this.extras = ['fonts/'];
-
   this.images = 'images/';
   this.icons = `${this.app}${this.images}/icons/**/*`;
 

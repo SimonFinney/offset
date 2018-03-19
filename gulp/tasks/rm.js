@@ -8,7 +8,6 @@ module.exports = (gulp, runSequence) =>
       'js',
       'images',
       'svg-sprite',
-      'extras',
       callback
     )
   );

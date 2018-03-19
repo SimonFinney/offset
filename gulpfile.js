@@ -10,7 +10,6 @@ require('./gulp/tasks/build')(gulp, runSequence);
 require('./gulp/tasks/clean')(gulp, config.paths);
 require('./gulp/tasks/default')(gulp, runSequence, config.paths);
 require('./gulp/tasks/eslint')(gulp, config.paths.js);
-require('./gulp/tasks/extras')(gulp, config.paths);
 require('./gulp/tasks/images')(gulp, config.paths);
 require('./gulp/tasks/js')(gulp, config);
 require('./gulp/tasks/minify')(gulp, config.paths);
