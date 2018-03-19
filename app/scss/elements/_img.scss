@@ -8,10 +8,9 @@
 
 .img {
   @include ease-out($property: opacity);
-  width: 50vw;
+  width: 50vh;
   height: 100%;
   opacity: 0;
-  transform: translateX(-25%);
 
   &[data-active] {
     opacity: 1;
