@@ -1028,6 +1028,7 @@ function introduction() {
     y: -25,
     rotation: 90,
     x: -svg.clientWidth,
+    opacity: 1,
   });
 
   TweenMax.set(
