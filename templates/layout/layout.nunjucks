@@ -22,5 +22,5 @@
       {% block script -%}
       {%- endblock -%}
     </script>
-    <script src="/js/bundle.js" defer></script>
+    <script src="/js/bundle.js"></script>
   </body>

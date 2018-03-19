@@ -26,7 +26,7 @@ import {
   toggleElement,
 } from './src/util';
 
-import io from 'socket.io-client';
+import io from 'socket.io-client/dist/socket.io.slim';
 import theaterJS from 'theaterjs/dist/theater.min';
 
 let canvasElements;
